@@ -1,32 +1,28 @@
-" lightline
-" https://github.com/itchyny/lightline.vim
-let s:gray   = [s:gray900.gui, s:gray900.cterm]
-let s:white  = [s:gray500.gui, s:gray500.cterm]
-let s:blue   = [s:purple300.gui, s:purple300.cterm]
-let s:green  = [s:green300.gui, s:green300.cterm]
-let s:purple = [s:purple400.gui, s:purple400.cterm]
-let s:red    = [s:pink600.gui, s:pink600.cterm]
-let s:pink   = [s:pink400.gui, s:pink400.cterm]
-let s:yellow = [s:yellow500.gui, s:yellow500.cterm]
+" dogrun lightline theme
+"
+" Author: wadackel
+" License: MIT
+"   Copyright (c) 2019 wadackel
 
-let s:lightline = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-let s:lightline.normal.left     = [[s:gray, s:purple], [s:purple, s:gray]]
-let s:lightline.normal.right    = [[s:gray, s:purple], [s:purple, s:gray]]
-let s:lightline.inactive.left   = [[s:gray, s:blue], [s:blue, s:gray]]
-let s:lightline.inactive.right  = [[s:gray, s:blue], [s:blue, s:gray]]
-let s:lightline.insert.left     = [[s:gray, s:green], [s:green, s:gray]]
-let s:lightline.insert.right    = [[s:gray, s:green], [s:green, s:gray]]
-let s:lightline.replace.left    = [[s:gray, s:red], [s:red, s:gray]]
-let s:lightline.replace.right   = [[s:gray, s:red], [s:red, s:gray]]
-let s:lightline.visual.left     = [[s:gray, s:pink], [s:pink, s:gray]]
-let s:lightline.visual.right    = [[s:gray, s:pink], [s:pink, s:gray]]
-let s:lightline.normal.middle   = [[s:white, s:gray]]
-let s:lightline.inactive.middle = [[s:white, s:gray]]
-let s:lightline.tabline.left    = [[s:purple, s:gray]]
-let s:lightline.tabline.tabsel  = [[s:gray, s:purple]]
-let s:lightline.tabline.middle  = [[s:purple, s:gray]]
-let s:lightline.tabline.right   = [[s:gray, s:purple]]
-let s:lightline.normal.error    = [[s:red, s:gray]]
-let s:lightline.normal.warning  = [[s:yellow, s:gray]]
+let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
-let g:lightline#colorscheme#dogrun#palette = lightline#colorscheme#flatten(s:lightline)
+let s:p.normal.left = [[['#222433', 235], ['#929be5', 104]], [['#929be5', 104], ['#282a3a', 235]]]
+let s:p.normal.middle = [[['#4b4e6d', 60], ['#282a3a', 235]]]
+let s:p.normal.right = [[['#222433', 235], ['#929be5', 104]], [['#929be5', 104], ['#282a3a', 235]]]
+let s:p.normal.error = [[['#222433', 235], ['#f56574', 204]]]
+let s:p.normal.warning = [[['#222433', 235], ['#c2968c', 138]]]
+let s:p.inactive.left = [[['#4b4e6d', 60], ['#282a3a', 235]], [['#4b4e6d', 60], ['#282a3a', 235]]]
+let s:p.inactive.middle = [[['#4b4e6d', 60], ['#282a3a', 235]]]
+let s:p.inactive.right = [[['#4b4e6d', 60], ['#282a3a', 235]], [['#4b4e6d', 60], ['#282a3a', 235]]]
+let s:p.insert.left = [[['#222433', 235], ['#73c1a9', 79]], [['#73c1a9', 79], ['#282a3a', 235]]]
+let s:p.insert.right = [[['#222433', 235], ['#73c1a9', 79]], [['#73c1a9', 79], ['#282a3a', 235]]]
+let s:p.visual.left = [[['#222433', 235], ['#c173c1', 170]], [['#c173c1', 170], ['#282a3a', 235]]]
+let s:p.visual.right = [[['#222433', 235], ['#c173c1', 170]], [['#c173c1', 170], ['#282a3a', 235]]]
+let s:p.replace.left = [[['#222433', 235], ['#f56574', 204]], [['#f56574', 204], ['#282a3a', 235]]]
+let s:p.replace.right = [[['#222433', 235], ['#f56574', 204]], [['#f56574', 204], ['#282a3a', 235]]]
+let s:p.tabline.left = [[['#4b4e6d', 60], ['#282a3a', 235]]]
+let s:p.tabline.tabsel = [[['#222433', 235], ['#929be5', 104]]]
+let s:p.tabline.middle = [[['#4b4e6d', 60], ['#282a3a', 235]]]
+let s:p.tabline.right = [[['#4b4e6d', 60], ['#282a3a', 235]]]
+
+let g:lightline#colorscheme#dogrun#palette = lightline#colorscheme#flatten(s:p)

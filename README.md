@@ -1,6 +1,6 @@
 # vim-dogrun
 
-> _WIP_
+> Take a sweet dog with you.
 
 ## Installation
 
@@ -13,3 +13,7 @@ Plug 'wadackel/vim-dogrun'
 ```vim
 colorscheme dogrun
 ```
+
+## License
+
+[MIT License © wadackel](./LICENSE)
