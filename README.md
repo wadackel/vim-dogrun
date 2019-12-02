@@ -2,7 +2,7 @@
 
 [![Actions Status](https://github.com/wadackel/vim-dogrun/workflows/CI/badge.svg)](https://github.com/wadackel/vim-dogrun/actions)
 
-> A dark Vim/Neovim colorscheme for the GUI and 16/256/true-color terminals.
+> A dark Neovim / Vim colorscheme for the GUI and 256 / true-color terminals.
 
 ## Gallery
 
