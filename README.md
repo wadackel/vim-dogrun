@@ -61,17 +61,21 @@ From now on, we will gradually support it :dog:
 - `diff`
 - `html`
 - `javascript`
+- `json`
 - `make`
 - `markdown` ([vim-markdown](https://github.com/tpope/vim-markdown))
+- `toml` ([vim-toml](https://github.com/cespare/vim-toml))
 - `typescript` ([yats.vim](https://github.com/HerringtonDarkholme/yats.vim))
 - `vim`
+- `yaml`
 
 ### Plugins
 
 - [ALE](https://github.com/dense-analysis/ale)
+- [clever-f.vim](https://github.com/rhysd/clever-f.vim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-- [clever-f.vim](https://github.com/rhysd/clever-f.vim)
+- [vimfiler](https://github.com/Shougo/vimfiler.vim)
 
 ## Inspired
 

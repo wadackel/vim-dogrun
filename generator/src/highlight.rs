@@ -129,7 +129,7 @@ pub fn get_palette() -> Palette {
     def!(pink, "#c173c1");
     def!(darkpink, extends!(pink, 0.0, -0.05, -0.35));
     def!(purple, "#929be5");
-    def!(darkpurple, extends!(purple, 0.0, 0.0, -0.2));
+    def!(darkpurple, extends!(purple, 0.0, 0.05, -0.15));
     def!(blue, "#31a9e0");
     def!(darkblue, extends!(blue, 0.0, 0.0, -0.2));
     def!(cyan, "#2aacbd");
@@ -266,7 +266,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(Number, teal, -, -, -),
         hi!(Float, teal, -, -, -),
         hi!(Title, yellow, -, -, Bold),
-        hi!(Keyword, yellow, -, -, -),
+        hi!(Keyword, orange, -, -, -),
         hi!(Identifier, orange, -, -, -),
         hi!(Exception, yellow, -, -, -),
         hi!(Type, yellow, -, -, None),
@@ -313,6 +313,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(htmlEndTag, lightfg, -, -, -),
         hi!(htmlSpecialTagName, orange, -, -, -),
         hi!(htmlArg, lightfg, -, -, -),
+        // yaml
+        hi!(yamlBlockMappingKey, purple, -, -, -),
+        hi!(yamlAnchor, pink, -, -, -),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
         hi!(mkdHeading, weakfg, -, -, -),
@@ -321,6 +324,26 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(mkdCodeStart , purple, -, -, -),
         hi!(mkdCodeEnd, purple, -, -, -),
         hi!(mkdCodeDelimiter, purple, -, -, -),
+        // yats.vim
+        // https://github.com/HerringtonDarkholme/yats.vim
+        hi!(typescriptImport, purple, -, -, -),
+        // vim-markdown
+        // https://github.com/plasticboy/vim-markdown
+        hi!(mkdHeading, weakfg, -, -, -),
+        hi!(mkdLink, purple, -, -, -),
+        hi!(mkdCode, purple, -, -, -),
+        hi!(mkdCodeStart , purple, -, -, -),
+        hi!(mkdCodeEnd, purple, -, -, -),
+        hi!(mkdCodeDelimiter, purple, -, -, -),
+        // vim-toml
+        // https://github.com/cespare/vim-toml
+        hi!(tomlTable, purple, -, -, -),
+        // vimfiler
+        // https://github.com/Shougo/vimfiler.vim
+        hi!(vimfilerOpenedFile, darkpurple, -, -, -),
+        hi!(vimfilerClosedFile, darkpurple, -, -, -),
+        hi!(vimfilerNonMark, teal, -, -, -),
+        hi!(vimfilerLeaf, teal, -, -, -),
         // vim-gitgutter
         // https://github.com/airblade/vim-gitgutter
         hi!(GitGutterAdd, green, -, -, -),

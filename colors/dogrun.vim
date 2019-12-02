@@ -47,7 +47,7 @@ hi Boolean guifg=#73c1a9 ctermfg=79
 hi Number guifg=#73c1a9 ctermfg=79
 hi Float guifg=#73c1a9 ctermfg=79
 hi Title guifg=#b5ae7d ctermfg=144 gui=bold cterm=bold
-hi Keyword guifg=#b5ae7d ctermfg=144
+hi Keyword guifg=#c2968c ctermfg=138
 hi Identifier guifg=#c2968c ctermfg=138
 hi Exception guifg=#b5ae7d ctermfg=144
 hi Type guifg=#b5ae7d ctermfg=144 gui=NONE cterm=NONE
@@ -93,12 +93,26 @@ hi htmlTag guifg=#8085a6 ctermfg=103
 hi htmlEndTag guifg=#8085a6 ctermfg=103
 hi htmlSpecialTagName guifg=#c2968c ctermfg=138
 hi htmlArg guifg=#8085a6 ctermfg=103
+hi yamlBlockMappingKey guifg=#929be5 ctermfg=104
+hi yamlAnchor guifg=#c173c1 ctermfg=170
 hi mkdHeading guifg=#545c8c ctermfg=60
 hi mkdLink guifg=#929be5 ctermfg=104
 hi mkdCode guifg=#929be5 ctermfg=104
 hi mkdCodeStart guifg=#929be5 ctermfg=104
 hi mkdCodeEnd guifg=#929be5 ctermfg=104
 hi mkdCodeDelimiter guifg=#929be5 ctermfg=104
+hi typescriptImport guifg=#929be5 ctermfg=104
+hi mkdHeading guifg=#545c8c ctermfg=60
+hi mkdLink guifg=#929be5 ctermfg=104
+hi mkdCode guifg=#929be5 ctermfg=104
+hi mkdCodeStart guifg=#929be5 ctermfg=104
+hi mkdCodeEnd guifg=#929be5 ctermfg=104
+hi mkdCodeDelimiter guifg=#929be5 ctermfg=104
+hi tomlTable guifg=#929be5 ctermfg=104
+hi vimfilerOpenedFile guifg=#6f78be ctermfg=104
+hi vimfilerClosedFile guifg=#6f78be ctermfg=104
+hi vimfilerNonMark guifg=#73c1a9 ctermfg=79
+hi vimfilerLeaf guifg=#73c1a9 ctermfg=79
 hi GitGutterAdd guifg=#7cbe8c ctermfg=108
 hi GitGutterChange guifg=#b5ae7d ctermfg=144
 hi GitGutterDelete guifg=#c173c1 ctermfg=170
