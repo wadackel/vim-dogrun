@@ -7,17 +7,21 @@
 ### Output files
 
 ```shell
-$ cargo run -- -d ..
+$ make
+
+# or
+
+$ make build
 ```
 
 ### Watch
 
 ```shell
-$ cargo watch -x 'run -- -d ..'
+$ make watch
 ```
 
-### Output files
+### Output stdout
 
 ```shell
-$ cargo run -- -d ..
+$ make stdout
 ```
