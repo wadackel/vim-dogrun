@@ -148,6 +148,8 @@ pub fn get_palette() -> Palette {
     def!(mainbg, "#222433");
     def!(weakfg, extends!(mainbg, 0.0, 0.05, 0.35));
     def!(weakbg, extends!(mainbg, 0.0, 0.0, 0.1));
+    def!(darkfg, extends!(mainbg, 0.0, 0.05, 0.15));
+    def!(darkbg, extends!(mainbg, 0.0, 0.0, 0.05));
     def!(lightfg, extends!(mainfg, 0.0, 0.05, -0.1));
     def!(lightbg, extends!(mainbg, 0.0, 0.0, 0.2));
 
@@ -238,10 +240,10 @@ pub fn get_highlights() -> Vec<Highlight> {
         // general
         hi!(Normal, mainfg, mainbg, -, -),
         hi!(Delimiter, lightfg, -, -, -),
-        hi!(NonText, weakfg, NONE, -, -),
+        hi!(NonText, darkfg, NONE, -, -),
         hi!(VertSplit, weakbg, NONE, -, None),
         hi!(LineNr, linenrfg, NONE, -, None),
-        hi!(EndOfBuffer, weakfg, NONE, -, None),
+        hi!(EndOfBuffer, darkfg, NONE, -, None),
         hi!(Comment, weakfg, -, -, None),
         hi!(Cursor, mainbg, mainfg, -, -),
         hi!(CursorIM, mainbg, mainfg, -, -),
