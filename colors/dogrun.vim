@@ -109,6 +109,11 @@ hi mkdCodeStart guifg=#929be5 ctermfg=104
 hi mkdCodeEnd guifg=#929be5 ctermfg=104
 hi mkdCodeDelimiter guifg=#929be5 ctermfg=104
 hi tomlTable guifg=#929be5 ctermfg=104
+hi rustModPath guifg=#929be5 ctermfg=104
+hi rustTypedef guifg=#929be5 ctermfg=104
+hi rustStructure guifg=#929be5 ctermfg=104
+hi rustMacro guifg=#929be5 ctermfg=104
+hi rustExternCrate guifg=#929be5 ctermfg=104
 hi vimfilerOpenedFile guifg=#6f78be ctermfg=104
 hi vimfilerClosedFile guifg=#6f78be ctermfg=104
 hi vimfilerNonMark guifg=#73c1a9 ctermfg=79

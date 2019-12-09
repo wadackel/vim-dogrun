@@ -59,11 +59,13 @@ From now on, we will gradually support it :dog:
 ### Filetypes
 
 - `diff`
+- `go` ([vim-go](https://github.com/fatih/vim-go))
 - `html`
 - `javascript`
 - `json`
 - `make`
 - `markdown` ([vim-markdown](https://github.com/tpope/vim-markdown))
+- `rust` ([rust.vim](https://github.com/rust-lang/rust.vim))
 - `toml` ([vim-toml](https://github.com/cespare/vim-toml))
 - `typescript` ([yats.vim](https://github.com/HerringtonDarkholme/yats.vim))
 - `vim`

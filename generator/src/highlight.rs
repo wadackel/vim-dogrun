@@ -340,6 +340,13 @@ pub fn get_highlights() -> Vec<Highlight> {
         // vim-toml
         // https://github.com/cespare/vim-toml
         hi!(tomlTable, purple, -, -, -),
+        // rust.vim
+        // https://github.com/rust-lang/rust.vim
+        hi!(rustModPath, purple, -, -, -),
+        hi!(rustTypedef, purple, -, -, -),
+        hi!(rustStructure, purple, -, -, -),
+        hi!(rustMacro, purple, -, -, -),
+        hi!(rustExternCrate, purple, -, -, -),
         // vimfiler
         // https://github.com/Shougo/vimfiler.vim
         hi!(vimfilerOpenedFile, darkpurple, -, -, -),
