@@ -125,6 +125,9 @@ hi GitGutterChangeDelete guifg=#685f3f ctermfg=58
 hi ALEWarningSign guifg=#c2968c ctermfg=138 gui=bold cterm=bold
 hi ALEInfoSign guifg=#82dabf ctermfg=115 gui=NONE cterm=NONE
 hi CleverFChar guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62 gui=underline cterm=underline
+hi EasyMotionTarget guifg=#b5ae7d ctermfg=144 gui=bold cterm=bold
+hi EasyMotionShade guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235
+hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
 if has("nvim")
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#db5966'

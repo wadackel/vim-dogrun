@@ -366,5 +366,10 @@ pub fn get_highlights() -> Vec<Highlight> {
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!(CleverFChar, searchfg, searchbg, -, Underline),
+        // easymotion
+        // https://github.com/easymotion/vim-easymotion
+        hi!(EasyMotionTarget, yellow, -, -, Bold),
+        hi!(EasyMotionShade, weakfg, mainbg, -, -),
+        hi!(EasyMotionIncCursor, mainfg, mainbg, -, -),
     ];
 }
