@@ -21,7 +21,7 @@
 - Supports [lightline.vim](https://github.com/itchyny/lightline.vim) theme.
 - Loading speed in increased by precompiled script.
 
-Check [here](#supported-filetypes-%26-plugins) for a list of supported file types and plugins :muscle:
+Check [here](#supported-filetypes--plugins) for a list of supported file types and plugins :muscle:
 
 ## Installation
 
