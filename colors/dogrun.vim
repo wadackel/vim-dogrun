@@ -35,7 +35,7 @@ hi Conceal guifg=#c2968c ctermfg=138 guibg=#222433 ctermbg=235 gui=NONE cterm=NO
 hi NormalFloat guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi MatchParen guifg=#9ea3c0 ctermfg=146 guibg=#444866 ctermbg=60
+hi MatchParen guibg=#2f3147 ctermbg=236
 hi Directory guifg=#b5ae7d ctermfg=144
 hi Underlined gui=underline cterm=underline
 hi String guifg=#7cbe8c ctermfg=108
@@ -118,6 +118,21 @@ hi vimfilerOpenedFile guifg=#6f78be ctermfg=104
 hi vimfilerClosedFile guifg=#6f78be ctermfg=104
 hi vimfilerNonMark guifg=#73c1a9 ctermfg=79
 hi vimfilerLeaf guifg=#73c1a9 ctermfg=79
+hi DefxIconsMarkIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi DefxIconsDirectory guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi DefxIconsParentDirectory guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi DefxIconsSymlinkDirectory guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
+hi DefxIconsOpenedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi DefxIconsNestedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi DefxIconsClosedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi Defx_git_Untracked guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
+hi Defx_git_Ignored guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi Defx_git_Unknown guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi Defx_git_Renamed guifg=#35332b ctermfg=236
+hi Defx_git_Modified guifg=#35332b ctermfg=236
+hi Defx_git_Unmerged guifg=#c173c1 ctermfg=170
+hi Defx_git_Deleted guifg=#674267 ctermfg=96
+hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
 hi GitGutterAdd guifg=#7cbe8c ctermfg=108
 hi GitGutterChange guifg=#b5ae7d ctermfg=144
 hi GitGutterDelete guifg=#c173c1 ctermfg=170
@@ -148,3 +163,39 @@ if has("nvim")
 let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_7
 endif
+let g:defx_icons_gui_colors = {
+  \ 'brown': 'c22838',
+  \ 'aqua': '3495a3',
+  \ 'blue': '3e9ac6',
+  \ 'darkBlue': '4282a0',
+  \ 'purple': '6f78be',
+  \ 'lightPurple': '959acb',
+  \ 'red': 'db5966',
+  \ 'beige': '757367',
+  \ 'yellow': '9b956b',
+  \ 'orange': 'dba99e',
+  \ 'darkOrange': '8f6258',
+  \ 'pink': 'a763a7',
+  \ 'salmon': 'b459b4',
+  \ 'green': '63976f',
+  \ 'lightGreen': '5aa46c',
+  \ 'white': '898da6',
+  \}
+let g:defx_icons_term_colors = {
+  \ 'brown': 160,
+  \ 'aqua': 30,
+  \ 'blue': 74,
+  \ 'darkBlue': 31,
+  \ 'purple': 104,
+  \ 'lightPurple': 103,
+  \ 'red': 167,
+  \ 'beige': 243,
+  \ 'yellow': 101,
+  \ 'orange': 181,
+  \ 'darkOrange': 95,
+  \ 'pink': 133,
+  \ 'salmon': 133,
+  \ 'green': 65,
+  \ 'lightGreen': 71,
+  \ 'white': 103,
+  \}

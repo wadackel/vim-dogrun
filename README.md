@@ -75,6 +75,8 @@ From now on, we will gradually support it :dog:
 
 - [ALE](https://github.com/dense-analysis/ale)
 - [clever-f.vim](https://github.com/rhysd/clever-f.vim)
+- [defx-git](https://github.com/kristijanhusak/defx-git)
+- [defx-icons](https://github.com/kristijanhusak/defx-icons)
 - [easymotion](https://github.com/easymotion/vim-easymotion)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
