@@ -203,8 +203,7 @@ pub fn get_palette() -> Palette {
     // misc
     def!(searchbg, extends!(purple, 0.0, 0.2, -0.05));
     def!(searchfg, extends!(searchbg, 0.1, -0.1, -0.3));
-    def!(matchparenbg, extends!(mainbg, 0.0, 0.0, 0.2));
-    def!(matchparenfg, extends!(mainfg, 0.0, 0.0, 0.0));
+    def!(matchparenbg, extends!(mainbg, 0.1, 0.0, 0.08));
 
     // terminal colors
     def!(termblack, extends!(mainbg, 0.0, 0.0, -0.1));
@@ -223,6 +222,24 @@ pub fn get_palette() -> Palette {
     def!(termfuchsia, extends!(purple));
     def!(termaqua, extends!(cyan));
     def!(termwhite, extends!(mainfg));
+
+    // defx-icons
+    def!(defxiconbrown, extends!(red, 0.0, 0.2, -0.2));
+    def!(defxiconaqua, extends!(cyan, 0.0, -0.1, -0.1));
+    def!(defxiconblue, extends!(blue, 0.0, -0.1, -0.1));
+    def!(defxicondarkblue, extends!(blue, 0.0, -0.2, -0.25));
+    def!(defxiconpurple, extends!(darkpurple));
+    def!(defxiconlightpurple, extends!(purple, 0.0, -0.1, -0.1));
+    def!(defxiconred, extends!(red, 0.0, -0.0, -0.1));
+    def!(defxiconbeige, extends!(yellow, 0.0, -0.2, -0.25));
+    def!(defxiconyellow, extends!(yellow, 0.0, 0.0, -0.1));
+    def!(defxiconorange, extends!(orange, 0.0, 0.0, 0.1));
+    def!(defxicondarkorange, extends!(orange, 0.0, 0.1, -0.2));
+    def!(defxiconpink, extends!(pink, 0.0, 0.0, -0.1));
+    def!(defxiconsalmon, extends!(pink, 0.0, 0.1, -0.05));
+    def!(defxicongreen, extends!(green, 0.0, 0.0, -0.15));
+    def!(defxiconlightgreen, extends!(green, 0.0, 0.1, -0.1));
+    def!(defxiconwhite, extends!(mainfg, 0.0, 0.0, -0.1));
 
     // lightline
     def!(xlinebg, extends!(statuslinencbg));
@@ -256,7 +273,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(NormalFloat, mainfg, pmenubg, -, None),
         hi!(Folded, foldfg, foldbg, -, None),
         hi!(FoldColumn, linenrfg, NONE, -, None),
-        hi!(MatchParen , matchparenfg, matchparenbg, -, -),
+        hi!(MatchParen , -, matchparenbg, -, -),
         hi!(Directory , yellow, -, -, -),
         hi!(Underlined , -, -, -, Underline),
         hi!(String, green, -, -, -),
@@ -353,6 +370,25 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(vimfilerClosedFile, darkpurple, -, -, -),
         hi!(vimfilerNonMark, teal, -, -, -),
         hi!(vimfilerLeaf, teal, -, -, -),
+        // defx-icons
+        // https://github.com/kristijanhusak/defx-icons
+        hi!(DefxIconsMarkIcon, darkpurple, -, -, None),
+        hi!(DefxIconsDirectory, darkpurple, -, -, None),
+        hi!(DefxIconsParentDirectory, darkpurple, -, -, None),
+        hi!(DefxIconsSymlinkDirectory, teal, -, -, None),
+        hi!(DefxIconsOpenedTreeIcon, darkpurple, -, -, None),
+        hi!(DefxIconsNestedTreeIcon, darkpurple, -, -, None),
+        hi!(DefxIconsClosedTreeIcon, darkpurple, -, -, None),
+        // defx-git
+        // https://github.com/kristijanhusak/defx-git
+        hi!(Defx_git_Untracked, purple, -, -, None),
+        hi!(Defx_git_Ignored, weakfg, -, -, None),
+        hi!(Defx_git_Unknown, weakfg, -, -, None),
+        hi!(Defx_git_Renamed, diffchangebg, -, -, -),
+        hi!(Defx_git_Modified, diffchangebg, -, -, -),
+        hi!(Defx_git_Unmerged, pink, -, -, -),
+        hi!(Defx_git_Deleted, diffdeletebg, -, -, -),
+        hi!(Defx_git_Staged, teal, -, -, -),
         // vim-gitgutter
         // https://github.com/airblade/vim-gitgutter
         hi!(GitGutterAdd, green, -, -, -),
