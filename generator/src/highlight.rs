@@ -132,10 +132,12 @@ pub fn get_palette() -> Palette {
     def!(darkpurple, extends!(purple, 0.0, 0.05, -0.15));
     def!(blue, "#31a9e0");
     def!(darkblue, extends!(blue, 0.0, 0.0, -0.2));
+    def!(darkestblue, extends!(blue, 0.0, 0.05, -0.48));
     def!(cyan, "#2aacbd");
     def!(darkcyan, extends!(cyan, 0.0, 0.0, -0.2));
     def!(teal, "#73c1a9");
     def!(darkteal, extends!(teal, 0.0, 0.0, -0.2));
+    def!(darkestteal, extends!(teal, 0.0, 0.05, -0.48));
     def!(green, "#7cbe8c");
     def!(darkgreen, extends!(green, 0.0, -0.05, -0.4));
     def!(yellow, "#b5ae7d");
@@ -152,6 +154,8 @@ pub fn get_palette() -> Palette {
     def!(darkbg, extends!(mainbg, 0.0, 0.0, 0.05));
     def!(lightfg, extends!(mainfg, 0.0, 0.05, -0.1));
     def!(lightbg, extends!(mainbg, 0.0, 0.0, 0.2));
+    def!(white, "#ffffff");
+    def!(black, "#000000");
 
     // messages
     def!(morefg, extends!(teal));
@@ -402,6 +406,13 @@ pub fn get_highlights() -> Vec<Highlight> {
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!(CleverFChar, searchfg, searchbg, -, Underline),
+        // conflict-marker.vim
+        // https://github.com/rhysd/conflict-marker.vim
+        hi!(ConflictMarkerBegin, -, darkteal, -, Bold),
+        hi!(ConflictMarkerOurs, -, darkestteal, -, None),
+        hi!(ConflictMarkerTheirs, -, darkestblue, -, None),
+        hi!(ConflictMarkerEnd, -, darkblue, -, Bold),
+        hi!(ConflictMarkerSeparator, darkfg, -, -, Bold),
         // easymotion
         // https://github.com/easymotion/vim-easymotion
         hi!(EasyMotionTarget, yellow, -, -, Bold),
