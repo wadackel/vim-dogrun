@@ -80,6 +80,7 @@ From now on, we will gradually support it :dog:
 - [defx-icons](https://github.com/kristijanhusak/defx-icons)
 - [easymotion](https://github.com/easymotion/vim-easymotion)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [vim-clap](https://github.com/liuchengxu/vim-clap)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 - [vimfiler](https://github.com/Shougo/vimfiler.vim)
 
