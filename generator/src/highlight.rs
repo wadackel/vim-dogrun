@@ -294,7 +294,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(Exception, yellow, -, -, -),
         hi!(Type, yellow, -, -, None),
         hi!(TypeDef, yellow, -, -, None),
-        hi!(PreProc, pink, -, -, -),
+        hi!(PreProc, purple, -, -, -),
         hi!(Special, pink, -, -, -),
         hi!(SpecialKey, pink, -, -, -),
         hi!(SpecialChar, pink, -, -, -),
@@ -339,6 +339,13 @@ pub fn get_highlights() -> Vec<Highlight> {
         // yaml
         hi!(yamlBlockMappingKey, purple, -, -, -),
         hi!(yamlAnchor, pink, -, -, -),
+        // python
+        hi!(pythonStatement, orange, -, -, -),
+        hi!(pythonBuiltin, cyan, -, -, -),
+        hi!(pythonRepeat, orange, -, -, -),
+        hi!(pythonOperator, orange, -, -, -),
+        hi!(pythonDecorator, pink, -, -, -),
+        hi!(pythonDecoratorName, pink, -, -, -),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
         hi!(mkdHeading, weakfg, -, -, -),

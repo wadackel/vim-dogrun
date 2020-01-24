@@ -52,7 +52,7 @@ hi Identifier guifg=#c2968c ctermfg=138
 hi Exception guifg=#b5ae7d ctermfg=144
 hi Type guifg=#b5ae7d ctermfg=144 gui=NONE cterm=NONE
 hi TypeDef guifg=#b5ae7d ctermfg=144 gui=NONE cterm=NONE
-hi PreProc guifg=#c173c1 ctermfg=170
+hi PreProc guifg=#929be5 ctermfg=104
 hi Special guifg=#c173c1 ctermfg=170
 hi SpecialKey guifg=#c173c1 ctermfg=170
 hi SpecialChar guifg=#c173c1 ctermfg=170
@@ -95,6 +95,12 @@ hi htmlSpecialTagName guifg=#c2968c ctermfg=138
 hi htmlArg guifg=#8085a6 ctermfg=103
 hi yamlBlockMappingKey guifg=#929be5 ctermfg=104
 hi yamlAnchor guifg=#c173c1 ctermfg=170
+hi pythonStatement guifg=#c2968c ctermfg=138
+hi pythonBuiltin guifg=#2aacbd ctermfg=73
+hi pythonRepeat guifg=#c2968c ctermfg=138
+hi pythonOperator guifg=#c2968c ctermfg=138
+hi pythonDecorator guifg=#c173c1 ctermfg=170
+hi pythonDecoratorName guifg=#c173c1 ctermfg=170
 hi mkdHeading guifg=#545c8c ctermfg=60
 hi mkdLink guifg=#929be5 ctermfg=104
 hi mkdCode guifg=#929be5 ctermfg=104
