@@ -43,12 +43,20 @@ colorscheme dogrun
 
 #### lightline theme
 
-If you want, specify `dogrun` for` colorscheme`.
+If you want, specify `dogrun` for `colorscheme`.
 
 ```vim
 let g:lightline = {
   \ 'colorscheme': 'dogrun',
   \ }
+```
+
+#### vim-clap theme
+
+If you want, specify `dogrun` for `g:clap_theme`.
+
+```vim
+let g:clap_theme = 'dogrun'
 ```
 
 ## Supported Filetypes & Plugins

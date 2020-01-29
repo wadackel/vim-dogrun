@@ -2,7 +2,7 @@
 "
 " Author: wadackel
 " License: MIT
-"   Copyright (c) 2019 wadackel
+"   Copyright (c) 2020 wadackel
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 

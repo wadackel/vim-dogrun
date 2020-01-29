@@ -150,6 +150,8 @@ pub fn get_palette() -> Palette {
     def!(mainbg, "#222433");
     def!(weakfg, extends!(mainbg, 0.0, 0.05, 0.35));
     def!(weakbg, extends!(mainbg, 0.0, 0.0, 0.1));
+    def!(emphasisfg, extends!(mainfg, 0.0, 0.0, 0.15));
+    def!(emphasisbg, extends!(mainbg, 0.0, 0.0, 0.05));
     def!(darkfg, extends!(mainbg, 0.0, 0.05, 0.15));
     def!(darkbg, extends!(mainbg, 0.0, 0.0, 0.05));
     def!(lightfg, extends!(mainfg, 0.0, 0.05, -0.1));
@@ -425,23 +427,5 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(EasyMotionTarget, yellow, -, -, Bold),
         hi!(EasyMotionShade, weakfg, mainbg, -, -),
         hi!(EasyMotionIncCursor, mainfg, mainbg, -, -),
-        // vim-clap
-        // https://github.com/liuchengxu/vim-clap
-        hi!(ClapInput, mainfg, visualbg, -, None),
-        hi!(ClapSelected, cyan, -, -, Bold),
-        hi!(ClapMatches, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches1, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches2, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches3, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches4, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches5, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches6, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches7, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches8, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches9, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches10, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches11, teal, -, -, Bold),
-        hi!(ClapFuzzyMatches12, teal, -, -, Bold),
-        hi!(ClapNoMatchesFound, warningfg, -, -, Bold),
     ];
 }

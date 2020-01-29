@@ -2,6 +2,7 @@
 "
 " Author: wadackel
 " License: MIT
+"   Copyright (c) 2020 wadackel
 
 if &background !=# 'dark'
   set background=dark
@@ -154,22 +155,6 @@ hi ConflictMarkerSeparator guifg=#363859 ctermfg=60 gui=bold cterm=bold
 hi EasyMotionTarget guifg=#b5ae7d ctermfg=144 gui=bold cterm=bold
 hi EasyMotionShade guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235
 hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
-hi ClapInput guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
-hi ClapSelected guifg=#2aacbd ctermfg=73 gui=bold cterm=bold
-hi ClapMatches guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches1 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches2 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches3 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches4 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches5 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches6 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches7 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches8 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches9 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches10 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches11 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapFuzzyMatches12 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi ClapNoMatchesFound guifg=#c2968c ctermfg=138 gui=bold cterm=bold
 if has("nvim")
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#db5966'

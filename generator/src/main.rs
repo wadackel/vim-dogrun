@@ -31,6 +31,7 @@ impl Writer {
 "
 " Author: wadackel
 " License: MIT
+"   Copyright (c) 2020 wadackel
 
 if &background !=# 'dark'
   set background=dark
@@ -174,7 +175,7 @@ endif"#
 "
 " Author: wadackel
 " License: MIT
-"   Copyright (c) 2019 wadackel
+"   Copyright (c) 2020 wadackel
 
 let s:p = {{'normal': {{}}, 'inactive': {{}}, 'insert': {{}}, 'replace': {{}}, 'visual': {{}}, 'tabline': {{}}}}
 
@@ -245,6 +246,150 @@ let g:lightline#colorscheme#dogrun#palette = lightline#colorscheme#flatten(s:p)"
 
         Ok(())
     }
+
+    fn write_clap<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+        // header
+        write!(
+            out,
+            r#"" dogrun vim-clap theme
+"
+" Author: wadackel
+" License: MIT
+"   Copyright (c) 2020 wadackel
+
+let s:save_cpo = &cpoptions
+set cpoptions&vim
+
+let s:palette = {{}}
+"#
+        )?;
+
+        // body
+        let palette = &self.palette;
+
+        macro_rules! p {
+            ($target: ident, $fg: ident, $bg: ident, $attr: ident) => {
+                let mut args: Vec<String> = vec![];
+
+                if let Some(hi) = palette.get(stringify!($fg)) {
+                    args.push(format!("'ctermfg': '{}', 'guifg': '{}'", hi.cterm, hi.gui,));
+                }
+
+                if let Some(hi) = palette.get(stringify!($bg)) {
+                    args.push(format!("'ctermbg': '{}', 'guibg': '{}'", hi.cterm, hi.gui,));
+                }
+
+                match HighlightAttr::$attr {
+                    HighlightAttr::None => args.push("'gui': 'NONE', 'cterm': 'NONE'".to_string()),
+                    HighlightAttr::Bold => args.push("'gui': 'bold', 'cterm': 'bold'".to_string()),
+                    HighlightAttr::Italic => {
+                        args.push("'gui': 'italic', 'cterm': 'italic'".to_string())
+                    }
+                    HighlightAttr::Underline => {
+                        args.push("'gui': 'underline', 'cterm': 'underline'".to_string())
+                    }
+                    HighlightAttr::Reverse => {
+                        args.push("'gui': 'reverse', 'cterm': 'reverse'".to_string())
+                    }
+                    _ => {}
+                }
+
+                writeln!(
+                    out,
+                    "let s:palette.{} = {{ {} }}",
+                    stringify!($target),
+                    args.join(", "),
+                )?;
+            };
+            ($target: ident, $fg: ident, -, $attr: ident) => {
+                p!($target, $fg, None, $attr);
+            };
+        }
+
+        macro_rules! h {
+            ($name: ident, $fg: ident, $bg: ident, $attr: ident) => {
+                let mut args: Vec<String> = vec![];
+
+                if let Some(fg) = palette.get(stringify!($fg)) {
+                    args.push(format!("guifg={}", fg.gui));
+                    args.push(format!("ctermfg={}", fg.cterm));
+                }
+
+                if let Some(bg) = palette.get(stringify!($bg)) {
+                    args.push(format!("guibg={}", bg.gui));
+                    args.push(format!("ctermfg={}", bg.cterm));
+                } else if stringify!($bg) == "None" {
+                    args.push("guibg=NONE".to_string());
+                    args.push("cterm=NONE".to_string());
+                }
+
+                match HighlightAttr::$attr {
+                    HighlightAttr::None => args.push("gui=NONE cterm=NONE".to_string()),
+                    HighlightAttr::Bold => args.push("gui=bold cterm=bold".to_string()),
+                    HighlightAttr::Italic => args.push("gui=italic cterm=italic".to_string()),
+                    HighlightAttr::Underline => {
+                        args.push("gui=underline cterm=underline".to_string())
+                    }
+                    HighlightAttr::Reverse => args.push("gui=reverse cterm=reverse".to_string()),
+                    _ => {}
+                }
+
+                writeln!(out, "hi {} {}", stringify!($name), args.join(" "),)?;
+            };
+            ($target: ident, $fg: ident, -, $attr: ident) => {
+                h!($target, $fg, None, $attr);
+            };
+        }
+
+        #[cfg_attr(rustfmt, rustfmt_skip)]
+        {
+            p!(input, purple, pmenubar, Bold);
+            p!(display, pmenufg, pmenubg, None);
+            p!(spinner, purple, pmenubar, Bold);
+            p!(search_text, mainfg, pmenubar, None);
+            p!(preview, pmenuselfg, pmenuselbg, None);
+            p!(selected, cyan, -, Bold);
+            p!(current_selection, emphasisfg, -, Bold);
+        }
+
+        #[cfg_attr(rustfmt, rustfmt_skip)]
+        {
+            h!(ClapMatches, teal, -, Bold);
+            h!(ClapMatches1, teal, -, Bold);
+            h!(ClapMatches2, teal, -, Bold);
+            h!(ClapMatches3, teal, -, Bold);
+            h!(ClapMatches4, teal, -, Bold);
+            h!(ClapMatches5, teal, -, Bold);
+            h!(ClapMatches6, teal, -, Bold);
+            h!(ClapMatches7, teal, -, Bold);
+            h!(ClapMatches8, teal, -, Bold);
+            h!(ClapFuzzyMatches1, teal, -, Bold);
+            h!(ClapFuzzyMatches2, teal, -, Bold);
+            h!(ClapFuzzyMatches3, teal, -, Bold);
+            h!(ClapFuzzyMatches4, teal, -, Bold);
+            h!(ClapFuzzyMatches5, teal, -, Bold);
+            h!(ClapFuzzyMatches6, teal, -, Bold);
+            h!(ClapFuzzyMatches7, teal, -, Bold);
+            h!(ClapFuzzyMatches8, teal, -, Bold);
+            h!(ClapFuzzyMatches9, teal, -, Bold);
+            h!(ClapFuzzyMatches10, teal, -, Bold);
+            h!(ClapFuzzyMatches11, teal, -, Bold);
+            h!(ClapFuzzyMatches12, teal, -, Bold);
+            h!(ClapNoMatchesFound, warningfg, -, Bold);
+        }
+
+        // footer
+        writeln!(
+            out,
+            r#"let g:clap#themes#dogrun#palette = s:palette
+
+let &cpoptions = s:save_cpo
+unlet s:save_cpo
+"#
+        )?;
+
+        Ok(())
+    }
 }
 
 fn abs(path: PathBuf) -> io::Result<PathBuf> {
@@ -273,16 +418,20 @@ fn main() -> io::Result<()> {
             let dir = abs(PathBuf::from(dir))?;
             let mut writer = Writer::new(get_palette(), get_highlights());
 
-            let colorscheme = File::create(dir.join("colors/dogrun.vim"))?;
-            writer.write_colorscheme(io::BufWriter::new(colorscheme))?;
+            let path = File::create(dir.join("colors/dogrun.vim"))?;
+            writer.write_colorscheme(io::BufWriter::new(path))?;
 
-            let lightline = File::create(dir.join("autoload/lightline/colorscheme/dogrun.vim"))?;
-            writer.write_lightline(io::BufWriter::new(lightline))?;
+            let path = File::create(dir.join("autoload/lightline/colorscheme/dogrun.vim"))?;
+            writer.write_lightline(io::BufWriter::new(path))?;
+
+            let path = File::create(dir.join("autoload/clap/themes/dogrun.vim"))?;
+            writer.write_clap(io::BufWriter::new(path))?;
         }
         None => {
             let mut writer = Writer::new(get_palette(), get_highlights());
             writer.write_colorscheme(io::stdout())?;
             writer.write_lightline(io::stdout())?;
+            writer.write_clap(io::stdout())?;
         }
     };
 
