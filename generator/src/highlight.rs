@@ -412,6 +412,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/dense-analysis/ale
         hi!(ALEWarningSign, warningfg, -, -, Bold),
         hi!(ALEInfoSign, infofg, -, -, None),
+        // coc.nvim
+        // https://github.com/neoclide/coc.nvim
+        hi!(CocErrorSign, errorfg, -, -, Bold),
+        hi!(CocWarningSign, warningfg, -, -, Bold),
+        hi!(CocInfoSign, infofg, -, -, Bold),
+        hi!(CocHintSign, infofg, -, -, Bold),
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!(CleverFChar, searchfg, searchbg, -, Underline),

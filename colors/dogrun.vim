@@ -146,6 +146,10 @@ hi GitGutterDelete guifg=#c173c1 ctermfg=170
 hi GitGutterChangeDelete guifg=#685f3f ctermfg=58
 hi ALEWarningSign guifg=#c2968c ctermfg=138 gui=bold cterm=bold
 hi ALEInfoSign guifg=#82dabf ctermfg=115 gui=NONE cterm=NONE
+hi CocErrorSign guifg=#f56574 ctermfg=204 gui=bold cterm=bold
+hi CocWarningSign guifg=#c2968c ctermfg=138 gui=bold cterm=bold
+hi CocInfoSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
+hi CocHintSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
 hi CleverFChar guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62 gui=underline cterm=underline
 hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
