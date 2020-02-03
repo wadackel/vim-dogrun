@@ -67,6 +67,9 @@ From now on, we will gradually support it :dog:
 
 ### Filetypes
 
+- `c`
+- `cpp`
+- `cs`
 - `diff`
 - `go` ([vim-go](https://github.com/fatih/vim-go))
 - `html`

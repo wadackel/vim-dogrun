@@ -105,6 +105,16 @@ hi pythonDecoratorName guifg=#c173c1 ctermfg=170
 hi zshVariableDef guifg=#929be5 ctermfg=104
 hi zshFunction guifg=#929be5 ctermfg=104
 hi zshKSHFunction guifg=#929be5 ctermfg=104
+hi cPreCondit guifg=#c2968c ctermfg=138
+hi cIncluded guifg=#c173c1 ctermfg=170
+hi cStorageClass guifg=#c2968c ctermfg=138
+hi cppStructure guifg=#c173c1 ctermfg=170
+hi cppSTLnamespace guifg=#c2968c ctermfg=138
+hi csStorage guifg=#c2968c ctermfg=138
+hi csModifier guifg=#929be5 ctermfg=104
+hi csClass guifg=#929be5 ctermfg=104
+hi csClassType guifg=#c173c1 ctermfg=170
+hi csNewType guifg=#c2968c ctermfg=138
 hi mkdHeading guifg=#545c8c ctermfg=60
 hi mkdLink guifg=#929be5 ctermfg=104
 hi mkdCode guifg=#929be5 ctermfg=104

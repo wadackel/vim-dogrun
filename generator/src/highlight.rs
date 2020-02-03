@@ -352,6 +352,20 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(zshVariableDef, purple, -, -, -),
         hi!(zshFunction, purple, -, -, -),
         hi!(zshKSHFunction, purple, -, -, -),
+        // C
+        hi!(cPreCondit, orange, -, -, -),
+        hi!(cIncluded, pink, -, -, -),
+        hi!(cStorageClass, orange, -, -, -),
+        // C++
+        // octol/vim-cpp-enhanced-highlight
+        hi!(cppStructure, pink, -, -, -),
+        hi!(cppSTLnamespace, orange, -, -, -),
+        // C#
+        hi!(csStorage, orange, -, -, -),
+        hi!(csModifier, purple, -, -, -),
+        hi!(csClass, purple, -, -, -),
+        hi!(csClassType, pink, -, -, -),
+        hi!(csNewType, orange, -, -, -),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
         hi!(mkdHeading, weakfg, -, -, -),
