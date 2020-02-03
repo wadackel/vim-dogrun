@@ -348,6 +348,10 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(pythonOperator, orange, -, -, -),
         hi!(pythonDecorator, pink, -, -, -),
         hi!(pythonDecoratorName, pink, -, -, -),
+        // zsh
+        hi!(zshVariableDef, purple, -, -, -),
+        hi!(zshFunction, purple, -, -, -),
+        hi!(zshKSHFunction, purple, -, -, -),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
         hi!(mkdHeading, weakfg, -, -, -),

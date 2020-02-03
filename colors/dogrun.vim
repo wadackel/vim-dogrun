@@ -102,6 +102,9 @@ hi pythonRepeat guifg=#c2968c ctermfg=138
 hi pythonOperator guifg=#c2968c ctermfg=138
 hi pythonDecorator guifg=#c173c1 ctermfg=170
 hi pythonDecoratorName guifg=#c173c1 ctermfg=170
+hi zshVariableDef guifg=#929be5 ctermfg=104
+hi zshFunction guifg=#929be5 ctermfg=104
+hi zshKSHFunction guifg=#929be5 ctermfg=104
 hi mkdHeading guifg=#545c8c ctermfg=60
 hi mkdLink guifg=#929be5 ctermfg=104
 hi mkdCode guifg=#929be5 ctermfg=104

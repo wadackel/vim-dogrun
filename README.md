@@ -80,6 +80,7 @@ From now on, we will gradually support it :dog:
 - `typescript` ([yats.vim](https://github.com/HerringtonDarkholme/yats.vim))
 - `vim`
 - `yaml`
+- `zsh`
 
 ### Plugins
 
