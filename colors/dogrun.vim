@@ -162,6 +162,7 @@ hi GitGutterAdd guifg=#7cbe8c ctermfg=108
 hi GitGutterChange guifg=#b5ae7d ctermfg=144
 hi GitGutterDelete guifg=#c173c1 ctermfg=170
 hi GitGutterChangeDelete guifg=#685f3f ctermfg=58
+hi fugitiveHeader guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi ALEWarningSign guifg=#c2968c ctermfg=138 gui=bold cterm=bold
 hi ALEInfoSign guifg=#82dabf ctermfg=115 gui=NONE cterm=NONE
 hi CocErrorSign guifg=#f56574 ctermfg=204 gui=bold cterm=bold

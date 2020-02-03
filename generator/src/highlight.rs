@@ -432,6 +432,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(GitGutterChange, yellow, -, -, -),
         hi!(GitGutterDelete, pink, -, -, -),
         hi!(GitGutterChangeDelete, difftextbg, -, -, -),
+        // fugitive.vim
+        // https://github.com/tpope/vim-fugitive
+        hi!(fugitiveHeader, teal, -, -, Bold),
         // ale
         // https://github.com/dense-analysis/ale
         hi!(ALEWarningSign, warningfg, -, -, Bold),
