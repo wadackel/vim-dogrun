@@ -366,6 +366,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(csClass, purple, -, -, -),
         hi!(csClassType, pink, -, -, -),
         hi!(csNewType, orange, -, -, -),
+        // ruby
+        hi!(rubyConstant, orange, -, -, -),
+        hi!(rubySymbol, purple, -, -, -),
+        hi!(rubyBlockParameter, purple, -, -, -),
+        hi!(rubyClassName, pink, -, -, -),
+        hi!(rubyInstanceVariable, pink, -, -, -),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
         hi!(mkdHeading, weakfg, -, -, -),

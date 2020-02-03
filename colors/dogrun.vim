@@ -115,6 +115,11 @@ hi csModifier guifg=#929be5 ctermfg=104
 hi csClass guifg=#929be5 ctermfg=104
 hi csClassType guifg=#c173c1 ctermfg=170
 hi csNewType guifg=#c2968c ctermfg=138
+hi rubyConstant guifg=#c2968c ctermfg=138
+hi rubySymbol guifg=#929be5 ctermfg=104
+hi rubyBlockParameter guifg=#929be5 ctermfg=104
+hi rubyClassName guifg=#c173c1 ctermfg=170
+hi rubyInstanceVariable guifg=#c173c1 ctermfg=170
 hi mkdHeading guifg=#545c8c ctermfg=60
 hi mkdLink guifg=#929be5 ctermfg=104
 hi mkdCode guifg=#929be5 ctermfg=104

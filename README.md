@@ -78,6 +78,7 @@ From now on, we will gradually support it :dog:
 - `make`
 - `markdown` ([vim-markdown](https://github.com/tpope/vim-markdown))
 - `python`
+- `ruby`
 - `rust` ([rust.vim](https://github.com/rust-lang/rust.vim))
 - `toml` ([vim-toml](https://github.com/cespare/vim-toml))
 - `typescript` ([yats.vim](https://github.com/HerringtonDarkholme/yats.vim))
