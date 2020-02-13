@@ -95,6 +95,7 @@ From now on, we will gradually support it :dog:
 - [defx-git](https://github.com/kristijanhusak/defx-git)
 - [defx-icons](https://github.com/kristijanhusak/defx-icons)
 - [easymotion](https://github.com/easymotion/vim-easymotion)
+- [fern.vim](https://github.com/lambdalisue/fern.vim)
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [vim-clap](https://github.com/liuchengxu/vim-clap)

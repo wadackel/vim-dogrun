@@ -158,6 +158,10 @@ hi Defx_git_Modified guifg=#35332b ctermfg=236
 hi Defx_git_Unmerged guifg=#c173c1 ctermfg=170
 hi Defx_git_Deleted guifg=#674267 ctermfg=96
 hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
+hi FernRoot guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi FernBranch guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi FernLeaf guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
+hi FernMarked guifg=#2aacbd ctermfg=73 gui=NONE cterm=NONE
 hi GitGutterAdd guifg=#7cbe8c ctermfg=108
 hi GitGutterChange guifg=#b5ae7d ctermfg=144
 hi GitGutterDelete guifg=#c173c1 ctermfg=170
