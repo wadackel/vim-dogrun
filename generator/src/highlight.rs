@@ -383,6 +383,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         // yats.vim
         // https://github.com/HerringtonDarkholme/yats.vim
         hi!(typescriptImport, purple, -, -, -),
+        hi!(typescriptDocRef, weakfg, -, -, Underline),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
         hi!(mkdHeading, weakfg, -, -, -),

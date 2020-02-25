@@ -127,6 +127,7 @@ hi mkdCodeStart guifg=#929be5 ctermfg=104
 hi mkdCodeEnd guifg=#929be5 ctermfg=104
 hi mkdCodeDelimiter guifg=#929be5 ctermfg=104
 hi typescriptImport guifg=#929be5 ctermfg=104
+hi typescriptDocRef guifg=#545c8c ctermfg=60 gui=underline cterm=underline
 hi mkdHeading guifg=#545c8c ctermfg=60
 hi mkdLink guifg=#929be5 ctermfg=104
 hi mkdCode guifg=#929be5 ctermfg=104
