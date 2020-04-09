@@ -189,9 +189,9 @@ pub fn get_palette() -> Palette {
     def!(foldfg, extends!(mainbg, 0.0, 0.0, 0.4));
 
     // diff
-    def!(diffaddbg, extends!(darkgreen));
+    def!(diffaddbg, extends!(darkestblue));
     def!(diffaddfg, extends!(mainfg, 0.0, 0.0, 0.2));
-    def!(diffchangebg, extends!(darkyellow));
+    def!(diffchangebg, extends!(darkestteal));
     def!(diffchangefg, extends!(mainfg, 0.0, 0.0, 0.2));
     def!(diffdeletebg, extends!(darkpink));
     def!(diffdeletefg, extends!(mainfg, 0.0, 0.0, 0.25));
