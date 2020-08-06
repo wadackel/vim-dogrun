@@ -220,8 +220,8 @@ let s:p = {{'normal': {{}}, 'inactive': {{}}, 'insert': {{}}, 'replace': {{}}, '
             p!(normal, left, mainbg, purple, purple, xlinegradientbg);
             p!(normal, middle, xlinefg, xlinebg);
             p!(normal, right, mainbg, purple, purple, xlinegradientbg);
-            p!(normal, error, errorbg, errorfg);
-            p!(normal, warning, warningbg, warningfg);
+            p!(normal, error, errorfg, xlinebg);
+            p!(normal, warning, warningfg, xlinebg);
             p!(inactive, left, statuslinencfg, statuslinencbg, statuslinencfg, statuslinencbg);
             p!(inactive, middle, statuslinencfg, statuslinencbg);
             p!(inactive, right, statuslinencfg, statuslinencbg, statuslinencfg, statuslinencbg);
