@@ -402,6 +402,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(rustStructure, purple, -, -, -),
         hi!(rustMacro, purple, -, -, -),
         hi!(rustExternCrate, purple, -, -, -),
+        // vim-graphql
+        // https://github.com/jparise/vim-graphql
+        hi!(graphqlStructure, pink, -, -, -),
+        hi!(graphqlDirective, pink, -, -, -),
+        hi!(graphqlName, purple, -, -, -),
+        hi!(graphqlTemplateString, mainfg, -, -, -),
         // vimfiler
         // https://github.com/Shougo/vimfiler.vim
         hi!(vimfilerOpenedFile, darkpurple, -, -, -),
