@@ -435,9 +435,10 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(Defx_git_Staged, teal, -, -, -),
         // fern.vim
         // https://github.com/lambdalisue/fern.vim
-        hi!(FernRoot, darkpurple, -, -, None),
-        hi!(FernBranch, darkpurple, -, -, None),
-        hi!(FernLeaf, teal, -, -, None),
+        hi!(FernBranchSymbol, darkpurple, -, -, None),
+        hi!(FernBranchText, purple, -, -, None),
+        hi!(FernLeafSymbol, darkteal, -, -, None),
+        hi!(FernLeafText, mainfg, -, -, None),
         hi!(FernMarked, cyan, -, -, None),
         // vim-gitgutter
         // https://github.com/airblade/vim-gitgutter
