@@ -156,13 +156,34 @@ endif"#
                 &color.gui[1..color.gui.len()]
             )?;
         }
-        writeln!(out, "  \\}}")?;
+        writeln!(out, "  \\ }}")?;
 
         writeln!(out, "let g:defx_icons_term_colors = {{")?;
         for (name, color) in defxicons.iter() {
             writeln!(out, "  \\ '{}': {},", name, color.cterm)?;
         }
-        writeln!(out, "  \\}}")?;
+        writeln!(out, "  \\ }}")?;
+
+        // fzf.vim colors
+        writeln!(
+            out,
+            r#"let g:fzf_colors = {{
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine'],
+  \ 'bg+':     ['bg', 'CursorLine'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'Comment'],
+  \ 'gutter':  ['bg', 'Normal'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Label'],
+  \ 'pointer': ['fg', 'Boolean'],
+  \ 'marker':  ['fg', 'Boolean'],
+  \ 'spinner': ['fg', 'Title'],
+  \ 'header':  ['fg', 'Comment'],
+  \ }}"#
+        )?;
 
         Ok(())
     }
