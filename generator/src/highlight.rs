@@ -333,6 +333,23 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(TabLineSel, tablineselfg, tablineselbg, -, Bold),
         hi!(qfFileName, teal, -, -, -),
         hi!(qfLineNr, weakfg, -, -, -),
+        // treesitter
+        // https://github.com/nvim-treesitter/nvim-treesitter
+        hi!(TSConstBuiltin, teal, -, -, -),
+        hi!(TSString, green, -, -, -),
+        hi!(TSStringRegex, green, -, -, -),
+        hi!(TSStringEscape, pink, -, -, -),
+        hi!(TSParameter, purple, -, -, -),
+        hi!(TSParameterReference, purple, -, -, -),
+        hi!(TSField, purple, -, -, -),
+        hi!(TSProperty, purple, -, -, -),
+        hi!(TSConstructor, mainfg, -, -, -),
+        hi!(TSKeyword, pink, -, -, -),
+        hi!(TSType, orange, -, -, -),
+        hi!(TSTypeBuiltin, orange, -, -, -),
+        hi!(TSStructue, pink, -, -, -),
+        hi!(TSInclude, purple, -, -, -),
+        hi!(TSVariableBuiltin, orange, -, -, -),
         // html
         hi!(htmlTag, lightfg, -, -, -),
         hi!(htmlEndTag, lightfg, -, -, -),
