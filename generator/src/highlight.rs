@@ -124,25 +124,25 @@ pub fn get_palette() -> Palette {
     }
 
     // palettes
-    def!(red, "#f56574");
+    def!(red, "#dc6f7a");
     def!(darkred, extends!(red, 0.0, 0.0, -0.2));
-    def!(pink, "#c173c1");
+    def!(pink, "#b871b8");
     def!(darkpink, extends!(pink, 0.0, -0.05, -0.35));
     def!(purple, "#929be5");
     def!(darkpurple, extends!(purple, 0.0, 0.05, -0.15));
-    def!(blue, "#31a9e0");
+    def!(blue, "#589ec6");
     def!(darkblue, extends!(blue, 0.0, 0.0, -0.2));
     def!(darkestblue, extends!(blue, 0.0, 0.05, -0.48));
-    def!(cyan, "#2aacbd");
+    def!(cyan, "#59b6b6");
     def!(darkcyan, extends!(cyan, 0.0, 0.0, -0.2));
     def!(teal, "#73c1a9");
     def!(darkteal, extends!(teal, 0.0, 0.0, -0.2));
     def!(darkestteal, extends!(teal, 0.0, 0.05, -0.48));
     def!(green, "#7cbe8c");
     def!(darkgreen, extends!(green, 0.0, -0.05, -0.4));
-    def!(yellow, "#b5ae7d");
+    def!(yellow, "#a8a384");
     def!(darkyellow, extends!(yellow, 0.0, -0.15, -0.5));
-    def!(orange, "#c2968c");
+    def!(orange, "#ac8b83");
     def!(darkorange, extends!(orange, 0.0, -0.05, -0.2));
 
     // neutral
