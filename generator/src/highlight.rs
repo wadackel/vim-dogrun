@@ -355,6 +355,8 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(htmlEndTag, lightfg, -, -, -),
         hi!(htmlSpecialTagName, orange, -, -, -),
         hi!(htmlArg, lightfg, -, -, -),
+        // json
+        hi!(jsonQuote, lightfg, -, -, -),
         // yaml
         hi!(yamlBlockMappingKey, purple, -, -, -),
         hi!(yamlAnchor, pink, -, -, -),
