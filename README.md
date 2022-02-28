@@ -105,6 +105,7 @@ From now on, we will gradually support it :dog:
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [vim-clap](https://github.com/liuchengxu/vim-clap)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+- [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 - [vimfiler](https://github.com/Shougo/vimfiler.vim)
 
 ## Inspired

@@ -195,6 +195,23 @@ hi CocErrorSign guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
 hi CocWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi CocInfoSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
 hi CocHintSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
+hi LspError guifg=#dc6f79 ctermfg=167
+hi LspErrorText guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
+hi LspErrorHighlight gui=underline cterm=underline
+hi LspErrorVirtualText guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
+hi LspWarning guifg=#ac8b83 ctermfg=138
+hi LspWarningText guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
+hi LspWarningHighlight gui=underline cterm=underline
+hi LspWarningVirtualText guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
+hi LspInformation guifg=#82dabf ctermfg=115
+hi LspInformationText guifg=#82dabf ctermfg=115 gui=bold cterm=bold
+hi LspInformationHighlight gui=underline cterm=underline
+hi LspInformationVirtualText guifg=#545c8c ctermfg=60 gui=bold cterm=bold
+hi LspHint guifg=#82dabf ctermfg=115
+hi LspHintText guifg=#82dabf ctermfg=115 gui=bold cterm=bold
+hi LspHintHighlight gui=underline cterm=underline
+hi LspHintVirtualText guifg=#545c8c ctermfg=60 gui=bold cterm=bold
+hi LspCodeActionText guifg=#6f78be ctermfg=104 gui=bold cterm=bold
 hi CleverFChar guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62 gui=underline cterm=underline
 hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE

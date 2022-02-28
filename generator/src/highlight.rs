@@ -478,6 +478,25 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(CocWarningSign, warningfg, -, -, Bold),
         hi!(CocInfoSign, infofg, -, -, Bold),
         hi!(CocHintSign, infofg, -, -, Bold),
+        // vim-lsp
+        // https://github.com/prabirshrestha/vim-lsp
+        hi!(LspError, errorfg, -, -, -),
+        hi!(LspErrorText, errorfg, -, -, Bold),
+        hi!(LspErrorHighlight, -, -, -, Underline),
+        hi!(LspErrorVirtualText, errorfg, -, -, Bold),
+        hi!(LspWarning, warningfg, -, -, -),
+        hi!(LspWarningText, warningfg, -, -, Bold),
+        hi!(LspWarningHighlight, -, -, -, Underline),
+        hi!(LspWarningVirtualText, warningfg, -, -, Bold),
+        hi!(LspInformation, infofg, -, -, -),
+        hi!(LspInformationText, infofg, -, -, Bold),
+        hi!(LspInformationHighlight, -, -, -, Underline),
+        hi!(LspInformationVirtualText, weakfg, -, -, Bold),
+        hi!(LspHint, infofg, -, -, -),
+        hi!(LspHintText, infofg, -, -, Bold),
+        hi!(LspHintHighlight, -, -, -, Underline),
+        hi!(LspHintVirtualText, weakfg, -, -, Bold),
+        hi!(LspCodeActionText, darkpurple, -, -, Bold),
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!(CleverFChar, searchfg, searchbg, -, Underline),
