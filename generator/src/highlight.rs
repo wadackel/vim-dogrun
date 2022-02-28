@@ -115,7 +115,7 @@ pub fn get_palette() -> Palette {
         ($parent: ident) => {
             match p.get(stringify!($parent)) {
                 Some(highlight) => highlight.gui.to_string(),
-                None => panic!(format!("\"{}\" does not exists", stringify!($parent))),
+                None => panic!("\"{}\" does not exists", stringify!($parent)),
             }
         };
         ($parent: ident, $h: expr, $s: expr, $v: expr) => {
