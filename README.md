@@ -9,6 +9,7 @@
 
 - No configuration are required to start using it.
 - Support 256 colors terminal.
+- Supports Neovim's built-in [language server client](https://neovim.io/doc/user/lsp.html).
 - Supports [lightline.vim](https://github.com/itchyny/lightline.vim) theme.
 - Supports [vim-clap](https://github.com/liuchengxu/vim-clap) theme.
 - Supports [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).

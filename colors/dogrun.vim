@@ -105,6 +105,18 @@ hi TSTypeBuiltin guifg=#ac8b83 ctermfg=138
 hi TSStructue guifg=#b871b8 ctermfg=133
 hi TSInclude guifg=#929be5 ctermfg=104
 hi TSVariableBuiltin guifg=#ac8b83 ctermfg=138
+hi DiagnosticError guifg=#dc6f79 ctermfg=167
+hi DiagnosticVirtualTextError guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
+hi DiagnosticUnderlineError guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
+hi DiagnosticWarn guifg=#ac8b83 ctermfg=138
+hi DiagnosticVirtualTextWarn guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
+hi DiagnosticUnderlineWarn guifg=#ac8b83 ctermfg=138 gui=underline cterm=underline
+hi DiagnosticInfo guifg=#82dabf ctermfg=115
+hi DiagnosticVirtualTextInfo guifg=#545c8c ctermfg=60 gui=bold cterm=bold
+hi DiagnosticUnderlineInfo guifg=#82dabf ctermfg=115 gui=underline cterm=underline
+hi DiagnosticHint guifg=#82dabf ctermfg=115
+hi DiagnosticVirtualTextHint guifg=#545c8c ctermfg=60 gui=bold cterm=bold
+hi DiagnosticUnderlineHint guifg=#82dabf ctermfg=115 gui=underline cterm=underline
 hi htmlTag guifg=#8085a6 ctermfg=103
 hi htmlEndTag guifg=#8085a6 ctermfg=103
 hi htmlSpecialTagName guifg=#ac8b83 ctermfg=138
