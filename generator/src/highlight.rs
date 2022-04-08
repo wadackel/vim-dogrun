@@ -359,10 +359,10 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(DiagnosticUnderlineWarn, warningfg, -, -, Underline),
         hi!(DiagnosticInfo, infofg, -, -, -),
         hi!(DiagnosticVirtualTextInfo, weakfg, -, -, Bold),
-        hi!(DiagnosticUnderlineInfo, infofg, -, -, Underline),
+        hi!(DiagnosticUnderlineInfo, -, -, -, Underline),
         hi!(DiagnosticHint, infofg, -, -, -),
         hi!(DiagnosticVirtualTextHint, weakfg, -, -, Bold),
-        hi!(DiagnosticUnderlineHint, infofg, -, -, Underline),
+        hi!(DiagnosticUnderlineHint, -, -, -, Underline),
         // html
         hi!(htmlTag, lightfg, -, -, -),
         hi!(htmlEndTag, lightfg, -, -, -),
