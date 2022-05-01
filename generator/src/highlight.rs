@@ -525,6 +525,16 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(CmpItemKindMethod, lightfg, -, -, -),
         hi!(CmpItemKindProperty, lightfg, -, -, -),
         hi!(CmpItemKindUnit, lightfg, -, -, -),
+        // telescope.nvim
+        // https://github.com/nvim-telescope/telescope.nvim
+        hi!(TelescopeNormal, lightfg, -, -, -),
+        hi!(TelescopeTitle, purple, -, -, -),
+        hi!(TelescopeMatching, purple, -, -, Bold),
+        hi!(TelescopeBorder, weakfg, -, -, -),
+        hi!(TelescopePromptPrefix, teal, -, -, -),
+        hi!(TelescopePromptCounter, weakfg, -, -, -),
+        hi!(TelescopeMultiIcon, yellow, -, -, -),
+        hi!(TelescopeMultiSelection, yellow, -, -, -),
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!(CleverFChar, searchfg, searchbg, -, Underline),

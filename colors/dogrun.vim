@@ -237,6 +237,14 @@ hi CmpItemKindFunction guifg=#8085a6 ctermfg=103
 hi CmpItemKindMethod guifg=#8085a6 ctermfg=103
 hi CmpItemKindProperty guifg=#8085a6 ctermfg=103
 hi CmpItemKindUnit guifg=#8085a6 ctermfg=103
+hi TelescopeNormal guifg=#8085a6 ctermfg=103
+hi TelescopeTitle guifg=#929be5 ctermfg=104
+hi TelescopeMatching guifg=#929be5 ctermfg=104 gui=bold cterm=bold
+hi TelescopeBorder guifg=#545c8c ctermfg=60
+hi TelescopePromptPrefix guifg=#73c1a9 ctermfg=79
+hi TelescopePromptCounter guifg=#545c8c ctermfg=60
+hi TelescopeMultiIcon guifg=#a8a384 ctermfg=144
+hi TelescopeMultiSelection guifg=#a8a384 ctermfg=144
 hi CleverFChar guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62 gui=underline cterm=underline
 hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE

@@ -105,6 +105,7 @@ From now on, we will gradually support it :dog:
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [vim-clap](https://github.com/liuchengxu/vim-clap)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
