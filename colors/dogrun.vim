@@ -224,6 +224,19 @@ hi LspHintText guifg=#82dabf ctermfg=115 gui=bold cterm=bold
 hi LspHintHighlight gui=underline cterm=underline
 hi LspHintVirtualText guifg=#545c8c ctermfg=60 gui=bold cterm=bold
 hi LspCodeActionText guifg=#6f78be ctermfg=104 gui=bold cterm=bold
+hi CmpItemAbbr guifg=#9ea3c0 ctermfg=146
+hi CmpItemAbbrMatch guifg=#929be5 ctermfg=104 gui=bold cterm=bold
+hi CmpItemAbbrMatchFuzzy guifg=#929be5 ctermfg=104 gui=bold cterm=bold
+hi CmpItemKind guifg=#8085a6 ctermfg=103
+hi CmpItemKindDefault guifg=#8085a6 ctermfg=103
+hi CmpItemKindText guifg=#8085a6 ctermfg=103
+hi CmpItemKindVariable guifg=#8085a6 ctermfg=103
+hi CmpItemKindKeyword guifg=#8085a6 ctermfg=103
+hi CmpItemKindInterface guifg=#8085a6 ctermfg=103
+hi CmpItemKindFunction guifg=#8085a6 ctermfg=103
+hi CmpItemKindMethod guifg=#8085a6 ctermfg=103
+hi CmpItemKindProperty guifg=#8085a6 ctermfg=103
+hi CmpItemKindUnit guifg=#8085a6 ctermfg=103
 hi CleverFChar guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62 gui=underline cterm=underline
 hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE

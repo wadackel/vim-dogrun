@@ -103,6 +103,7 @@ From now on, we will gradually support it :dog:
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [vim-clap](https://github.com/liuchengxu/vim-clap)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)

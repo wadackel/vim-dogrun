@@ -510,6 +510,21 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(LspHintHighlight, -, -, -, Underline),
         hi!(LspHintVirtualText, weakfg, -, -, Bold),
         hi!(LspCodeActionText, darkpurple, -, -, Bold),
+        // nvim-cmp
+        // https://github.com/hrsh7th/nvim-cmp
+        hi!(CmpItemAbbr, mainfg, -, -, -),
+        hi!(CmpItemAbbrMatch, purple, -, -, Bold),
+        hi!(CmpItemAbbrMatchFuzzy, purple, -, -, Bold),
+        hi!(CmpItemKind, lightfg, -, -, -),
+        hi!(CmpItemKindDefault, lightfg, -, -, -),
+        hi!(CmpItemKindText, lightfg, -, -, -),
+        hi!(CmpItemKindVariable, lightfg, -, -, -),
+        hi!(CmpItemKindKeyword, lightfg, -, -, -),
+        hi!(CmpItemKindInterface, lightfg, -, -, -),
+        hi!(CmpItemKindFunction, lightfg, -, -, -),
+        hi!(CmpItemKindMethod, lightfg, -, -, -),
+        hi!(CmpItemKindProperty, lightfg, -, -, -),
+        hi!(CmpItemKindUnit, lightfg, -, -, -),
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!(CleverFChar, searchfg, searchbg, -, Underline),
