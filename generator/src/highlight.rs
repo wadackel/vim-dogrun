@@ -529,7 +529,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/nvim-telescope/telescope.nvim
         hi!(TelescopeNormal, lightfg, -, -, -),
         hi!(TelescopeTitle, purple, -, -, -),
-        hi!(TelescopeMatching, purple, -, -, Bold),
+        hi!(TelescopeMatching, emphasisfg, -, -, Bold),
         hi!(TelescopeBorder, weakfg, -, -, -),
         hi!(TelescopePromptPrefix, teal, -, -, -),
         hi!(TelescopePromptCounter, weakfg, -, -, -),

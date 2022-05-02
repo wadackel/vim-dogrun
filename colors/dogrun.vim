@@ -239,7 +239,7 @@ hi CmpItemKindProperty guifg=#8085a6 ctermfg=103
 hi CmpItemKindUnit guifg=#8085a6 ctermfg=103
 hi TelescopeNormal guifg=#8085a6 ctermfg=103
 hi TelescopeTitle guifg=#929be5 ctermfg=104
-hi TelescopeMatching guifg=#929be5 ctermfg=104 gui=bold cterm=bold
+hi TelescopeMatching guifg=#bdc3e6 ctermfg=146 gui=bold cterm=bold
 hi TelescopeBorder guifg=#545c8c ctermfg=60
 hi TelescopePromptPrefix guifg=#73c1a9 ctermfg=79
 hi TelescopePromptCounter guifg=#545c8c ctermfg=60
