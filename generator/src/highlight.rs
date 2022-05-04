@@ -550,5 +550,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(EasyMotionTarget, yellow, -, -, Bold),
         hi!(EasyMotionShade, weakfg, mainbg, -, -),
         hi!(EasyMotionIncCursor, mainfg, mainbg, -, -),
+        // fidget.nvim
+        // https://github.com/j-hui/fidget.nvim
+        hi!(FidgetTitle, teal, -, -, Bold),
+        hi!(FidgetTask, weakfg, -, -, -),
     ];
 }
