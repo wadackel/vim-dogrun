@@ -68,8 +68,8 @@ hi PmenuSel guifg=#9ea3c0 ctermfg=146 guibg=#424865 ctermbg=60
 hi PmenuSbar guibg=#292c3f ctermbg=236
 hi PmenuThumb guibg=#464f7f ctermbg=60
 hi Visual guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
-hi Search guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62
-hi IncSearch guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62
+hi Search guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
+hi IncSearch guifg=#a4b2ff ctermfg=147 guibg=#4754cb ctermbg=62 gui=NONE cterm=NONE
 hi Question guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi WildMenu guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104
 hi SpellBad guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
@@ -245,7 +245,7 @@ hi TelescopePromptPrefix guifg=#73c1a9 ctermfg=79
 hi TelescopePromptCounter guifg=#545c8c ctermfg=60
 hi TelescopeMultiIcon guifg=#a8a384 ctermfg=144
 hi TelescopeMultiSelection guifg=#a8a384 ctermfg=144
-hi CleverFChar guifg=#494f8b ctermfg=60 guibg=#5d6ad8 ctermbg=62 gui=underline cterm=underline
+hi CleverFChar guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline
 hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
 hi ConflictMarkerTheirs guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE

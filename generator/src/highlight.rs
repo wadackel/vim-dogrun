@@ -207,8 +207,10 @@ pub fn get_palette() -> Palette {
     def!(tablineselfg, extends!(mainbg));
 
     // misc
-    def!(searchbg, extends!(purple, 0.0, 0.2, -0.05));
-    def!(searchfg, extends!(searchbg, 0.1, -0.1, -0.3));
+    def!(searchbg, extends!(purple, 0.0, 0.2, 0.0));
+    def!(searchfg, extends!(searchbg, 0.2, -0.2, 0.15));
+    def!(incsearchbg, extends!(searchbg, 0.0, 0.08, -0.1));
+    def!(incsearchfg, extends!(searchfg, 0.1, 0.1, 0.15));
     def!(matchparenbg, extends!(mainbg, 0.1, 0.0, 0.08));
 
     // terminal colors
@@ -312,7 +314,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!(PmenuThumb, -, pmenuthumb, -, -),
         hi!(Visual, -, visualbg, -, None),
         hi!(Search, searchfg, searchbg, -, -),
-        hi!(IncSearch, searchfg, searchbg, -, -),
+        hi!(IncSearch, incsearchfg, incsearchbg, -, None),
         hi!(Question, teal, -, -, Bold),
         hi!(WildMenu, mainbg, purple, -, -),
         hi!(SpellBad, errorfg, -, -, Underline),
