@@ -90,21 +90,18 @@ hi TabLineFill guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=NONE cter
 hi TabLineSel guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
 hi qfFileName guifg=#73c1a9 ctermfg=79
 hi qfLineNr guifg=#545c8c ctermfg=60
-hi TSConstBuiltin guifg=#73c1a9 ctermfg=79
-hi TSString guifg=#7cbe8c ctermfg=108
-hi TSStringRegex guifg=#7cbe8c ctermfg=108
-hi TSStringEscape guifg=#b871b8 ctermfg=133
-hi TSParameter guifg=#929be5 ctermfg=104
-hi TSParameterReference guifg=#929be5 ctermfg=104
-hi TSField guifg=#929be5 ctermfg=104
-hi TSProperty guifg=#929be5 ctermfg=104
-hi TSConstructor guifg=#9ea3c0 ctermfg=146
-hi TSKeyword guifg=#b871b8 ctermfg=133
-hi TSType guifg=#ac8b83 ctermfg=138
-hi TSTypeBuiltin guifg=#ac8b83 ctermfg=138
-hi TSStructue guifg=#b871b8 ctermfg=133
-hi TSInclude guifg=#929be5 ctermfg=104
-hi TSVariableBuiltin guifg=#ac8b83 ctermfg=138
+hi @string guifg=#7cbe8c ctermfg=108
+hi @string.regex guifg=#7cbe8c ctermfg=108
+hi @string.escape guifg=#b871b8 ctermfg=133
+hi @parameter guifg=#929be5 ctermfg=104
+hi @property guifg=#929be5 ctermfg=104
+hi @keyword guifg=#b871b8 ctermfg=133
+hi @type guifg=#ac8b83 ctermfg=138
+hi @type.builtin guifg=#ac8b83 ctermfg=138
+hi @include guifg=#929be5 ctermfg=104
+hi @variable.builtin guifg=#ac8b83 ctermfg=138
+hi @constant.builtin guifg=#73c1a9 ctermfg=79
+hi @constructor guifg=#9ea3c0 ctermfg=146
 hi DiagnosticError guifg=#dc6f79 ctermfg=167
 hi DiagnosticVirtualTextError guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
 hi DiagnosticUnderlineError guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
