@@ -344,6 +344,11 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("@string", green, -, -, -),
         hi!("@string.regex", green, -, -, -),
         hi!("@string.escape", pink, -, -, -),
+        hi!("@text.title", yellow, -, -, Bold),
+        hi!("@text.reference", purple, -, -, -),
+        hi!("@text.uri", weakfg, -, -, -),
+        hi!("@text.strong", -, -, -, Bold),
+        hi!("@text.literal", teal, -, -, -),
         hi!("@parameter", purple, -, -, -),
         hi!("@property", purple, -, -, -),
         hi!("@keyword", pink, -, -, -),
@@ -407,14 +412,6 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("rubyBlockParameter", purple, -, -, -),
         hi!("rubyClassName", pink, -, -, -),
         hi!("rubyInstanceVariable", pink, -, -, -),
-        // vim-markdown
-        // https://github.com/plasticboy/vim-markdown
-        hi!("mkdHeading", weakfg, -, -, -),
-        hi!("mkdLink", purple, -, -, -),
-        hi!("mkdCode", purple, -, -, -),
-        hi!("mkdCodeStart", purple, -, -, -),
-        hi!("mkdCodeEnd", purple, -, -, -),
-        hi!("mkdCodeDelimiter", purple, -, -, -),
         // yats.vim
         // https://github.com/HerringtonDarkholme/yats.vim
         hi!("typescriptImport", purple, -, -, -),

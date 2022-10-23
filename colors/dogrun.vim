@@ -93,6 +93,11 @@ hi qfLineNr guifg=#545c8c ctermfg=60
 hi @string guifg=#7cbe8c ctermfg=108
 hi @string.regex guifg=#7cbe8c ctermfg=108
 hi @string.escape guifg=#b871b8 ctermfg=133
+hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
+hi @text.reference guifg=#929be5 ctermfg=104
+hi @text.uri guifg=#545c8c ctermfg=60
+hi @text.strong gui=bold cterm=bold
+hi @text.literal guifg=#73c1a9 ctermfg=79
 hi @parameter guifg=#929be5 ctermfg=104
 hi @property guifg=#929be5 ctermfg=104
 hi @keyword guifg=#b871b8 ctermfg=133
@@ -145,12 +150,6 @@ hi rubySymbol guifg=#929be5 ctermfg=104
 hi rubyBlockParameter guifg=#929be5 ctermfg=104
 hi rubyClassName guifg=#b871b8 ctermfg=133
 hi rubyInstanceVariable guifg=#b871b8 ctermfg=133
-hi mkdHeading guifg=#545c8c ctermfg=60
-hi mkdLink guifg=#929be5 ctermfg=104
-hi mkdCode guifg=#929be5 ctermfg=104
-hi mkdCodeStart guifg=#929be5 ctermfg=104
-hi mkdCodeEnd guifg=#929be5 ctermfg=104
-hi mkdCodeDelimiter guifg=#929be5 ctermfg=104
 hi typescriptImport guifg=#929be5 ctermfg=104
 hi typescriptDocRef guifg=#545c8c ctermfg=60 gui=underline cterm=underline
 hi mkdHeading guifg=#545c8c ctermfg=60
