@@ -90,23 +90,6 @@ hi TabLineFill guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=NONE cter
 hi TabLineSel guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
 hi qfFileName guifg=#73c1a9 ctermfg=79
 hi qfLineNr guifg=#545c8c ctermfg=60
-hi @string guifg=#7cbe8c ctermfg=108
-hi @string.regex guifg=#7cbe8c ctermfg=108
-hi @string.escape guifg=#b871b8 ctermfg=133
-hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
-hi @text.reference guifg=#929be5 ctermfg=104
-hi @text.uri guifg=#545c8c ctermfg=60
-hi @text.strong gui=bold cterm=bold
-hi @text.literal guifg=#73c1a9 ctermfg=79
-hi @parameter guifg=#929be5 ctermfg=104
-hi @property guifg=#929be5 ctermfg=104
-hi @keyword guifg=#b871b8 ctermfg=133
-hi @type guifg=#ac8b83 ctermfg=138
-hi @type.builtin guifg=#ac8b83 ctermfg=138
-hi @include guifg=#929be5 ctermfg=104
-hi @variable.builtin guifg=#ac8b83 ctermfg=138
-hi @constant.builtin guifg=#73c1a9 ctermfg=79
-hi @constructor guifg=#9ea3c0 ctermfg=146
 hi DiagnosticError guifg=#dc6f79 ctermfg=167
 hi DiagnosticVirtualTextError guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
 hi DiagnosticUnderlineError guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
@@ -253,6 +236,23 @@ hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
 hi FidgetTitle guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTask guifg=#545c8c ctermfg=60
 if has("nvim")
+  hi @string guifg=#7cbe8c ctermfg=108
+  hi @string.regex guifg=#7cbe8c ctermfg=108
+  hi @string.escape guifg=#b871b8 ctermfg=133
+  hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
+  hi @text.reference guifg=#929be5 ctermfg=104
+  hi @text.uri guifg=#545c8c ctermfg=60
+  hi @text.strong gui=bold cterm=bold
+  hi @text.literal guifg=#73c1a9 ctermfg=79
+  hi @parameter guifg=#929be5 ctermfg=104
+  hi @property guifg=#929be5 ctermfg=104
+  hi @keyword guifg=#b871b8 ctermfg=133
+  hi @type guifg=#ac8b83 ctermfg=138
+  hi @type.builtin guifg=#ac8b83 ctermfg=138
+  hi @include guifg=#929be5 ctermfg=104
+  hi @variable.builtin guifg=#ac8b83 ctermfg=138
+  hi @constant.builtin guifg=#73c1a9 ctermfg=79
+  hi @constructor guifg=#9ea3c0 ctermfg=146
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#c2616b'
   let g:terminal_color_2 = '#7cbe8c'
@@ -269,7 +269,7 @@ if has("nvim")
   let g:terminal_color_13 = '#929be5'
   let g:terminal_color_14 = '#59b6b6'
   let g:terminal_color_15 = '#9ea3c0'
-let g:terminal_color_background = g:terminal_color_0
+  let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_7
 endif
 let g:defx_icons_gui_colors = {

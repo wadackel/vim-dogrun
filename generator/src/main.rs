@@ -9,6 +9,47 @@ use std::fs::File;
 use std::io;
 use std::path::PathBuf;
 
+fn highlight(palette: &Palette, hl: &Highlight) -> String {
+    let mut args = vec![hl.name.to_string()];
+    let variants = &[(&hl.fg, "guifg", "ctermfg"), (&hl.bg, "guibg", "ctermbg")];
+
+    // fg, bg
+    for (color_name, gui, cterm) in variants {
+        if let Some(name) = color_name {
+            if name != &"NONE" {
+                let color = &palette[name];
+                args.push(format!("{}={}", gui, color.gui));
+                args.push(format!("{}={}", cterm, color.cterm));
+            } else {
+                args.push(format!("{}=NONE", gui));
+                args.push(format!("{}=NONE", cterm));
+            }
+        }
+    }
+
+    // sp
+    if let Some(name) = hl.sp {
+        let color = &palette[name];
+        args.push(format!("guisp={}", color.gui));
+    }
+
+    // attr
+    let attr = match hl.attr {
+        HighlightAttr::Nothing => "",
+        HighlightAttr::Bold => "gui=bold cterm=bold",
+        HighlightAttr::Italic => "gui=italic cterm=italic",
+        HighlightAttr::Underline => "gui=underline cterm=underline",
+        HighlightAttr::Reverse => "gui=reverse cterm=reverse",
+        HighlightAttr::None => "gui=NONE cterm=NONE",
+    };
+
+    if attr != "" {
+        args.push(attr.to_string());
+    }
+
+    format!("hi {}", args.join(" "))
+}
+
 #[derive(Debug)]
 struct Writer {
     palette: Palette,
@@ -50,52 +91,23 @@ let g:colors_name = 'dogrun'
 "#
         )?;
 
-        // body
+        // vim & nvim
         for hl in self.highlights.iter() {
-            let mut args = vec![hl.name.to_string()];
-
-            let variants = &[(&hl.fg, "guifg", "ctermfg"), (&hl.bg, "guibg", "ctermbg")];
-
-            // fg, bg
-            for (color_name, gui, cterm) in variants {
-                if let Some(name) = color_name {
-                    if name != &"NONE" {
-                        let color = &self.palette[name];
-                        args.push(format!("{}={}", gui, color.gui));
-                        args.push(format!("{}={}", cterm, color.cterm));
-                    } else {
-                        args.push(format!("{}=NONE", gui));
-                        args.push(format!("{}=NONE", cterm));
-                    }
-                }
+            if hl.scope == HighlightScope::All {
+                writeln!(out, "{}", highlight(&self.palette, hl))?;
             }
+        }
 
-            // sp
-            if let Some(name) = hl.sp {
-                let color = &self.palette[name];
-                args.push(format!("guisp={}", color.gui));
+        writeln!(out, r#"if has("nvim")"#)?;
+
+        // only nvim
+        for hl in self.highlights.iter() {
+            if hl.scope == HighlightScope::Nvim {
+                writeln!(out, "  {}", highlight(&self.palette, hl))?;
             }
-
-            // attr
-            let attr = match hl.attr {
-                HighlightAttr::Nothing => "",
-                HighlightAttr::Bold => "gui=bold cterm=bold",
-                HighlightAttr::Italic => "gui=italic cterm=italic",
-                HighlightAttr::Underline => "gui=underline cterm=underline",
-                HighlightAttr::Reverse => "gui=reverse cterm=reverse",
-                HighlightAttr::None => "gui=NONE cterm=NONE",
-            };
-
-            if attr != "" {
-                args.push(attr.to_string());
-            }
-
-            writeln!(out, "hi {}", args.join(" "))?;
         }
 
         // term colors
-        writeln!(out, r#"if has("nvim")"#)?;
-
         let termcolors = vec![
             "termblack",
             "termmaroon",
@@ -122,10 +134,16 @@ let g:colors_name = 'dogrun'
 
         writeln!(
             out,
-            r#"let g:terminal_color_background = g:terminal_color_0
-  let g:terminal_color_foreground = g:terminal_color_7
-endif"#
+            "  let g:terminal_color_background = g:terminal_color_0"
         )?;
+
+        writeln!(
+            out,
+            "  let g:terminal_color_foreground = g:terminal_color_7"
+        )?;
+
+        // end nvim
+        writeln!(out, "endif")?;
 
         // defx-icons palette
         let defxicons = vec![

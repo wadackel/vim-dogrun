@@ -21,6 +21,12 @@ pub enum HighlightAttr {
     Reverse,
 }
 
+#[derive(Debug, PartialEq)]
+pub enum HighlightScope {
+    All,
+    Nvim,
+}
+
 #[derive(Debug)]
 pub struct Highlight {
     pub name: &'static str,
@@ -28,68 +34,121 @@ pub struct Highlight {
     pub bg: ColorName,
     pub sp: ColorName,
     pub attr: HighlightAttr,
+    pub scope: HighlightScope,
 }
 
 macro_rules! highlight {
-    ($name: literal, $fg: expr, $bg: expr, $sp: expr, $attr: ident) => {
+    ($name: literal, $fg: expr, $bg: expr, $sp: expr, $attr: ident, $scope: ident) => {
         Highlight {
             name: $name,
             fg: $fg,
             bg: $bg,
             sp: $sp,
             attr: HighlightAttr::$attr,
+            scope: HighlightScope::$scope,
         }
     };
 }
 
 macro_rules! hi {
-    ($name: literal, -, -, -, -) => {
-        highlight!($name, None, None, None, Nothing)
+    ($name: literal, -, -, -, -, -) => {
+        highlight!($name, None, None, None, Nothing, All)
     };
-    ($name: literal, $fg: ident, -, -, -) => {
-        highlight!($name, Some(stringify!($fg)), None, None, Nothing)
+    ($name: literal, $fg: ident, -, -, -, -) => {
+        highlight!($name, Some(stringify!($fg)), None, None, Nothing, All)
     };
-    ($name: literal, -, $bg: ident, -, -) => {
-        highlight!($name, None, Some(stringify!($bg)), None, Nothing)
+    ($name: literal, -, $bg: ident, -, -, -) => {
+        highlight!($name, None, Some(stringify!($bg)), None, Nothing, All)
     };
-    ($name: literal, -, -, $sp: ident, -) => {
-        highlight!($name, None, None, Some(stringify!($sp)), Nothing)
+    ($name: literal, -, -, $sp: ident, -, -) => {
+        highlight!($name, None, None, Some(stringify!($sp)), Nothing, All)
     };
-    ($name: literal, -, -, -, $attr: ident) => {
-        highlight!($name, None, None, None, $attr)
+    ($name: literal, -, -, -, $attr: ident, -) => {
+        highlight!($name, None, None, None, $attr, All)
     };
-    ($name: literal, $fg: ident, $bg: ident, -, -) => {
+    ($name: literal, -, -, -, -, $scope: expr) => {
+        highlight!($name, None, None, None, $attr, $scope)
+    };
+    ($name: literal, $fg: ident, $bg: ident, -, -, -) => {
         highlight!(
             $name,
             Some(stringify!($fg)),
             Some(stringify!($bg)),
             None,
-            Nothing
+            Nothing,
+            All
         )
     };
-    ($name: literal, $fg: ident, -, -, $attr: ident) => {
-        highlight!($name, Some(stringify!($fg)), None, None, $attr)
-    };
-    ($name: literal, -, $bg: ident, -, $attr: ident) => {
-        highlight!($name, None, Some(stringify!($bg)), None, $attr)
-    };
-    ($name: literal, $fg: ident, $bg: ident, -, -) => {
+    ($name: literal, $fg: ident, $bg: ident, -, -, $scope: ident) => {
         highlight!(
             $name,
             Some(stringify!($fg)),
             Some(stringify!($bg)),
             None,
-            Nothing
+            Nothing,
+            $scope
         )
     };
-    ($name: literal, $fg: ident, $bg: ident, -, $attr: ident) => {
+    ($name: literal, $fg: ident, -, -, -, $scope: ident) => {
+        highlight!($name, Some(stringify!($fg)), None, None, Nothing, $scope)
+    };
+    ($name: literal, $fg: ident, -, -, $attr: ident, -) => {
+        highlight!($name, Some(stringify!($fg)), None, None, $attr, All)
+    };
+    ($name: literal, $fg: ident, -, -, $attr: ident, $scope: ident) => {
+        highlight!($name, Some(stringify!($fg)), None, None, $attr, $scope)
+    };
+    ($name: literal, -, $bg: ident, -, $attr: ident, -) => {
+        highlight!($name, None, Some(stringify!($bg)), None, $attr, All)
+    };
+    ($name: literal, -, $bg: ident, -, -, $scope: ident) => {
+        highlight!($name, None, Some(stringify!($bg)), None, Nothing, $scope)
+    };
+    ($name: literal, -, $bg: ident, -, $attr: ident, $scope: ident) => {
+        highlight!($name, None, Some(stringify!($bg)), None, $attr, $scope)
+    };
+    ($name: literal, $fg: ident, $bg: ident, -, -, -) => {
         highlight!(
             $name,
             Some(stringify!($fg)),
             Some(stringify!($bg)),
             None,
-            $attr
+            Nothing,
+            -
         )
+    };
+    ($name: literal, $fg: ident, $bg: ident, -, -, $scope: ident) => {
+        highlight!(
+            $name,
+            Some(stringify!($fg)),
+            Some(stringify!($bg)),
+            None,
+            Nothing,
+            $scope
+        )
+    };
+    ($name: literal, $fg: ident, $bg: ident, -, $attr: ident, -) => {
+        highlight!(
+            $name,
+            Some(stringify!($fg)),
+            Some(stringify!($bg)),
+            None,
+            $attr,
+            All
+        )
+    };
+    ($name: literal, $fg: ident, $bg: ident, -, $attr: ident, $scope: ident) => {
+        highlight!(
+            $name,
+            Some(stringify!($fg)),
+            Some(stringify!($bg)),
+            None,
+            $attr,
+            $scope
+        )
+    };
+    ($name: literal, -, -, -, $attr: ident, $scope: ident) => {
+        highlight!($name, None, None, None, $attr, $scope)
     };
 }
 
@@ -263,296 +322,296 @@ pub fn get_palette() -> Palette {
 pub fn get_highlights() -> Vec<Highlight> {
     return vec![
         // general
-        hi!("Normal", mainfg, mainbg, -, -),
-        hi!("Delimiter", lightfg, -, -, -),
-        hi!("NonText", darkfg, NONE, -, -),
-        hi!("VertSplit", weakbg, NONE, -, None),
-        hi!("LineNr", linenrfg, NONE, -, None),
-        hi!("EndOfBuffer", darkfg, NONE, -, None),
-        hi!("Comment", weakfg, -, -, None),
-        hi!("Cursor", mainbg, mainfg, -, -),
-        hi!("CursorIM", mainbg, mainfg, -, -),
-        hi!("SignColumn", weakfg, NONE, -, -),
-        hi!("ColorColumn", -, cursorlinebg, -, None),
-        hi!("CursorColumn", -, cursorlinebg, -, None),
-        hi!("CursorLine", -, cursorlinebg, -, None),
-        hi!("CursorLineNr", cursorlinenrfg, NONE, -, None),
-        hi!("Conceal", orange, mainbg, -, None),
-        hi!("NormalFloat", mainfg, pmenubg, -, None),
-        hi!("Folded", foldfg, foldbg, -, None),
-        hi!("FoldColumn", linenrfg, NONE, -, None),
-        hi!("MatchParen", -, matchparenbg, -, -),
-        hi!("Directory", yellow, -, -, -),
-        hi!("Underlined", -, -, -, Underline),
-        hi!("String", green, -, -, -),
-        hi!("Statement", purple, -, -, None),
-        hi!("Label", purple, -, -, None),
-        hi!("Function", purple, -, -, None),
-        hi!("Constant", teal, -, -, -),
-        hi!("Boolean", teal, -, -, -),
-        hi!("Number", teal, -, -, -),
-        hi!("Float", teal, -, -, -),
-        hi!("Title", yellow, -, -, Bold),
-        hi!("Keyword", orange, -, -, -),
-        hi!("Identifier", orange, -, -, -),
-        hi!("Exception", yellow, -, -, -),
-        hi!("Type", yellow, -, -, None),
-        hi!("TypeDef", yellow, -, -, None),
-        hi!("PreProc", purple, -, -, -),
-        hi!("Special", pink, -, -, -),
-        hi!("SpecialKey", pink, -, -, -),
-        hi!("SpecialChar", pink, -, -, -),
-        hi!("SpecialComment", pink, -, -, -),
-        hi!("Error", errorfg, errorbg, -, Bold),
-        hi!("ErrorMsg", errorfg, NONE, -, Bold),
-        hi!("WarningMsg", warningfg, -, -, Bold),
-        hi!("MoreMsg", morefg, -, -, -),
-        hi!("Todo", yellow, NONE, -, Bold),
-        hi!("Pmenu", pmenufg, pmenubg, -, -),
-        hi!("PmenuSel", pmenuselfg, pmenuselbg, -, -),
-        hi!("PmenuSbar", -, pmenubar, -, -),
-        hi!("PmenuThumb", -, pmenuthumb, -, -),
-        hi!("Visual", -, visualbg, -, None),
-        hi!("Search", searchfg, searchbg, -, -),
-        hi!("IncSearch", incsearchfg, incsearchbg, -, None),
-        hi!("Question", teal, -, -, Bold),
-        hi!("WildMenu", mainbg, purple, -, -),
-        hi!("SpellBad", errorfg, -, -, Underline),
-        hi!("SpellCap", -, -, -, Underline),
-        hi!("SpellLocal", errorfg, -, -, Underline),
-        hi!("SpellRare", yellow, -, -, Underline),
-        hi!("DiffAdd", -, diffaddbg, -, Bold),
-        hi!("DiffChange", -, diffchangebg, -, Bold),
-        hi!("DiffDelete", diffdeletefg, diffdeletebg, -, Bold),
-        hi!("DiffText", -, difftextbg, -, None),
-        hi!("QuickFixLine", mainfg, visualbg, -, -),
-        hi!("StatusLine", statuslinefg, statuslinebg, -, Bold),
-        hi!("StatusLineTerm", statuslinefg, statuslinebg, -, Bold),
-        hi!("StatusLineNC", statuslinencfg, statuslinencbg, -, None),
-        hi!("StatusLineTermNC", statuslinencfg, statuslinencbg, -, None),
-        hi!("TabLine", statuslinefg, statuslinebg, -, None),
-        hi!("TabLineFill", statuslinefg, statuslinebg, -, None),
-        hi!("TabLineSel", tablineselfg, tablineselbg, -, Bold),
-        hi!("qfFileName", teal, -, -, -),
-        hi!("qfLineNr", weakfg, -, -, -),
+        hi!("Normal", mainfg, mainbg, -, -, -),
+        hi!("Delimiter", lightfg, -, -, -, -),
+        hi!("NonText", darkfg, NONE, -, -, -),
+        hi!("VertSplit", weakbg, NONE, -, None, -),
+        hi!("LineNr", linenrfg, NONE, -, None, -),
+        hi!("EndOfBuffer", darkfg, NONE, -, None, -),
+        hi!("Comment", weakfg, -, -, None, -),
+        hi!("Cursor", mainbg, mainfg, -, -, -),
+        hi!("CursorIM", mainbg, mainfg, -, -, -),
+        hi!("SignColumn", weakfg, NONE, -, -, -),
+        hi!("ColorColumn", -, cursorlinebg, -, None, -),
+        hi!("CursorColumn", -, cursorlinebg, -, None, -),
+        hi!("CursorLine", -, cursorlinebg, -, None, -),
+        hi!("CursorLineNr", cursorlinenrfg, NONE, -, None, -),
+        hi!("Conceal", orange, mainbg, -, None, -),
+        hi!("NormalFloat", mainfg, pmenubg, -, None, -),
+        hi!("Folded", foldfg, foldbg, -, None, -),
+        hi!("FoldColumn", linenrfg, NONE, -, None, -),
+        hi!("MatchParen", -, matchparenbg, -, -, -),
+        hi!("Directory", yellow, -, -, -, -),
+        hi!("Underlined", -, -, -, Underline, -),
+        hi!("String", green, -, -, -, -),
+        hi!("Statement", purple, -, -, None, -),
+        hi!("Label", purple, -, -, None, -),
+        hi!("Function", purple, -, -, None, -),
+        hi!("Constant", teal, -, -, -, -),
+        hi!("Boolean", teal, -, -, -, -),
+        hi!("Number", teal, -, -, -, -),
+        hi!("Float", teal, -, -, -, -),
+        hi!("Title", yellow, -, -, Bold, -),
+        hi!("Keyword", orange, -, -, -, -),
+        hi!("Identifier", orange, -, -, -, -),
+        hi!("Exception", yellow, -, -, -, -),
+        hi!("Type", yellow, -, -, None, -),
+        hi!("TypeDef", yellow, -, -, None, -),
+        hi!("PreProc", purple, -, -, -, -),
+        hi!("Special", pink, -, -, -, -),
+        hi!("SpecialKey", pink, -, -, -, -),
+        hi!("SpecialChar", pink, -, -, -, -),
+        hi!("SpecialComment", pink, -, -, -, -),
+        hi!("Error", errorfg, errorbg, -, Bold, -),
+        hi!("ErrorMsg", errorfg, NONE, -, Bold, -),
+        hi!("WarningMsg", warningfg, -, -, Bold, -),
+        hi!("MoreMsg", morefg, -, -, -, -),
+        hi!("Todo", yellow, NONE, -, Bold, -),
+        hi!("Pmenu", pmenufg, pmenubg, -, -, -),
+        hi!("PmenuSel", pmenuselfg, pmenuselbg, -, -, -),
+        hi!("PmenuSbar", -, pmenubar, -, -, -),
+        hi!("PmenuThumb", -, pmenuthumb, -, -, -),
+        hi!("Visual", -, visualbg, -, None, -),
+        hi!("Search", searchfg, searchbg, -, -, -),
+        hi!("IncSearch", incsearchfg, incsearchbg, -, None, -),
+        hi!("Question", teal, -, -, Bold, -),
+        hi!("WildMenu", mainbg, purple, -, -, -),
+        hi!("SpellBad", errorfg, -, -, Underline, -),
+        hi!("SpellCap", -, -, -, Underline, -),
+        hi!("SpellLocal", errorfg, -, -, Underline, -),
+        hi!("SpellRare", yellow, -, -, Underline, -),
+        hi!("DiffAdd", -, diffaddbg, -, Bold, -),
+        hi!("DiffChange", -, diffchangebg, -, Bold, -),
+        hi!("DiffDelete", diffdeletefg, diffdeletebg, -, Bold, -),
+        hi!("DiffText", -, difftextbg, -, None, -),
+        hi!("QuickFixLine", mainfg, visualbg, -, -, -),
+        hi!("StatusLine", statuslinefg, statuslinebg, -, Bold, -),
+        hi!("StatusLineTerm", statuslinefg, statuslinebg, -, Bold, -),
+        hi!("StatusLineNC", statuslinencfg, statuslinencbg, -, None, -),
+        hi!("StatusLineTermNC", statuslinencfg, statuslinencbg, -, None, -),
+        hi!("TabLine", statuslinefg, statuslinebg, -, None, -),
+        hi!("TabLineFill", statuslinefg, statuslinebg, -, None, -),
+        hi!("TabLineSel", tablineselfg, tablineselbg, -, Bold, -),
+        hi!("qfFileName", teal, -, -, -, -),
+        hi!("qfLineNr", weakfg, -, -, -, -),
         // treesitter
         // https://github.com/nvim-treesitter/nvim-treesitter
         // FIXME
-        // hi!("TSParameterReference", purple, -, -, -),
-        // hi!("TSField", purple, -, -, -),
-        // hi!("TSStructue", pink, -, -, -),
-        hi!("@string", green, -, -, -),
-        hi!("@string.regex", green, -, -, -),
-        hi!("@string.escape", pink, -, -, -),
-        hi!("@text.title", yellow, -, -, Bold),
-        hi!("@text.reference", purple, -, -, -),
-        hi!("@text.uri", weakfg, -, -, -),
-        hi!("@text.strong", -, -, -, Bold),
-        hi!("@text.literal", teal, -, -, -),
-        hi!("@parameter", purple, -, -, -),
-        hi!("@property", purple, -, -, -),
-        hi!("@keyword", pink, -, -, -),
-        hi!("@type", orange, -, -, -),
-        hi!("@type.builtin", orange, -, -, -),
-        hi!("@include", purple, -, -, -),
-        hi!("@variable.builtin", orange, -, -, -),
-        hi!("@constant.builtin", teal, -, -, -),
-        hi!("@constructor", mainfg, -, -, -),
+        // hi!("TSParameterReference", purple, -, -, -, -),
+        // hi!("TSField", purple, -, -, -, -),
+        // hi!("TSStructue", pink, -, -, -, -),
+        hi!("@string", green, -, -, -, Nvim),
+        hi!("@string.regex", green, -, -, -, Nvim),
+        hi!("@string.escape", pink, -, -, -, Nvim),
+        hi!("@text.title", yellow, -, -, Bold, Nvim),
+        hi!("@text.reference", purple, -, -, -, Nvim),
+        hi!("@text.uri", weakfg, -, -, -, Nvim),
+        hi!("@text.strong", -, -, -, Bold, Nvim),
+        hi!("@text.literal", teal, -, -, -, Nvim),
+        hi!("@parameter", purple, -, -, -, Nvim),
+        hi!("@property", purple, -, -, -, Nvim),
+        hi!("@keyword", pink, -, -, -, Nvim),
+        hi!("@type", orange, -, -, -, Nvim),
+        hi!("@type.builtin", orange, -, -, -, Nvim),
+        hi!("@include", purple, -, -, -, Nvim),
+        hi!("@variable.builtin", orange, -, -, -, Nvim),
+        hi!("@constant.builtin", teal, -, -, -, Nvim),
+        hi!("@constructor", mainfg, -, -, -, Nvim),
         // built-in LSP
-        hi!("DiagnosticError", errorfg, -, -, -),
-        hi!("DiagnosticVirtualTextError", errorfg, -, -, Bold),
-        hi!("DiagnosticUnderlineError", errorfg, -, -, Underline),
-        hi!("DiagnosticWarn", warningfg, -, -, -),
-        hi!("DiagnosticVirtualTextWarn", warningfg, -, -, Bold),
-        hi!("DiagnosticUnderlineWarn", warningfg, -, -, Underline),
-        hi!("DiagnosticInfo", infofg, -, -, -),
-        hi!("DiagnosticVirtualTextInfo", weakfg, -, -, Bold),
-        hi!("DiagnosticUnderlineInfo", -, -, -, Underline),
-        hi!("DiagnosticHint", infofg, -, -, -),
-        hi!("DiagnosticVirtualTextHint", weakfg, -, -, Bold),
-        hi!("DiagnosticUnderlineHint", -, -, -, Underline),
+        hi!("DiagnosticError", errorfg, -, -, -, -),
+        hi!("DiagnosticVirtualTextError", errorfg, -, -, Bold, -),
+        hi!("DiagnosticUnderlineError", errorfg, -, -, Underline, -),
+        hi!("DiagnosticWarn", warningfg, -, -, -, -),
+        hi!("DiagnosticVirtualTextWarn", warningfg, -, -, Bold, -),
+        hi!("DiagnosticUnderlineWarn", warningfg, -, -, Underline, -),
+        hi!("DiagnosticInfo", infofg, -, -, -, -),
+        hi!("DiagnosticVirtualTextInfo", weakfg, -, -, Bold, -),
+        hi!("DiagnosticUnderlineInfo", -, -, -, Underline, -),
+        hi!("DiagnosticHint", infofg, -, -, -, -),
+        hi!("DiagnosticVirtualTextHint", weakfg, -, -, Bold, -),
+        hi!("DiagnosticUnderlineHint", -, -, -, Underline, -),
         // html
-        hi!("htmlTag", lightfg, -, -, -),
-        hi!("htmlEndTag", lightfg, -, -, -),
-        hi!("htmlSpecialTagName", orange, -, -, -),
-        hi!("htmlArg", lightfg, -, -, -),
+        hi!("htmlTag", lightfg, -, -, -, -),
+        hi!("htmlEndTag", lightfg, -, -, -, -),
+        hi!("htmlSpecialTagName", orange, -, -, -, -),
+        hi!("htmlArg", lightfg, -, -, -, -),
         // json
-        hi!("jsonQuote", lightfg, -, -, -),
+        hi!("jsonQuote", lightfg, -, -, -, -),
         // yaml
-        hi!("yamlBlockMappingKey", purple, -, -, -),
-        hi!("yamlAnchor", pink, -, -, -),
+        hi!("yamlBlockMappingKey", purple, -, -, -, -),
+        hi!("yamlAnchor", pink, -, -, -, -),
         // python
-        hi!("pythonStatement", orange, -, -, -),
-        hi!("pythonBuiltin", cyan, -, -, -),
-        hi!("pythonRepeat", orange, -, -, -),
-        hi!("pythonOperator", orange, -, -, -),
-        hi!("pythonDecorator", pink, -, -, -),
-        hi!("pythonDecoratorName", pink, -, -, -),
+        hi!("pythonStatement", orange, -, -, -, -),
+        hi!("pythonBuiltin", cyan, -, -, -, -),
+        hi!("pythonRepeat", orange, -, -, -, -),
+        hi!("pythonOperator", orange, -, -, -, -),
+        hi!("pythonDecorator", pink, -, -, -, -),
+        hi!("pythonDecoratorName", pink, -, -, -, -),
         // zsh
-        hi!("zshVariableDef", purple, -, -, -),
-        hi!("zshFunction", purple, -, -, -),
-        hi!("zshKSHFunction", purple, -, -, -),
+        hi!("zshVariableDef", purple, -, -, -, -),
+        hi!("zshFunction", purple, -, -, -, -),
+        hi!("zshKSHFunction", purple, -, -, -, -),
         // C
-        hi!("cPreCondit", orange, -, -, -),
-        hi!("cIncluded", pink, -, -, -),
-        hi!("cStorageClass", orange, -, -, -),
+        hi!("cPreCondit", orange, -, -, -, -),
+        hi!("cIncluded", pink, -, -, -, -),
+        hi!("cStorageClass", orange, -, -, -, -),
         // C++
         // octol/vim-cpp-enhanced-highlight
-        hi!("cppStructure", pink, -, -, -),
-        hi!("cppSTLnamespace", orange, -, -, -),
+        hi!("cppStructure", pink, -, -, -, -),
+        hi!("cppSTLnamespace", orange, -, -, -, -),
         // C#
-        hi!("csStorage", orange, -, -, -),
-        hi!("csModifier", purple, -, -, -),
-        hi!("csClass", purple, -, -, -),
-        hi!("csClassType", pink, -, -, -),
-        hi!("csNewType", orange, -, -, -),
+        hi!("csStorage", orange, -, -, -, -),
+        hi!("csModifier", purple, -, -, -, -),
+        hi!("csClass", purple, -, -, -, -),
+        hi!("csClassType", pink, -, -, -, -),
+        hi!("csNewType", orange, -, -, -, -),
         // ruby
-        hi!("rubyConstant", orange, -, -, -),
-        hi!("rubySymbol", purple, -, -, -),
-        hi!("rubyBlockParameter", purple, -, -, -),
-        hi!("rubyClassName", pink, -, -, -),
-        hi!("rubyInstanceVariable", pink, -, -, -),
+        hi!("rubyConstant", orange, -, -, -, -),
+        hi!("rubySymbol", purple, -, -, -, -),
+        hi!("rubyBlockParameter", purple, -, -, -, -),
+        hi!("rubyClassName", pink, -, -, -, -),
+        hi!("rubyInstanceVariable", pink, -, -, -, -),
         // yats.vim
         // https://github.com/HerringtonDarkholme/yats.vim
-        hi!("typescriptImport", purple, -, -, -),
-        hi!("typescriptDocRef", weakfg, -, -, Underline),
+        hi!("typescriptImport", purple, -, -, -, -),
+        hi!("typescriptDocRef", weakfg, -, -, Underline, -),
         // vim-markdown
         // https://github.com/plasticboy/vim-markdown
-        hi!("mkdHeading", weakfg, -, -, -),
-        hi!("mkdLink", purple, -, -, -),
-        hi!("mkdCode", purple, -, -, -),
-        hi!("mkdCodeStart", purple, -, -, -),
-        hi!("mkdCodeEnd", purple, -, -, -),
-        hi!("mkdCodeDelimiter", purple, -, -, -),
+        hi!("mkdHeading", weakfg, -, -, -, -),
+        hi!("mkdLink", purple, -, -, -, -),
+        hi!("mkdCode", purple, -, -, -, -),
+        hi!("mkdCodeStart", purple, -, -, -, -),
+        hi!("mkdCodeEnd", purple, -, -, -, -),
+        hi!("mkdCodeDelimiter", purple, -, -, -, -),
         // vim-toml
         // https://github.com/cespare/vim-toml
-        hi!("tomlTable", purple, -, -, -),
+        hi!("tomlTable", purple, -, -, -, -),
         // rust.vim
         // https://github.com/rust-lang/rust.vim
-        hi!("rustModPath", purple, -, -, -),
-        hi!("rustTypedef", purple, -, -, -),
-        hi!("rustStructure", purple, -, -, -),
-        hi!("rustMacro", purple, -, -, -),
-        hi!("rustExternCrate", purple, -, -, -),
+        hi!("rustModPath", purple, -, -, -, -),
+        hi!("rustTypedef", purple, -, -, -, -),
+        hi!("rustStructure", purple, -, -, -, -),
+        hi!("rustMacro", purple, -, -, -, -),
+        hi!("rustExternCrate", purple, -, -, -, -),
         // vim-graphql
         // https://github.com/jparise/vim-graphql
-        hi!("graphqlStructure", pink, -, -, -),
-        hi!("graphqlDirective", pink, -, -, -),
-        hi!("graphqlName", purple, -, -, -),
-        hi!("graphqlTemplateString", mainfg, -, -, -),
+        hi!("graphqlStructure", pink, -, -, -, -),
+        hi!("graphqlDirective", pink, -, -, -, -),
+        hi!("graphqlName", purple, -, -, -, -),
+        hi!("graphqlTemplateString", mainfg, -, -, -, -),
         // vimfiler
         // https://github.com/Shougo/vimfiler.vim
-        hi!("vimfilerOpenedFile", darkpurple, -, -, -),
-        hi!("vimfilerClosedFile", darkpurple, -, -, -),
-        hi!("vimfilerNonMark", teal, -, -, -),
-        hi!("vimfilerLeaf", teal, -, -, -),
+        hi!("vimfilerOpenedFile", darkpurple, -, -, -, -),
+        hi!("vimfilerClosedFile", darkpurple, -, -, -, -),
+        hi!("vimfilerNonMark", teal, -, -, -, -),
+        hi!("vimfilerLeaf", teal, -, -, -, -),
         // defx-icons
         // https://github.com/kristijanhusak/defx-icons
-        hi!("DefxIconsMarkIcon", darkpurple, -, -, None),
-        hi!("DefxIconsDirectory", darkpurple, -, -, None),
-        hi!("DefxIconsParentDirectory", darkpurple, -, -, None),
-        hi!("DefxIconsSymlinkDirectory", teal, -, -, None),
-        hi!("DefxIconsOpenedTreeIcon", darkpurple, -, -, None),
-        hi!("DefxIconsNestedTreeIcon", darkpurple, -, -, None),
-        hi!("DefxIconsClosedTreeIcon", darkpurple, -, -, None),
+        hi!("DefxIconsMarkIcon", darkpurple, -, -, None, -),
+        hi!("DefxIconsDirectory", darkpurple, -, -, None, -),
+        hi!("DefxIconsParentDirectory", darkpurple, -, -, None, -),
+        hi!("DefxIconsSymlinkDirectory", teal, -, -, None, -),
+        hi!("DefxIconsOpenedTreeIcon", darkpurple, -, -, None, -),
+        hi!("DefxIconsNestedTreeIcon", darkpurple, -, -, None, -),
+        hi!("DefxIconsClosedTreeIcon", darkpurple, -, -, None, -),
         // defx-git
         // https://github.com/kristijanhusak/defx-git
-        hi!("Defx_git_Untracked", purple, -, -, None),
-        hi!("Defx_git_Ignored", weakfg, -, -, None),
-        hi!("Defx_git_Unknown", weakfg, -, -, None),
-        hi!("Defx_git_Renamed", diffchangebg, -, -, -),
-        hi!("Defx_git_Modified", diffchangebg, -, -, -),
-        hi!("Defx_git_Unmerged", pink, -, -, -),
-        hi!("Defx_git_Deleted", diffdeletebg, -, -, -),
-        hi!("Defx_git_Staged", teal, -, -, -),
+        hi!("Defx_git_Untracked", purple, -, -, None, -),
+        hi!("Defx_git_Ignored", weakfg, -, -, None, -),
+        hi!("Defx_git_Unknown", weakfg, -, -, None, -),
+        hi!("Defx_git_Renamed", diffchangebg, -, -, -, -),
+        hi!("Defx_git_Modified", diffchangebg, -, -, -, -),
+        hi!("Defx_git_Unmerged", pink, -, -, -, -),
+        hi!("Defx_git_Deleted", diffdeletebg, -, -, -, -),
+        hi!("Defx_git_Staged", teal, -, -, -, -),
         // fern.vim
         // https://github.com/lambdalisue/fern.vim
-        hi!("FernBranchSymbol", darkpurple, -, -, None),
-        hi!("FernBranchText", purple, -, -, None),
-        hi!("FernLeafSymbol", darkteal, -, -, None),
-        hi!("FernLeafText", mainfg, -, -, None),
-        hi!("FernMarked", cyan, -, -, None),
+        hi!("FernBranchSymbol", darkpurple, -, -, None, -),
+        hi!("FernBranchText", purple, -, -, None, -),
+        hi!("FernLeafSymbol", darkteal, -, -, None, -),
+        hi!("FernLeafText", mainfg, -, -, None, -),
+        hi!("FernMarked", cyan, -, -, None, -),
         // vim-gitgutter
         // https://github.com/airblade/vim-gitgutter
-        hi!("GitGutterAdd", green, -, -, -),
-        hi!("GitGutterChange", yellow, -, -, -),
-        hi!("GitGutterDelete", pink, -, -, -),
-        hi!("GitGutterChangeDelete", difftextbg, -, -, -),
+        hi!("GitGutterAdd", green, -, -, -, -),
+        hi!("GitGutterChange", yellow, -, -, -, -),
+        hi!("GitGutterDelete", pink, -, -, -, -),
+        hi!("GitGutterChangeDelete", difftextbg, -, -, -, -),
         // fugitive.vim
         // https://github.com/tpope/vim-fugitive
-        hi!("fugitiveHeader", teal, -, -, Bold),
+        hi!("fugitiveHeader", teal, -, -, Bold, -),
         // ale
         // https://github.com/dense-analysis/ale
-        hi!("ALEWarningSign", warningfg, -, -, Bold),
-        hi!("ALEInfoSign", infofg, -, -, None),
+        hi!("ALEWarningSign", warningfg, -, -, Bold, -),
+        hi!("ALEInfoSign", infofg, -, -, None, -),
         // coc.nvim
         // https://github.com/neoclide/coc.nvim
-        hi!("CocErrorSign", errorfg, -, -, Bold),
-        hi!("CocWarningSign", warningfg, -, -, Bold),
-        hi!("CocInfoSign", infofg, -, -, Bold),
-        hi!("CocHintSign", infofg, -, -, Bold),
+        hi!("CocErrorSign", errorfg, -, -, Bold, -),
+        hi!("CocWarningSign", warningfg, -, -, Bold, -),
+        hi!("CocInfoSign", infofg, -, -, Bold, -),
+        hi!("CocHintSign", infofg, -, -, Bold, -),
         // vim-lsp
         // https://github.com/prabirshrestha/vim-lsp
-        hi!("LspError", errorfg, -, -, -),
-        hi!("LspErrorText", errorfg, -, -, Bold),
-        hi!("LspErrorHighlight", -, -, -, Underline),
-        hi!("LspErrorVirtualText", errorfg, -, -, Bold),
-        hi!("LspWarning", warningfg, -, -, -),
-        hi!("LspWarningText", warningfg, -, -, Bold),
-        hi!("LspWarningHighlight", -, -, -, Underline),
-        hi!("LspWarningVirtualText", warningfg, -, -, Bold),
-        hi!("LspInformation", infofg, -, -, -),
-        hi!("LspInformationText", infofg, -, -, Bold),
-        hi!("LspInformationHighlight", -, -, -, Underline),
-        hi!("LspInformationVirtualText", weakfg, -, -, Bold),
-        hi!("LspHint", infofg, -, -, -),
-        hi!("LspHintText", infofg, -, -, Bold),
-        hi!("LspHintHighlight", -, -, -, Underline),
-        hi!("LspHintVirtualText", weakfg, -, -, Bold),
-        hi!("LspCodeActionText", darkpurple, -, -, Bold),
+        hi!("LspError", errorfg, -, -, -, -),
+        hi!("LspErrorText", errorfg, -, -, Bold, -),
+        hi!("LspErrorHighlight", -, -, -, Underline, -),
+        hi!("LspErrorVirtualText", errorfg, -, -, Bold, -),
+        hi!("LspWarning", warningfg, -, -, -, -),
+        hi!("LspWarningText", warningfg, -, -, Bold, -),
+        hi!("LspWarningHighlight", -, -, -, Underline, -),
+        hi!("LspWarningVirtualText", warningfg, -, -, Bold, -),
+        hi!("LspInformation", infofg, -, -, -, -),
+        hi!("LspInformationText", infofg, -, -, Bold, -),
+        hi!("LspInformationHighlight", -, -, -, Underline, -),
+        hi!("LspInformationVirtualText", weakfg, -, -, Bold, -),
+        hi!("LspHint", infofg, -, -, -, -),
+        hi!("LspHintText", infofg, -, -, Bold, -),
+        hi!("LspHintHighlight", -, -, -, Underline, -),
+        hi!("LspHintVirtualText", weakfg, -, -, Bold, -),
+        hi!("LspCodeActionText", darkpurple, -, -, Bold, -),
         // nvim-cmp
         // https://github.com/hrsh7th/nvim-cmp
-        hi!("CmpItemAbbr", mainfg, -, -, -),
-        hi!("CmpItemAbbrMatch", purple, -, -, Bold),
-        hi!("CmpItemAbbrMatchFuzzy", purple, -, -, Bold),
-        hi!("CmpItemKind", lightfg, -, -, -),
-        hi!("CmpItemKindDefault", lightfg, -, -, -),
-        hi!("CmpItemKindText", lightfg, -, -, -),
-        hi!("CmpItemKindVariable", lightfg, -, -, -),
-        hi!("CmpItemKindKeyword", lightfg, -, -, -),
-        hi!("CmpItemKindInterface", lightfg, -, -, -),
-        hi!("CmpItemKindFunction", lightfg, -, -, -),
-        hi!("CmpItemKindMethod", lightfg, -, -, -),
-        hi!("CmpItemKindProperty", lightfg, -, -, -),
-        hi!("CmpItemKindUnit", lightfg, -, -, -),
+        hi!("CmpItemAbbr", mainfg, -, -, -, -),
+        hi!("CmpItemAbbrMatch", purple, -, -, Bold, -),
+        hi!("CmpItemAbbrMatchFuzzy", purple, -, -, Bold, -),
+        hi!("CmpItemKind", lightfg, -, -, -, -),
+        hi!("CmpItemKindDefault", lightfg, -, -, -, -),
+        hi!("CmpItemKindText", lightfg, -, -, -, -),
+        hi!("CmpItemKindVariable", lightfg, -, -, -, -),
+        hi!("CmpItemKindKeyword", lightfg, -, -, -, -),
+        hi!("CmpItemKindInterface", lightfg, -, -, -, -),
+        hi!("CmpItemKindFunction", lightfg, -, -, -, -),
+        hi!("CmpItemKindMethod", lightfg, -, -, -, -),
+        hi!("CmpItemKindProperty", lightfg, -, -, -, -),
+        hi!("CmpItemKindUnit", lightfg, -, -, -, -),
         // telescope.nvim
         // https://github.com/nvim-telescope/telescope.nvim
-        hi!("TelescopeNormal", lightfg, -, -, -),
-        hi!("TelescopeTitle", purple, -, -, -),
-        hi!("TelescopeMatching", emphasisfg, -, -, Bold),
-        hi!("TelescopeBorder", weakfg, -, -, -),
-        hi!("TelescopePromptPrefix", teal, -, -, -),
-        hi!("TelescopePromptCounter", weakfg, -, -, -),
-        hi!("TelescopeMultiIcon", yellow, -, -, -),
-        hi!("TelescopeMultiSelection", yellow, -, -, -),
+        hi!("TelescopeNormal", lightfg, -, -, -, -),
+        hi!("TelescopeTitle", purple, -, -, -, -),
+        hi!("TelescopeMatching", emphasisfg, -, -, Bold, -),
+        hi!("TelescopeBorder", weakfg, -, -, -, -),
+        hi!("TelescopePromptPrefix", teal, -, -, -, -),
+        hi!("TelescopePromptCounter", weakfg, -, -, -, -),
+        hi!("TelescopeMultiIcon", yellow, -, -, -, -),
+        hi!("TelescopeMultiSelection", yellow, -, -, -, -),
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
-        hi!("CleverFChar", searchfg, searchbg, -, Underline),
+        hi!("CleverFChar", searchfg, searchbg, -, Underline, -),
         // conflict-marker.vim
         // https://github.com/rhysd/conflict-marker.vim
-        hi!("ConflictMarkerBegin", -, darkteal, -, Bold),
-        hi!("ConflictMarkerOurs", -, darkestteal, -, None),
-        hi!("ConflictMarkerTheirs", -, darkestblue, -, None),
-        hi!("ConflictMarkerEnd", -, darkblue, -, Bold),
-        hi!("ConflictMarkerSeparator", darkfg, -, -, Bold),
+        hi!("ConflictMarkerBegin", -, darkteal, -, Bold, -),
+        hi!("ConflictMarkerOurs", -, darkestteal, -, None, -),
+        hi!("ConflictMarkerTheirs", -, darkestblue, -, None, -),
+        hi!("ConflictMarkerEnd", -, darkblue, -, Bold, -),
+        hi!("ConflictMarkerSeparator", darkfg, -, -, Bold, -),
         // easymotion
         // https://github.com/easymotion/vim-easymotion
-        hi!("EasyMotionTarget", yellow, -, -, Bold),
-        hi!("EasyMotionShade", weakfg, mainbg, -, -),
-        hi!("EasyMotionIncCursor", mainfg, mainbg, -, -),
+        hi!("EasyMotionTarget", yellow, -, -, Bold, -),
+        hi!("EasyMotionShade", weakfg, mainbg, -, -, -),
+        hi!("EasyMotionIncCursor", mainfg, mainbg, -, -, -),
         // fidget.nvim
         // https://github.com/j-hui/fidget.nvim
-        hi!("FidgetTitle", teal, -, -, Bold),
-        hi!("FidgetTask", weakfg, -, -, -),
+        hi!("FidgetTitle", teal, -, -, Bold, -),
+        hi!("FidgetTask", weakfg, -, -, -, -),
     ];
 }
