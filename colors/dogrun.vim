@@ -236,23 +236,6 @@ hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
 hi FidgetTitle guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTask guifg=#545c8c ctermfg=60
 if has("nvim")
-  hi @string guifg=#7cbe8c ctermfg=108
-  hi @string.regex guifg=#7cbe8c ctermfg=108
-  hi @string.escape guifg=#b871b8 ctermfg=133
-  hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
-  hi @text.reference guifg=#929be5 ctermfg=104
-  hi @text.uri guifg=#545c8c ctermfg=60
-  hi @text.strong gui=bold cterm=bold
-  hi @text.literal guifg=#73c1a9 ctermfg=79
-  hi @parameter guifg=#929be5 ctermfg=104
-  hi @property guifg=#929be5 ctermfg=104
-  hi @keyword guifg=#b871b8 ctermfg=133
-  hi @type guifg=#ac8b83 ctermfg=138
-  hi @type.builtin guifg=#ac8b83 ctermfg=138
-  hi @include guifg=#929be5 ctermfg=104
-  hi @variable.builtin guifg=#ac8b83 ctermfg=138
-  hi @constant.builtin guifg=#73c1a9 ctermfg=79
-  hi @constructor guifg=#9ea3c0 ctermfg=146
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#c2616b'
   let g:terminal_color_2 = '#7cbe8c'
@@ -271,6 +254,25 @@ if has("nvim")
   let g:terminal_color_15 = '#9ea3c0'
   let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_7
+endif
+if has("nvim-0.8.0")
+  hi @string guifg=#7cbe8c ctermfg=108
+  hi @string.regex guifg=#7cbe8c ctermfg=108
+  hi @string.escape guifg=#b871b8 ctermfg=133
+  hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
+  hi @text.reference guifg=#929be5 ctermfg=104
+  hi @text.uri guifg=#545c8c ctermfg=60
+  hi @text.strong gui=bold cterm=bold
+  hi @text.literal guifg=#73c1a9 ctermfg=79
+  hi @parameter guifg=#929be5 ctermfg=104
+  hi @property guifg=#929be5 ctermfg=104
+  hi @keyword guifg=#b871b8 ctermfg=133
+  hi @type guifg=#ac8b83 ctermfg=138
+  hi @type.builtin guifg=#ac8b83 ctermfg=138
+  hi @include guifg=#929be5 ctermfg=104
+  hi @variable.builtin guifg=#ac8b83 ctermfg=138
+  hi @constant.builtin guifg=#73c1a9 ctermfg=79
+  hi @constructor guifg=#9ea3c0 ctermfg=146
 endif
 let g:defx_icons_gui_colors = {
   \ 'brown': 'a9323d',

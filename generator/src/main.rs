@@ -145,6 +145,15 @@ let g:colors_name = 'dogrun'
         // end nvim
         writeln!(out, "endif")?;
 
+        // only nvim x version >= 800
+        writeln!(out, r#"if has("nvim-0.8.0")"#)?;
+        for hl in self.highlights.iter() {
+            if hl.scope == HighlightScope::Nvim080OrLater {
+                writeln!(out, "  {}", highlight(&self.palette, hl))?;
+            }
+        }
+        writeln!(out, "endif")?;
+
         // defx-icons palette
         let defxicons = vec![
             ("brown", &self.palette["defxiconbrown"]),
