@@ -1,6 +1,6 @@
 ![vim-dogrun](./docs/images/repo-banner.png)
 
-[![CI](https://img.shields.io/github/workflow/status/wadackel/vim-dogrun/CI/master?style=flat-square)](https://github.com/wadackel/vim-dogrun/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/wadackel/vim-dogrun/ci.yml?branch=main&style=flat-square)](https://github.com/wadackel/vim-dogrun/actions)
 [![LICENSE](https://img.shields.io/github/license/wadackel/vim-dogrun?style=flat-square)](./LICENSE)
 
 > A dark Neovim / Vim colorscheme for the GUI and 256 / true-color terminals.
