@@ -33,7 +33,8 @@ hi CursorColumn guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
 hi CursorLine guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
 hi CursorLineNr guifg=#535f98 ctermfg=61 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Conceal guifg=#ac8b83 ctermfg=138 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
-hi NormalFloat guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
+hi NormalFloat guifg=#8085a6 ctermfg=103 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
+hi FloatBorder guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi MatchParen guibg=#2f3147 ctermbg=236
@@ -216,6 +217,7 @@ hi CmpItemKindFunction guifg=#8085a6 ctermfg=103
 hi CmpItemKindMethod guifg=#8085a6 ctermfg=103
 hi CmpItemKindProperty guifg=#8085a6 ctermfg=103
 hi CmpItemKindUnit guifg=#8085a6 ctermfg=103
+hi FloatTitle guifg=#929be5 ctermfg=104 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi TelescopeNormal guifg=#8085a6 ctermfg=103
 hi TelescopeTitle guifg=#929be5 ctermfg=104
 hi TelescopeMatching guifg=#bdc3e6 ctermfg=146 gui=bold cterm=bold

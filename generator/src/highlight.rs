@@ -338,7 +338,8 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("CursorLine", -, cursorlinebg, -, None, -),
         hi!("CursorLineNr", cursorlinenrfg, NONE, -, None, -),
         hi!("Conceal", orange, mainbg, -, None, -),
-        hi!("NormalFloat", mainfg, pmenubg, -, None, -),
+        hi!("NormalFloat", lightfg, mainbg, -, None, -),
+        hi!("FloatBorder", weakfg, mainbg, -, None, -),
         hi!("Folded", foldfg, foldbg, -, None, -),
         hi!("FoldColumn", linenrfg, NONE, -, None, -),
         hi!("MatchParen", -, matchparenbg, -, -, -),
@@ -585,6 +586,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("CmpItemKindMethod", lightfg, -, -, -, -),
         hi!("CmpItemKindProperty", lightfg, -, -, -, -),
         hi!("CmpItemKindUnit", lightfg, -, -, -, -),
+        // dressing.nvim
+        // https://github.com/stevearc/dressing.nvim
+        hi!("FloatTitle", purple, mainbg, -, None, -),
         // telescope.nvim
         // https://github.com/nvim-telescope/telescope.nvim
         hi!("TelescopeNormal", lightfg, -, -, -, -),

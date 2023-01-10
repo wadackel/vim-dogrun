@@ -98,6 +98,7 @@ From now on, we will gradually support it :dog:
 - [conflict-marker.vim](https://github.com/rhysd/conflict-marker.vim)
 - [defx-git](https://github.com/kristijanhusak/defx-git)
 - [defx-icons](https://github.com/kristijanhusak/defx-icons)
+- [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 - [easymotion](https://github.com/easymotion/vim-easymotion)
 - [fern.vim](https://github.com/lambdalisue/fern.vim)
 - [fidget.nvim](https://github.com/j-hui/fidget.nvim)
