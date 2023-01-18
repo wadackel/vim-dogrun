@@ -398,10 +398,6 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("qfLineNr", weakfg, -, -, -, -),
         // treesitter
         // https://github.com/nvim-treesitter/nvim-treesitter
-        // FIXME
-        // hi!("TSParameterReference", purple, -, -, -, -),
-        // hi!("TSField", purple, -, -, -, -),
-        // hi!("TSStructue", pink, -, -, -, -),
         hi!("@string", green, -, -, -, Nvim080OrLater),
         hi!("@string.regex", green, -, -, -, Nvim080OrLater),
         hi!("@string.escape", pink, -, -, -, Nvim080OrLater),
@@ -416,9 +412,13 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("@type", orange, -, -, -, Nvim080OrLater),
         hi!("@type.builtin", orange, -, -, -, Nvim080OrLater),
         hi!("@include", purple, -, -, -, Nvim080OrLater),
+        hi!("@variable", mainfg, -, -, -, Nvim080OrLater),
         hi!("@variable.builtin", orange, -, -, -, Nvim080OrLater),
         hi!("@constant.builtin", teal, -, -, -, Nvim080OrLater),
         hi!("@constructor", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@tag", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@tag.delimiter", purple, -, -, -, Nvim080OrLater),
+        hi!("@tag.attribute", purple, -, -, -, Nvim080OrLater),
         // built-in LSP
         hi!("DiagnosticError", errorfg, -, -, -, -),
         hi!("DiagnosticVirtualTextError", errorfg, -, -, Bold, -),
