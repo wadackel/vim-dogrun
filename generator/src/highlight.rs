@@ -419,6 +419,17 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("@tag", mainfg, -, -, -, Nvim080OrLater),
         hi!("@tag.delimiter", purple, -, -, -, Nvim080OrLater),
         hi!("@tag.attribute", purple, -, -, -, Nvim080OrLater),
+        // LSP Semantic highlights
+        hi!("@lsp.type.class", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.interface", orange, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.parameter", purple, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.property", purple, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.struct", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.type", orange, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.typeParameter", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.variable", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.member", purple, -, -, -, Nvim080OrLater),
+        hi!("@lsp.type.namespace", mainfg, -, -, -, Nvim080OrLater),
         // built-in LSP
         hi!("DiagnosticError", errorfg, -, -, -, -),
         hi!("DiagnosticVirtualTextError", errorfg, -, -, Bold, -),
