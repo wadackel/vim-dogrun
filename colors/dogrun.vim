@@ -183,6 +183,7 @@ hi GitGutterChangeDelete guifg=#28795c ctermfg=29
 hi fugitiveHeader guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi ALEWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi ALEInfoSign guifg=#82dabf ctermfg=115 gui=NONE cterm=NONE
+hi NullLsInfoBorder guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi CocErrorSign guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
 hi CocWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi CocInfoSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold

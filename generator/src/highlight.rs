@@ -557,6 +557,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/dense-analysis/ale
         hi!("ALEWarningSign", warningfg, -, -, Bold, -),
         hi!("ALEInfoSign", infofg, -, -, None, -),
+        // null-ls.nvim
+        // https://github.com/jose-elias-alvarez/null-ls.nvim
+        hi!("NullLsInfoBorder", weakfg, mainbg, -, None, -),
         // coc.nvim
         // https://github.com/neoclide/coc.nvim
         hi!("CocErrorSign", errorfg, -, -, Bold, -),

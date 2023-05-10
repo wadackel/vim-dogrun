@@ -106,6 +106,7 @@ From now on, we will gradually support it :dog:
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
