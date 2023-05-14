@@ -33,7 +33,7 @@ hi CursorColumn guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
 hi CursorLine guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
 hi CursorLineNr guifg=#535f98 ctermfg=61 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Conceal guifg=#ac8b83 ctermfg=138 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
-hi NormalFloat guifg=#8085a6 ctermfg=103 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
+hi NormalFloat guifg=#8085a6 ctermfg=103 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi FloatBorder guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -171,6 +171,31 @@ hi Defx_git_Modified guifg=#26463b ctermfg=23
 hi Defx_git_Unmerged guifg=#b871b8 ctermfg=133
 hi Defx_git_Deleted guifg=#5e3e5e ctermfg=96
 hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
+hi NvimTreeSymlink guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
+hi NvimTreeSymlinkFolderName guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
+hi NvimTreeFolderName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
+hi NvimTreeRootFolder guifg=#6f78be ctermfg=104 gui=bold cterm=bold
+hi NvimTreeFolderIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi NvimTreeFileIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
+hi NvimTreeEmptyFolderName guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi NvimTreeOpenedFolderName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
+hi NvimTreeExecFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi NvimTreeOpenedFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi NvimTreeSpecialFile guifg=#8085a6 ctermfg=103 gui=bold cterm=bold
+hi NvimTreeImageFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi NvimTreeIndentMarker guifg=#363859 ctermfg=60 gui=NONE cterm=NONE
+hi NvimTreeModifiedFile guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
+hi NvimTreeGitDirty guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeGitStaged guifg=#7cbe8c ctermfg=108 gui=NONE cterm=NONE
+hi NvimTreeGitMerge guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeGitRenamed guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeGitNew guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
+hi NvimTreeGitDeleted guifg=#28795c ctermfg=29 gui=NONE cterm=NONE
+hi NvimTreeWindowPicker guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
+hi NvimTreeNormal guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi NvimTreeLiveFilterPrefix guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
+hi NvimTreeLiveFilterValue guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
+hi NvimTreeBookmark guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
 hi FernBranchSymbol guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi FernBranchText guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi FernLeafSymbol guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
