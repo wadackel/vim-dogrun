@@ -190,6 +190,7 @@ pub fn get_palette() -> Palette {
     def!(darkpink, extends!(pink, 0.0, -0.05, -0.35));
     def!(purple, "#929be5");
     def!(darkpurple, extends!(purple, 0.0, 0.05, -0.15));
+    def!(darkestpurple, extends!(purple, 0.0, 0.05, -0.42));
     def!(blue, "#589ec6");
     def!(darkblue, extends!(blue, 0.0, 0.0, -0.2));
     def!(darkestblue, extends!(blue, 0.0, 0.05, -0.48));
@@ -542,7 +543,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("NvimTreeSymlink", darkteal, -, -, None, -),
         hi!("NvimTreeSymlinkFolderName", darkteal, -, -, None, -),
         hi!("NvimTreeFolderName", purple, -, -, None, -),
-        hi!("NvimTreeRootFolder", darkpurple, -, -, Bold, -),
+        hi!("NvimTreeRootFolder", darkestpurple, -, -, Bold, -),
         hi!("NvimTreeFolderIcon", darkpurple, -, -, None, -),
         hi!("NvimTreeFileIcon", darkpurple, -, -, None, -),
         hi!("NvimTreeEmptyFolderName", weakfg, -, -, None, -),
@@ -551,7 +552,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("NvimTreeOpenedFile", lightfg, -, -, None, -),
         hi!("NvimTreeSpecialFile", lightfg, -, -, Bold, -),
         hi!("NvimTreeImageFile", lightfg, -, -, None, -),
-        hi!("NvimTreeIndentMarker", darkfg, -, -, None, -),
+        hi!("NvimTreeIndentMarker", darkestpurple, -, -, None, -),
         hi!("NvimTreeModifiedFile", mainfg, -, -, None, -),
         hi!("NvimTreeGitDirty", yellow, -, -, None, -),
         hi!("NvimTreeGitStaged", green, -, -, None, -),

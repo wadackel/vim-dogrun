@@ -174,7 +174,7 @@ hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
 hi NvimTreeSymlink guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
 hi NvimTreeSymlinkFolderName guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
 hi NvimTreeFolderName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
-hi NvimTreeRootFolder guifg=#6f78be ctermfg=104 gui=bold cterm=bold
+hi NvimTreeRootFolder guifg=#464c79 ctermfg=60 gui=bold cterm=bold
 hi NvimTreeFolderIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi NvimTreeFileIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi NvimTreeEmptyFolderName guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
@@ -183,7 +183,7 @@ hi NvimTreeExecFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeOpenedFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeSpecialFile guifg=#8085a6 ctermfg=103 gui=bold cterm=bold
 hi NvimTreeImageFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
-hi NvimTreeIndentMarker guifg=#363859 ctermfg=60 gui=NONE cterm=NONE
+hi NvimTreeIndentMarker guifg=#464c79 ctermfg=60 gui=NONE cterm=NONE
 hi NvimTreeModifiedFile guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
 hi NvimTreeGitDirty guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
 hi NvimTreeGitStaged guifg=#7cbe8c ctermfg=108 gui=NONE cterm=NONE
