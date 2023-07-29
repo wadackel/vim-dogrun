@@ -340,7 +340,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("CursorLineNr", cursorlinenrfg, NONE, -, None, -),
         hi!("Conceal", orange, mainbg, -, None, -),
         hi!("NormalFloat", lightfg, NONE, -, None, -),
-        hi!("FloatBorder", weakfg, mainbg, -, None, -),
+        hi!("FloatBorder", weakfg, NONE, -, None, -),
         hi!("Folded", foldfg, foldbg, -, None, -),
         hi!("FoldColumn", linenrfg, NONE, -, None, -),
         hi!("MatchParen", -, matchparenbg, -, -, -),
