@@ -94,6 +94,7 @@ From now on, we will gradually support it :dog:
 ### Plugins
 
 - [ALE](https://github.com/dense-analysis/ale)
+- [Copilot.vim](https://github.com/github/copilot.vim)
 - [clever-f.vim](https://github.com/rhysd/clever-f.vim)
 - [coc.nvim](https://github.com/neoclide/coc.nvim)
 - [conflict-marker.vim](https://github.com/rhysd/conflict-marker.vim)

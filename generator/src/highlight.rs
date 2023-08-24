@@ -641,6 +641,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("TelescopePromptCounter", weakfg, -, -, -, -),
         hi!("TelescopeMultiIcon", yellow, -, -, -, -),
         hi!("TelescopeMultiSelection", yellow, -, -, -, -),
+        // Copilot.vim
+        // https://github.com/github/copilot.vim
+        hi!("CopilotSuggestion", weakfg, -, -, -, -),
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!("CleverFChar", searchfg, searchbg, -, Underline, -),
