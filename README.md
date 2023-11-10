@@ -104,6 +104,7 @@ From now on, we will gradually support it :dog:
 - [easymotion](https://github.com/easymotion/vim-easymotion)
 - [fern.vim](https://github.com/lambdalisue/fern.vim)
 - [fidget.nvim](https://github.com/j-hui/fidget.nvim)
+- [flash.nvim](https://github.com/folke/flash.nvim)
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)

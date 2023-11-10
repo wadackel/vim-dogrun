@@ -659,6 +659,11 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("EasyMotionTarget", yellow, -, -, Bold, -),
         hi!("EasyMotionShade", weakfg, mainbg, -, -, -),
         hi!("EasyMotionIncCursor", mainfg, mainbg, -, -, -),
+        // flash.nvim
+        // https://github.com/folke/flash.nvim
+        hi!("FlashPrompt", purple, -, -, Bold, -),
+        hi!("FlashPromptIcon", teal, -, -, Bold, -),
+        hi!("FlashLabel", pink, -, -, Bold, -),
         // fidget.nvim
         // https://github.com/j-hui/fidget.nvim
         hi!("FidgetTitle", teal, -, -, Bold, -),
