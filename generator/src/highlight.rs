@@ -444,6 +444,10 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("DiagnosticHint", infofg, -, -, -, -),
         hi!("DiagnosticVirtualTextHint", weakfg, -, -, Bold, -),
         hi!("DiagnosticUnderlineHint", -, -, -, Underline, -),
+        hi!("LspSignatureActiveParameter", -, -, -, Italic, -),
+        hi!("LspReferenceText", -, matchparenbg, -, -, -),
+        hi!("LspReferenceRead", -, matchparenbg, -, -, -),
+        hi!("LspReferenceWrite", -, matchparenbg, -, -, -),
         // html
         hi!("htmlTag", lightfg, -, -, -, -),
         hi!("htmlEndTag", lightfg, -, -, -, -),

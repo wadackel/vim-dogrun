@@ -103,6 +103,10 @@ hi DiagnosticUnderlineInfo gui=underline cterm=underline
 hi DiagnosticHint guifg=#82dabf ctermfg=115
 hi DiagnosticVirtualTextHint guifg=#545c8c ctermfg=60 gui=bold cterm=bold
 hi DiagnosticUnderlineHint gui=underline cterm=underline
+hi LspSignatureActiveParameter gui=italic cterm=italic
+hi LspReferenceText guibg=#2f3147 ctermbg=236
+hi LspReferenceRead guibg=#2f3147 ctermbg=236
+hi LspReferenceWrite guibg=#2f3147 ctermbg=236
 hi htmlTag guifg=#8085a6 ctermfg=103
 hi htmlEndTag guifg=#8085a6 ctermfg=103
 hi htmlSpecialTagName guifg=#ac8b83 ctermfg=138
