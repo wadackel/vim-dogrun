@@ -184,22 +184,22 @@ hi NvimTreeFileIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi NvimTreeEmptyFolderName guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
 hi NvimTreeOpenedFolderName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi NvimTreeExecFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
-hi NvimTreeOpenedFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi NvimTreeOpenedHL guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeSpecialFile guifg=#8085a6 ctermfg=103 gui=bold cterm=bold
 hi NvimTreeImageFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeIndentMarker guifg=#464c79 ctermfg=60 gui=NONE cterm=NONE
-hi NvimTreeModifiedFile guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
-hi NvimTreeGitDirty guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
-hi NvimTreeGitStaged guifg=#7cbe8c ctermfg=108 gui=NONE cterm=NONE
-hi NvimTreeGitMerge guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
-hi NvimTreeGitRenamed guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
-hi NvimTreeGitNew guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
-hi NvimTreeGitDeleted guifg=#28795c ctermfg=29 gui=NONE cterm=NONE
+hi NvimTreeModifiedIcon guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
+hi NvimTreeGitDirtyIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeGitStagedIcon guifg=#7cbe8c ctermfg=108 gui=NONE cterm=NONE
+hi NvimTreeGitMergeIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeGitRenamedIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeGitNewIcon guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
+hi NvimTreeGitDeletedIcon guifg=#28795c ctermfg=29 gui=NONE cterm=NONE
 hi NvimTreeWindowPicker guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
 hi NvimTreeNormal guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeLiveFilterPrefix guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
 hi NvimTreeLiveFilterValue guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
-hi NvimTreeBookmark guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi NvimTreeBookmarkIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
 hi FernBranchSymbol guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi FernBranchText guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi FernLeafSymbol guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
@@ -295,6 +295,7 @@ if has("nvim-0.8.0")
   hi @string guifg=#7cbe8c ctermfg=108
   hi @string.regex guifg=#7cbe8c ctermfg=108
   hi @string.escape guifg=#b871b8 ctermfg=133
+  hi @string.special.url guifg=#8085a6 ctermfg=103
   hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
   hi @text.reference guifg=#929be5 ctermfg=104
   hi @text.uri guifg=#545c8c ctermfg=60
@@ -313,6 +314,13 @@ if has("nvim-0.8.0")
   hi @tag guifg=#9ea3c0 ctermfg=146
   hi @tag.delimiter guifg=#929be5 ctermfg=104
   hi @tag.attribute guifg=#929be5 ctermfg=104
+  hi @markup.heading guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
+  hi @markup.strong gui=bold cterm=bold
+  hi @markup.list guifg=#545c8c ctermfg=60
+  hi @markup.raw guifg=#73c1a9 ctermfg=79
+  hi @markup.link guifg=#929be5 ctermfg=104
+  hi @markup.link.url guifg=#8085a6 ctermfg=103
+  hi @markup.quote guifg=#545c8c ctermfg=60
   hi @lsp.type.class guifg=#9ea3c0 ctermfg=146
   hi @lsp.type.interface guifg=#ac8b83 ctermfg=138
   hi @lsp.type.parameter guifg=#929be5 ctermfg=104
