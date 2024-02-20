@@ -295,7 +295,7 @@ if has("nvim-0.8.0")
   hi @string guifg=#7cbe8c ctermfg=108
   hi @string.regex guifg=#7cbe8c ctermfg=108
   hi @string.escape guifg=#b871b8 ctermfg=133
-  hi @string.special.url guifg=#8085a6 ctermfg=103
+  hi @string.special.url guifg=#545c8c ctermfg=60
   hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
   hi @text.reference guifg=#929be5 ctermfg=104
   hi @text.uri guifg=#545c8c ctermfg=60

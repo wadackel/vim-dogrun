@@ -318,11 +318,11 @@ pub fn get_palette() -> Palette {
     def!(xlinegradientbg, extends!(statuslinencbg));
     def!(xlinegradientfg, extends!(statuslinencfg));
 
-    return p;
+    p
 }
 
 pub fn get_highlights() -> Vec<Highlight> {
-    return vec![
+    vec![
         // general
         hi!("Normal", mainfg, mainbg, -, -, -),
         hi!("Delimiter", lightfg, -, -, -, -),
@@ -402,7 +402,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("@string", green, -, -, -, Nvim080OrLater),
         hi!("@string.regex", green, -, -, -, Nvim080OrLater),
         hi!("@string.escape", pink, -, -, -, Nvim080OrLater),
-        hi!("@string.special.url", lightfg, -, -, -, Nvim080OrLater),
+        hi!("@string.special.url", weakfg, -, -, -, Nvim080OrLater),
         hi!("@text.title", yellow, -, -, Bold, Nvim080OrLater),
         hi!("@text.reference", purple, -, -, -, Nvim080OrLater),
         hi!("@text.uri", weakfg, -, -, -, Nvim080OrLater),
@@ -680,5 +680,5 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/j-hui/fidget.nvim
         hi!("FidgetTitle", teal, -, -, Bold, -),
         hi!("FidgetTask", weakfg, -, -, -, -),
-    ];
+    ]
 }
