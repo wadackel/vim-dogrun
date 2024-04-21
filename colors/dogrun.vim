@@ -205,6 +205,10 @@ hi FernBranchText guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi FernLeafSymbol guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
 hi FernLeafText guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
 hi FernMarked guifg=#59b6b6 ctermfg=73 gui=NONE cterm=NONE
+hi GitSignsAdd guifg=#7cbe8c ctermfg=108
+hi GitSignsChange guifg=#a8a384 ctermfg=144
+hi GitSignsDelete guifg=#b871b8 ctermfg=133
+hi GitSignsChangeDelete guifg=#28795c ctermfg=29
 hi GitGutterAdd guifg=#7cbe8c ctermfg=108
 hi GitGutterChange guifg=#a8a384 ctermfg=144
 hi GitGutterDelete guifg=#b871b8 ctermfg=133

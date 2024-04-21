@@ -107,6 +107,7 @@ From now on, we will gradually support it :dog:
 - [flash.nvim](https://github.com/folke/flash.nvim)
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)

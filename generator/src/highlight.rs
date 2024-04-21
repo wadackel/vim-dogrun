@@ -584,6 +584,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("FernLeafSymbol", darkteal, -, -, None, -),
         hi!("FernLeafText", mainfg, -, -, None, -),
         hi!("FernMarked", cyan, -, -, None, -),
+        // gitsigns.nvim
+        // https://github.com/lewis6991/gitsigns.nvim
+        hi!("GitSignsAdd", green, -, -, -, -),
+        hi!("GitSignsChange", yellow, -, -, -, -),
+        hi!("GitSignsDelete", pink, -, -, -, -),
+        hi!("GitSignsChangeDelete", difftextbg, -, -, -, -),
         // vim-gitgutter
         // https://github.com/airblade/vim-gitgutter
         hi!("GitGutterAdd", green, -, -, -, -),
