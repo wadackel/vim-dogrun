@@ -599,6 +599,32 @@ pub fn get_highlights() -> Vec<Highlight> {
         // fugitive.vim
         // https://github.com/tpope/vim-fugitive
         hi!("fugitiveHeader", teal, -, -, Bold, -),
+        // Diffview.nvim
+        // https://github.com/sindrets/diffview.nvim
+        hi!("DiffviewDim1", weakfg, -, -, -, -),
+        hi!("DiffviewPrimary", purple, -, -, -, -),
+        hi!("DiffviewSecondary", pink, -, -, -, -),
+        hi!("DiffviewStatusAdded", blue, -, -, -, -),
+        hi!("DiffviewStatusUntracked", yellow, -, -, -, -),
+        hi!("DiffviewStatusModified", teal, -, -, -, -),
+        hi!("DiffviewStatusRenamed", teal, -, -, -, -),
+        hi!("DiffviewStatusCopied", teal, -, -, -, -),
+        hi!("DiffviewStatusTypeChanged", teal, -, -, -, -),
+        hi!("DiffviewStatusUnmerged", pink, -, -, -, -),
+        hi!("DiffviewStatusUnknown", yellow, -, -, -, -),
+        hi!("DiffviewStatusDeleted", lightfg, -, -, -, -),
+        hi!("DiffviewStatusBroken", pink, -, -, -, -),
+        hi!("DiffviewStatusIgnored", yellow, -, -, -, -),
+        hi!("DiffviewFilePanelRootPath", darkpurple, -, -, -, -),
+        hi!("DiffviewFilePanelTitle", purple, -, -, Bold, -),
+        hi!("DiffviewFilePanelCounter", lightfg, -, -, Bold, -),
+        hi!("DiffviewFilePanelFileName", mainfg, -, -, -, -),
+        hi!("DiffviewFilePanelPath", weakfg, -, -, Bold, -),
+        hi!("DiffviewFilePanelSelected", yellow, -, -, -, -),
+        hi!("DiffviewFilePanelInsertions", teal, -, -, -, -),
+        hi!("DiffviewFilePanelDeletions", pink, -, -, -, -),
+        hi!("DiffviewFilePanelConflicts", warningfg, -, -, -, -),
+        hi!("DiffviewHash", darkpurple, -, -, -, -),
         // ale
         // https://github.com/dense-analysis/ale
         hi!("ALEWarningSign", warningfg, -, -, Bold, -),
