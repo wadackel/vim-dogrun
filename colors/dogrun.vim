@@ -35,6 +35,7 @@ hi CursorLineNr guifg=#535f98 ctermfg=61 guibg=NONE ctermbg=NONE gui=NONE cterm=
 hi Conceal guifg=#ac8b83 ctermfg=138 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi NormalFloat guifg=#8085a6 ctermfg=103 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi FloatBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi WinSeparator guifg=#363859 ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi MatchParen guibg=#2f3147 ctermbg=236
@@ -332,8 +333,11 @@ if has("nvim-0.8.0")
   hi @parameter guifg=#929be5 ctermfg=104
   hi @property guifg=#929be5 ctermfg=104
   hi @keyword guifg=#b871b8 ctermfg=133
+  hi @operator guifg=#929be5 ctermfg=104
+  hi @module guifg=#9ea3c0 ctermfg=146
   hi @type guifg=#ac8b83 ctermfg=138
   hi @type.builtin guifg=#ac8b83 ctermfg=138
+  hi @function.tsx guifg=#9ea3c0 ctermfg=146
   hi @include guifg=#929be5 ctermfg=104
   hi @variable guifg=#9ea3c0 ctermfg=146
   hi @variable.builtin guifg=#ac8b83 ctermfg=138
@@ -342,6 +346,7 @@ if has("nvim-0.8.0")
   hi @tag guifg=#9ea3c0 ctermfg=146
   hi @tag.delimiter guifg=#929be5 ctermfg=104
   hi @tag.attribute guifg=#929be5 ctermfg=104
+  hi @tag.builtin.tsx guifg=#9ea3c0 ctermfg=146
   hi @markup.heading guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
   hi @markup.strong gui=bold cterm=bold
   hi @markup.list guifg=#545c8c ctermfg=60
