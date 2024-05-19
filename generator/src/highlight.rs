@@ -417,6 +417,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("@type", orange, -, -, -, Nvim080OrLater),
         hi!("@type.builtin", orange, -, -, -, Nvim080OrLater),
         hi!("@function.tsx", mainfg, -, -, -, Nvim080OrLater),
+        hi!("@punctuation.special.typescript", lightfg, -, -, -, Nvim080OrLater),
         hi!("@include", purple, -, -, -, Nvim080OrLater),
         hi!("@variable", mainfg, -, -, -, Nvim080OrLater),
         hi!("@variable.builtin", orange, -, -, -, Nvim080OrLater),

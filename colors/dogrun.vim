@@ -338,6 +338,7 @@ if has("nvim-0.8.0")
   hi @type guifg=#ac8b83 ctermfg=138
   hi @type.builtin guifg=#ac8b83 ctermfg=138
   hi @function.tsx guifg=#9ea3c0 ctermfg=146
+  hi @punctuation.special.typescript guifg=#8085a6 ctermfg=103
   hi @include guifg=#929be5 ctermfg=104
   hi @variable guifg=#9ea3c0 ctermfg=146
   hi @variable.builtin guifg=#ac8b83 ctermfg=138
