@@ -297,7 +297,7 @@ hi EasyMotionShade guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235
 hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
 hi FlashPrompt guifg=#929be5 ctermfg=104 gui=bold cterm=bold
 hi FlashPromptIcon guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi FlashLabel guifg=#b871b8 ctermfg=133 gui=bold cterm=bold
+hi FlashLabel guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTitle guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTask guifg=#545c8c ctermfg=60
 if has("nvim")

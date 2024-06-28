@@ -713,7 +713,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/folke/flash.nvim
         hi!("FlashPrompt", purple, -, -, Bold, -),
         hi!("FlashPromptIcon", teal, -, -, Bold, -),
-        hi!("FlashLabel", pink, -, -, Bold, -),
+        hi!("FlashLabel", teal, -, -, Bold, -),
         // fidget.nvim
         // https://github.com/j-hui/fidget.nvim
         hi!("FidgetTitle", teal, -, -, Bold, -),
