@@ -377,6 +377,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("PmenuThumb", -, pmenuthumb, -, -, -),
         hi!("Visual", -, visualbg, -, None, -),
         hi!("Search", searchfg, searchbg, -, -, -),
+        hi!("CurSearch", searchfg, searchbg, -, -, -),
         hi!("IncSearch", incsearchfg, incsearchbg, -, None, -),
         hi!("Question", teal, -, -, Bold, -),
         hi!("WildMenu", mainbg, purple, -, -, -),

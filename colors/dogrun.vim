@@ -71,6 +71,7 @@ hi PmenuSbar guibg=#292c3f ctermbg=236
 hi PmenuThumb guibg=#464f7f ctermbg=60
 hi Visual guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
 hi Search guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
+hi CurSearch guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
 hi IncSearch guifg=#a4b2ff ctermfg=147 guibg=#4754cb ctermbg=62 gui=NONE cterm=NONE
 hi Question guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi WildMenu guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104
