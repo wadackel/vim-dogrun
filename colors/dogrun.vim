@@ -60,8 +60,8 @@ hi Special guifg=#b871b8 ctermfg=133
 hi SpecialKey guifg=#b871b8 ctermfg=133
 hi SpecialChar guifg=#b871b8 ctermfg=133
 hi SpecialComment guifg=#b871b8 ctermfg=133
-hi Error guifg=#dc6f79 ctermfg=167 guibg=#222433 ctermbg=235 gui=bold cterm=bold
-hi ErrorMsg guifg=#dc6f79 ctermfg=167 guibg=NONE ctermbg=NONE gui=bold cterm=bold
+hi Error guifg=#ff9494 ctermfg=210 guibg=#222433 ctermbg=235 gui=bold cterm=bold
+hi ErrorMsg guifg=#ff9494 ctermfg=210 guibg=NONE ctermbg=NONE gui=bold cterm=bold
 hi WarningMsg guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi MoreMsg guifg=#73c1a9 ctermfg=79
 hi Todo guifg=#a8a384 ctermfg=144 guibg=NONE ctermbg=NONE gui=bold cterm=bold
@@ -75,9 +75,9 @@ hi CurSearch guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
 hi IncSearch guifg=#a4b2ff ctermfg=147 guibg=#4754cb ctermbg=62 gui=NONE cterm=NONE
 hi Question guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi WildMenu guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104
-hi SpellBad guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
+hi SpellBad guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellCap gui=underline cterm=underline
-hi SpellLocal guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
+hi SpellLocal guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellRare guifg=#a8a384 ctermfg=144 gui=underline cterm=underline
 hi DiffAdd guibg=#1c394b ctermbg=237 gui=bold cterm=bold
 hi DiffChange guibg=#26463b ctermbg=23 gui=bold cterm=bold
@@ -93,9 +93,9 @@ hi TabLineFill guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=NONE cter
 hi TabLineSel guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
 hi qfFileName guifg=#73c1a9 ctermfg=79
 hi qfLineNr guifg=#545c8c ctermfg=60
-hi DiagnosticError guifg=#dc6f79 ctermfg=167
-hi DiagnosticVirtualTextError guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
-hi DiagnosticUnderlineError guifg=#dc6f79 ctermfg=167 gui=underline cterm=underline
+hi DiagnosticError guifg=#ff9494 ctermfg=210
+hi DiagnosticVirtualTextError guifg=#ff9494 ctermfg=210 gui=bold cterm=bold
+hi DiagnosticUnderlineError guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi DiagnosticWarn guifg=#ac8b83 ctermfg=138
 hi DiagnosticVirtualTextWarn guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi DiagnosticUnderlineWarn guifg=#ac8b83 ctermfg=138 gui=underline cterm=underline
@@ -243,14 +243,14 @@ hi DiffviewHash guifg=#6f78be ctermfg=104
 hi ALEWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi ALEInfoSign guifg=#82dabf ctermfg=115 gui=NONE cterm=NONE
 hi NullLsInfoBorder guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
-hi CocErrorSign guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
+hi CocErrorSign guifg=#ff9494 ctermfg=210 gui=bold cterm=bold
 hi CocWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi CocInfoSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
 hi CocHintSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
-hi LspError guifg=#dc6f79 ctermfg=167
-hi LspErrorText guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
+hi LspError guifg=#ff9494 ctermfg=210
+hi LspErrorText guifg=#ff9494 ctermfg=210 gui=bold cterm=bold
 hi LspErrorHighlight gui=underline cterm=underline
-hi LspErrorVirtualText guifg=#dc6f79 ctermfg=167 gui=bold cterm=bold
+hi LspErrorVirtualText guifg=#ff9494 ctermfg=210 gui=bold cterm=bold
 hi LspWarning guifg=#ac8b83 ctermfg=138
 hi LspWarningText guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi LspWarningHighlight gui=underline cterm=underline
@@ -303,7 +303,7 @@ hi FidgetTitle guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTask guifg=#545c8c ctermfg=60
 if has("nvim")
   let g:terminal_color_0 = '#111219'
-  let g:terminal_color_1 = '#c2616b'
+  let g:terminal_color_1 = '#e58585'
   let g:terminal_color_2 = '#7cbe8c'
   let g:terminal_color_3 = '#8e8a6f'
   let g:terminal_color_4 = '#4c89ac'
@@ -368,13 +368,13 @@ if has("nvim-0.8.0")
   hi @lsp.type.namespace guifg=#9ea3c0 ctermfg=146
 endif
 let g:defx_icons_gui_colors = {
-  \ 'brown': 'a9323d',
+  \ 'brown': 'cc4d4d',
   \ 'aqua': '5b9c9c',
   \ 'blue': '5d8fac',
   \ 'darkBlue': '557486',
   \ 'purple': '6f78be',
   \ 'lightPurple': '959acb',
-  \ 'red': 'c2616b',
+  \ 'red': 'e58585',
   \ 'beige': '686765',
   \ 'yellow': '8e8a6f',
   \ 'orange': 'c59f96',
@@ -386,13 +386,13 @@ let g:defx_icons_gui_colors = {
   \ 'white': '898da6',
   \ }
 let g:defx_icons_term_colors = {
-  \ 'brown': 131,
+  \ 'brown': 167,
   \ 'aqua': 73,
   \ 'blue': 67,
   \ 'darkBlue': 67,
   \ 'purple': 104,
   \ 'lightPurple': 103,
-  \ 'red': 131,
+  \ 'red': 174,
   \ 'beige': 242,
   \ 'yellow': 101,
   \ 'orange': 181,

@@ -184,7 +184,7 @@ pub fn get_palette() -> Palette {
     }
 
     // palettes
-    def!(red, "#dc6f7a");
+    def!(red, "#ff9494");
     def!(darkred, extends!(red, 0.0, 0.0, -0.2));
     def!(pink, "#b871b8");
     def!(darkpink, extends!(pink, 0.0, -0.05, -0.35));
