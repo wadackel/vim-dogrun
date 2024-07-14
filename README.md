@@ -110,6 +110,7 @@ From now on, we will gradually support it :dog:
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [mini.jump](https://github.com/echasnovski/mini.jump)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)

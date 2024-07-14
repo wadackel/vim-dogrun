@@ -698,6 +698,8 @@ pub fn get_highlights() -> Vec<Highlight> {
         // clever-f.vim
         // https://github.com/rhysd/clever-f.vim
         hi!("CleverFChar", searchfg, searchbg, -, Underline, -),
+        // mini.nvim
+        hi!("MiniJump", searchfg, searchbg, -, Underline, -),
         // conflict-marker.vim
         // https://github.com/rhysd/conflict-marker.vim
         hi!("ConflictMarkerBegin", -, darkteal, -, Bold, -),

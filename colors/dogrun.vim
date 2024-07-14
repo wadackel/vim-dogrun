@@ -288,6 +288,7 @@ hi TelescopeMultiIcon guifg=#a8a384 ctermfg=144
 hi TelescopeMultiSelection guifg=#a8a384 ctermfg=144
 hi CopilotSuggestion guifg=#545c8c ctermfg=60
 hi CleverFChar guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline
+hi MiniJump guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline
 hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
 hi ConflictMarkerTheirs guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
