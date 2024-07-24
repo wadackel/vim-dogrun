@@ -712,6 +712,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("EasyMotionTarget", yellow, -, -, Bold, -),
         hi!("EasyMotionShade", weakfg, mainbg, -, -, -),
         hi!("EasyMotionIncCursor", mainfg, mainbg, -, -, -),
+        // smoka7/hop.nvim
+        // https://github.com/smoka7/hop.nvim
+        hi!("HopNextKey", teal, -, -, Bold, -),
+        hi!("HopNextKey1", teal, -, -, Bold, -),
+        hi!("HopNextKey2", darkteal, -, -, Bold, -),
+        hi!("HopUnmatched", weakfg, -, -, -, -),
         // flash.nvim
         // https://github.com/folke/flash.nvim
         hi!("FlashPrompt", purple, -, -, Bold, -),

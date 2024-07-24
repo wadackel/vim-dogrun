@@ -109,6 +109,7 @@ From now on, we will gradually support it :dog:
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [fzf.vim](https://github.com/junegunn/fzf.vim)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [hop.nvim](https://github.com/smoka7/hop.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [mini.jump](https://github.com/echasnovski/mini.jump)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)

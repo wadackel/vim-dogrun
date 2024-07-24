@@ -297,6 +297,10 @@ hi ConflictMarkerSeparator guifg=#363859 ctermfg=60 gui=bold cterm=bold
 hi EasyMotionTarget guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
 hi EasyMotionShade guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235
 hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
+hi HopNextKey guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
+hi HopNextKey1 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
+hi HopNextKey2 guifg=#548e7c ctermfg=66 gui=bold cterm=bold
+hi HopUnmatched guifg=#545c8c ctermfg=60
 hi FlashPrompt guifg=#929be5 ctermfg=104 gui=bold cterm=bold
 hi FlashPromptIcon guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FlashLabel guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
