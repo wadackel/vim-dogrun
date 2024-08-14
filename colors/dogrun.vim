@@ -64,6 +64,7 @@ hi Error guifg=#ff9494 ctermfg=210 guibg=#222433 ctermbg=235 gui=bold cterm=bold
 hi ErrorMsg guifg=#ff9494 ctermfg=210 guibg=NONE ctermbg=NONE gui=bold cterm=bold
 hi WarningMsg guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi MoreMsg guifg=#73c1a9 ctermfg=79
+hi ModeMsg guifg=#73c1a9 ctermfg=79
 hi Todo guifg=#a8a384 ctermfg=144 guibg=NONE ctermbg=NONE gui=bold cterm=bold
 hi Pmenu guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237
 hi PmenuSel guifg=#9ea3c0 ctermfg=146 guibg=#424865 ctermbg=60
@@ -79,6 +80,9 @@ hi SpellBad guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellCap gui=underline cterm=underline
 hi SpellLocal guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellRare guifg=#a8a384 ctermfg=144 gui=underline cterm=underline
+hi Added guifg=#c7cef3 ctermfg=189 guibg=#1c394b ctermbg=237 gui=bold cterm=bold
+hi Removed guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=bold cterm=bold
+hi Changed guifg=#c7cef3 ctermfg=189 guibg=#26463b ctermbg=23 gui=bold cterm=bold
 hi DiffAdd guibg=#1c394b ctermbg=237 gui=bold cterm=bold
 hi DiffChange guibg=#26463b ctermbg=23 gui=bold cterm=bold
 hi DiffDelete guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=bold cterm=bold
@@ -103,6 +107,7 @@ hi DiagnosticInfo guifg=#82dabf ctermfg=115
 hi DiagnosticVirtualTextInfo guifg=#545c8c ctermfg=60 gui=bold cterm=bold
 hi DiagnosticUnderlineInfo gui=underline cterm=underline
 hi DiagnosticHint guifg=#82dabf ctermfg=115
+hi DiagnosticOk guifg=#82dabf ctermfg=115
 hi DiagnosticVirtualTextHint guifg=#545c8c ctermfg=60 gui=bold cterm=bold
 hi DiagnosticUnderlineHint gui=underline cterm=underline
 hi LspSignatureActiveParameter gui=italic cterm=italic
