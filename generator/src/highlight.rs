@@ -727,5 +727,9 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/j-hui/fidget.nvim
         hi!("FidgetTitle", teal, -, -, Bold, -),
         hi!("FidgetTask", weakfg, -, -, -, -),
+        // nvim-hlslens
+        // https://github.com/kevinhwang91/nvim-hlslens
+        hi!("HlSearchLens", weakfg, -, -, Italic, -),
+        hi!("HlSearchLensNear", weakfg, -, -, Italic, -),
     ]
 }

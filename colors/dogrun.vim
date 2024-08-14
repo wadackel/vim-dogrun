@@ -306,6 +306,8 @@ hi FlashPromptIcon guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FlashLabel guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTitle guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTask guifg=#545c8c ctermfg=60
+hi HlSearchLens guifg=#545c8c ctermfg=60 gui=italic cterm=italic
+hi HlSearchLensNear guifg=#545c8c ctermfg=60 gui=italic cterm=italic
 if has("nvim")
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#e58585'

@@ -114,6 +114,7 @@ From now on, we will gradually support it :dog:
 - [mini.jump](https://github.com/echasnovski/mini.jump)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-hlslens](https://github.com/kevinhwang91/nvim-hlslens)
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
