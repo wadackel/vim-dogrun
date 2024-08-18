@@ -80,12 +80,12 @@ hi SpellBad guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellCap gui=underline cterm=underline
 hi SpellLocal guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellRare guifg=#a8a384 ctermfg=144 gui=underline cterm=underline
-hi Added guifg=#c7cef3 ctermfg=189 guibg=#1c394b ctermbg=237 gui=bold cterm=bold
-hi Removed guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=bold cterm=bold
-hi Changed guifg=#c7cef3 ctermfg=189 guibg=#26463b ctermbg=23 gui=bold cterm=bold
-hi DiffAdd guibg=#1c394b ctermbg=237 gui=bold cterm=bold
-hi DiffChange guibg=#26463b ctermbg=23 gui=bold cterm=bold
-hi DiffDelete guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=bold cterm=bold
+hi Added guifg=#c7cef3 ctermfg=189 guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
+hi Removed guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=NONE cterm=NONE
+hi Changed guifg=#c7cef3 ctermfg=189 guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
+hi DiffAdd guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
+hi DiffChange guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
+hi DiffDelete guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=NONE cterm=NONE
 hi DiffText guibg=#28795c ctermbg=29 gui=NONE cterm=NONE
 hi QuickFixLine guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61
 hi StatusLine guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=bold cterm=bold
