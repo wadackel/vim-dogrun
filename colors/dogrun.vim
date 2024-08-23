@@ -65,6 +65,7 @@ hi ErrorMsg guifg=#ff9494 ctermfg=210 guibg=NONE ctermbg=NONE gui=bold cterm=bol
 hi WarningMsg guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi MoreMsg guifg=#73c1a9 ctermfg=79
 hi ModeMsg guifg=#73c1a9 ctermfg=79
+hi Debug guifg=#9ea3c0 ctermfg=146
 hi Todo guifg=#a8a384 ctermfg=144 guibg=NONE ctermbg=NONE gui=bold cterm=bold
 hi Pmenu guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237
 hi PmenuSel guifg=#9ea3c0 ctermfg=146 guibg=#424865 ctermbg=60
@@ -313,6 +314,27 @@ hi FidgetTitle guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi FidgetTask guifg=#545c8c ctermfg=60
 hi HlSearchLens guifg=#545c8c ctermfg=60 gui=italic cterm=italic
 hi HlSearchLensNear guifg=#545c8c ctermfg=60 gui=italic cterm=italic
+hi NotifyBackground guibg=#222433 ctermbg=235
+hi NotifyERRORBorder guifg=#cc8a8a ctermfg=174
+hi NotifyWARNBorder guifg=#796b68 ctermfg=242
+hi NotifyINFOBorder guifg=#628e80 ctermfg=66
+hi NotifyDEBUGBorder guifg=#82838d ctermfg=102
+hi NotifyTRACEBorder guifg=#628e80 ctermfg=66
+hi NotifyERRORIcon guifg=#ff9494 ctermfg=210
+hi NotifyWARNIcon guifg=#ac8b83 ctermfg=138
+hi NotifyINFOIcon guifg=#82dabf ctermfg=115
+hi NotifyDEBUGIcon guifg=#9ea3c0 ctermfg=146
+hi NotifyTRACEIcon guifg=#82dabf ctermfg=115
+hi NotifyERRORTitle guifg=#ff9494 ctermfg=210
+hi NotifyWARNTitle guifg=#ac8b83 ctermfg=138
+hi NotifyINFOTitle guifg=#82dabf ctermfg=115
+hi NotifyDEBUGTitle guifg=#9ea3c0 ctermfg=146
+hi NotifyTRACETitle guifg=#82dabf ctermfg=115
+hi NotifyERRORBody guifg=#9ea3c0 ctermfg=146
+hi NotifyWARNBody guifg=#9ea3c0 ctermfg=146
+hi NotifyINFOBody guifg=#9ea3c0 ctermfg=146
+hi NotifyDEBUGBody guifg=#9ea3c0 ctermfg=146
+hi NotifyTRACEBody guifg=#9ea3c0 ctermfg=146
 if has("nvim")
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#e58585'

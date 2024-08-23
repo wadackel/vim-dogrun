@@ -224,10 +224,16 @@ pub fn get_palette() -> Palette {
     def!(morefg, extends!(teal));
     def!(errorbg, extends!(mainbg));
     def!(errorfg, extends!(red, 0.0, 0.0, 0.0));
+    def!(errorborder, extends!(errorfg, 0.0, -0.1, -0.2));
     def!(warningbg, extends!(mainbg));
     def!(warningfg, extends!(orange, 0.0, 0.0, 0.0));
+    def!(warningborder, extends!(orange, 0.0, -0.1, -0.2));
     def!(infobg, extends!(mainbg));
     def!(infofg, extends!(teal, 0.0, 0.0, 0.1));
+    def!(infoborder, extends!(teal, 0.0, -0.1, -0.2));
+    def!(debugbg, extends!(mainbg));
+    def!(debugfg, extends!(mainfg));
+    def!(debugborder, extends!(debugfg, 0.0, -0.1, -0.2));
 
     // visual
     def!(visualbg, extends!(purple, 0.0, 0.2, -0.4));
@@ -371,6 +377,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("WarningMsg", warningfg, -, -, Bold, -),
         hi!("MoreMsg", morefg, -, -, -, -),
         hi!("ModeMsg", morefg, -, -, -, -),
+        hi!("Debug", mainfg, -, -, -, -),
         hi!("Todo", yellow, NONE, -, Bold, -),
         hi!("Pmenu", pmenufg, pmenubg, -, -, -),
         hi!("PmenuSel", pmenuselfg, pmenuselbg, -, -, -),
@@ -736,5 +743,28 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/kevinhwang91/nvim-hlslens
         hi!("HlSearchLens", weakfg, -, -, Italic, -),
         hi!("HlSearchLensNear", weakfg, -, -, Italic, -),
+        // nvim-notify
+        // https://github.com/rcarriga/nvim-notify
+        hi!("NotifyBackground", -, mainbg, -, -, -),
+        hi!("NotifyERRORBorder", errorborder, -, -, -, -),
+        hi!("NotifyWARNBorder", warningborder, -, -, -, -),
+        hi!("NotifyINFOBorder", infoborder, -, -, -, -),
+        hi!("NotifyDEBUGBorder", debugborder, -, -, -, -),
+        hi!("NotifyTRACEBorder", infoborder, -, -, -, -),
+        hi!("NotifyERRORIcon", errorfg, -, -, -, -),
+        hi!("NotifyWARNIcon", warningfg, -, -, -, -),
+        hi!("NotifyINFOIcon", infofg, -, -, -, -),
+        hi!("NotifyDEBUGIcon", debugfg, -, -, -, -),
+        hi!("NotifyTRACEIcon", infofg, -, -, -, -),
+        hi!("NotifyERRORTitle", errorfg, -, -, -, -),
+        hi!("NotifyWARNTitle", warningfg, -, -, -, -),
+        hi!("NotifyINFOTitle", infofg, -, -, -, -),
+        hi!("NotifyDEBUGTitle", debugfg, -, -, -, -),
+        hi!("NotifyTRACETitle", infofg, -, -, -, -),
+        hi!("NotifyERRORBody", mainfg, -, -, -, -),
+        hi!("NotifyWARNBody", mainfg, -, -, -, -),
+        hi!("NotifyINFOBody", mainfg, -, -, -, -),
+        hi!("NotifyDEBUGBody", mainfg, -, -, -, -),
+        hi!("NotifyTRACEBody", mainfg, -, -, -, -),
     ]
 }
