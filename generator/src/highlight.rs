@@ -18,6 +18,7 @@ pub enum HighlightAttr {
     Bold,
     Italic,
     Underline,
+    Strikethrough,
     Reverse,
 }
 
@@ -197,14 +198,14 @@ pub fn get_palette() -> Palette {
     def!(cyan, "#59b6b6");
     def!(darkcyan, extends!(cyan, 0.0, 0.0, -0.2));
     def!(teal, "#73c1a9");
-    def!(darkteal, extends!(teal, 0.0, 0.0, -0.2));
+    def!(darkteal, extends!(teal, 0.0, 0.0, -0.15));
     def!(darkestteal, extends!(teal, 0.0, 0.05, -0.48));
     def!(green, "#7cbe8c");
     def!(darkgreen, extends!(green, 0.0, -0.05, -0.4));
     def!(yellow, "#a8a384");
-    def!(darkyellow, extends!(yellow, 0.0, -0.15, -0.5));
+    def!(darkyellow, extends!(yellow, 0.0, -0.15, -0.1));
     def!(orange, "#ac8b83");
-    def!(darkorange, extends!(orange, 0.0, -0.05, -0.2));
+    def!(darkorange, extends!(orange, 0.0, -0.05, -0.1));
 
     // neutral
     def!(mainfg, "#9ea3c0");
@@ -681,16 +682,23 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("CmpItemAbbr", mainfg, -, -, -, -),
         hi!("CmpItemAbbrMatch", purple, -, -, Bold, -),
         hi!("CmpItemAbbrMatchFuzzy", purple, -, -, Bold, -),
+        hi!("CmpItemAbbrDeprecated", weakfg, -, -, Strikethrough, -),
+        hi!("CmpItemMenu", weakfg, -, -, Italic, -),
         hi!("CmpItemKind", lightfg, -, -, -, -),
-        hi!("CmpItemKindDefault", lightfg, -, -, -, -),
         hi!("CmpItemKindText", lightfg, -, -, -, -),
-        hi!("CmpItemKindVariable", lightfg, -, -, -, -),
-        hi!("CmpItemKindKeyword", lightfg, -, -, -, -),
-        hi!("CmpItemKindInterface", lightfg, -, -, -, -),
-        hi!("CmpItemKindFunction", lightfg, -, -, -, -),
-        hi!("CmpItemKindMethod", lightfg, -, -, -, -),
-        hi!("CmpItemKindProperty", lightfg, -, -, -, -),
-        hi!("CmpItemKindUnit", lightfg, -, -, -, -),
+        hi!("CmpItemKindVariable", teal, -, -, -, -),
+        hi!("CmpItemKindConstant", teal, -, -, -, -),
+        hi!("CmpItemKindEnum", teal, -, -, -, -),
+        hi!("CmpItemKindInterface", teal, -, -, -, -),
+        hi!("CmpItemKindClass", teal, -, -, -, -),
+        hi!("CmpItemKindFunction", orange, -, -, -, -),
+        hi!("CmpItemKindMethod", orange, -, -, -, -),
+        hi!("CmpItemKindModule", orange, -, -, -, -),
+        hi!("CmpItemKindConstructor", orange, -, -, -, -),
+        hi!("CmpItemKindKeyword", yellow, -, -, -, -),
+        hi!("CmpItemKindProperty", yellow, -, -, -, -),
+        hi!("CmpItemKindField", yellow, -, -, -, -),
+        hi!("CmpItemKindUnit", yellow, -, -, -, -),
         // dressing.nvim
         // https://github.com/stevearc/dressing.nvim
         hi!("FloatTitle", purple, mainbg, -, None, -),

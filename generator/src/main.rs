@@ -39,11 +39,12 @@ fn highlight(palette: &Palette, hl: &Highlight) -> String {
         HighlightAttr::Bold => "gui=bold cterm=bold",
         HighlightAttr::Italic => "gui=italic cterm=italic",
         HighlightAttr::Underline => "gui=underline cterm=underline",
+        HighlightAttr::Strikethrough => "gui=strikethrough cterm=strikethrough",
         HighlightAttr::Reverse => "gui=reverse cterm=reverse",
         HighlightAttr::None => "gui=NONE cterm=NONE",
     };
 
-    if attr != "" {
+    if !attr.is_empty() {
         args.push(attr.to_string());
     }
 

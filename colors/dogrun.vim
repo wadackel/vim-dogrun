@@ -183,8 +183,8 @@ hi Defx_git_Modified guifg=#26463b ctermfg=23
 hi Defx_git_Unmerged guifg=#b871b8 ctermfg=133
 hi Defx_git_Deleted guifg=#5e3e5e ctermfg=96
 hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
-hi NvimTreeSymlink guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
-hi NvimTreeSymlinkFolderName guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
+hi NvimTreeSymlink guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
+hi NvimTreeSymlinkFolderName guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi NvimTreeFolderName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi NvimTreeRootFolder guifg=#464c79 ctermfg=60 gui=bold cterm=bold
 hi NvimTreeFolderIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
@@ -205,12 +205,12 @@ hi NvimTreeGitNewIcon guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
 hi NvimTreeGitDeletedIcon guifg=#28795c ctermfg=29 gui=NONE cterm=NONE
 hi NvimTreeWindowPicker guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
 hi NvimTreeNormal guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
-hi NvimTreeLiveFilterPrefix guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
+hi NvimTreeLiveFilterPrefix guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi NvimTreeLiveFilterValue guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
 hi NvimTreeBookmarkIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
 hi FernBranchSymbol guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi FernBranchText guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
-hi FernLeafSymbol guifg=#548e7c ctermfg=66 gui=NONE cterm=NONE
+hi FernLeafSymbol guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi FernLeafText guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
 hi FernMarked guifg=#59b6b6 ctermfg=73 gui=NONE cterm=NONE
 hi GitSignsAdd guifg=#7cbe8c ctermfg=108
@@ -273,16 +273,23 @@ hi LspCodeActionText guifg=#6f78be ctermfg=104 gui=bold cterm=bold
 hi CmpItemAbbr guifg=#9ea3c0 ctermfg=146
 hi CmpItemAbbrMatch guifg=#929be5 ctermfg=104 gui=bold cterm=bold
 hi CmpItemAbbrMatchFuzzy guifg=#929be5 ctermfg=104 gui=bold cterm=bold
+hi CmpItemAbbrDeprecated guifg=#545c8c ctermfg=60 gui=strikethrough cterm=strikethrough
+hi CmpItemMenu guifg=#545c8c ctermfg=60 gui=italic cterm=italic
 hi CmpItemKind guifg=#8085a6 ctermfg=103
-hi CmpItemKindDefault guifg=#8085a6 ctermfg=103
 hi CmpItemKindText guifg=#8085a6 ctermfg=103
-hi CmpItemKindVariable guifg=#8085a6 ctermfg=103
-hi CmpItemKindKeyword guifg=#8085a6 ctermfg=103
-hi CmpItemKindInterface guifg=#8085a6 ctermfg=103
-hi CmpItemKindFunction guifg=#8085a6 ctermfg=103
-hi CmpItemKindMethod guifg=#8085a6 ctermfg=103
-hi CmpItemKindProperty guifg=#8085a6 ctermfg=103
-hi CmpItemKindUnit guifg=#8085a6 ctermfg=103
+hi CmpItemKindVariable guifg=#73c1a9 ctermfg=79
+hi CmpItemKindConstant guifg=#73c1a9 ctermfg=79
+hi CmpItemKindEnum guifg=#73c1a9 ctermfg=79
+hi CmpItemKindInterface guifg=#73c1a9 ctermfg=79
+hi CmpItemKindClass guifg=#73c1a9 ctermfg=79
+hi CmpItemKindFunction guifg=#ac8b83 ctermfg=138
+hi CmpItemKindMethod guifg=#ac8b83 ctermfg=138
+hi CmpItemKindModule guifg=#ac8b83 ctermfg=138
+hi CmpItemKindConstructor guifg=#ac8b83 ctermfg=138
+hi CmpItemKindKeyword guifg=#a8a384 ctermfg=144
+hi CmpItemKindProperty guifg=#a8a384 ctermfg=144
+hi CmpItemKindField guifg=#a8a384 ctermfg=144
+hi CmpItemKindUnit guifg=#a8a384 ctermfg=144
 hi FloatTitle guifg=#929be5 ctermfg=104 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi TelescopeNormal guifg=#8085a6 ctermfg=103
 hi TelescopeTitle guifg=#929be5 ctermfg=104
@@ -295,7 +302,7 @@ hi TelescopeMultiSelection guifg=#a8a384 ctermfg=144
 hi CopilotSuggestion guifg=#545c8c ctermfg=60
 hi CleverFChar guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline
 hi MiniJump guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline
-hi ConflictMarkerBegin guibg=#548e7c ctermbg=66 gui=bold cterm=bold
+hi ConflictMarkerBegin guibg=#5b9a87 ctermbg=72 gui=bold cterm=bold
 hi ConflictMarkerOurs guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
 hi ConflictMarkerTheirs guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
 hi ConflictMarkerEnd guibg=#417593 ctermbg=31 gui=bold cterm=bold
@@ -305,7 +312,7 @@ hi EasyMotionShade guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235
 hi EasyMotionIncCursor guifg=#9ea3c0 ctermfg=146 guibg=#222433 ctermbg=235
 hi HopNextKey guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi HopNextKey1 guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
-hi HopNextKey2 guifg=#548e7c ctermfg=66 gui=bold cterm=bold
+hi HopNextKey2 guifg=#5b9a87 ctermfg=72 gui=bold cterm=bold
 hi HopUnmatched guifg=#545c8c ctermfg=60
 hi FlashPrompt guifg=#929be5 ctermfg=104 gui=bold cterm=bold
 hi FlashPromptIcon guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
