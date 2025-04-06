@@ -350,6 +350,8 @@ hi AvanteThirdTitle guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237
 hi AvanteReversedThirdTitle guifg=#32364c ctermfg=237
 hi AvantePopupHint guifg=#545c8c ctermfg=60
 hi AvanteInlineHint guifg=#545c8c ctermfg=60
+hi AvanteSidebarWinSeparator guifg=#363859 ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi AvanteSidebarWinHorizontalSeparator guifg=#222433 ctermfg=235 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 if has("nvim")
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#e58585'

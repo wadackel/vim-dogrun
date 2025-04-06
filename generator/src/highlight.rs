@@ -784,5 +784,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("AvanteReversedThirdTitle", weakbg, -, -, -, -),
         hi!("AvantePopupHint", weakfg, -, -, -, -),
         hi!("AvanteInlineHint", weakfg, -, -, -, -),
+        hi!("AvanteSidebarWinSeparator", darkfg, NONE, -, None, -),
+        hi!("AvanteSidebarWinHorizontalSeparator", mainbg, NONE, -, None, -),
     ]
 }
