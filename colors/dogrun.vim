@@ -342,6 +342,14 @@ hi NotifyWARNBody guifg=#9ea3c0 ctermfg=146
 hi NotifyINFOBody guifg=#9ea3c0 ctermfg=146
 hi NotifyDEBUGBody guifg=#9ea3c0 ctermfg=146
 hi NotifyTRACEBody guifg=#9ea3c0 ctermfg=146
+hi AvanteTitle guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104
+hi AvanteReversedTitle guifg=#929be5 ctermfg=104
+hi AvanteSubtitle guifg=#222433 ctermfg=235 guibg=#73c1a9 ctermbg=79
+hi AvanteReversedSubtitle guifg=#73c1a9 ctermfg=79
+hi AvanteThirdTitle guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237
+hi AvanteReversedThirdTitle guifg=#32364c ctermfg=237
+hi AvantePopupHint guifg=#545c8c ctermfg=60
+hi AvanteInlineHint guifg=#545c8c ctermfg=60
 if has("nvim")
   let g:terminal_color_0 = '#111219'
   let g:terminal_color_1 = '#e58585'

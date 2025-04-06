@@ -774,5 +774,15 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("NotifyINFOBody", mainfg, -, -, -, -),
         hi!("NotifyDEBUGBody", mainfg, -, -, -, -),
         hi!("NotifyTRACEBody", mainfg, -, -, -, -),
+        // avante.nvim
+        // https://github.com/yetone/avante.nvim
+        hi!("AvanteTitle", mainbg, purple, -, -, -),
+        hi!("AvanteReversedTitle", purple, -, -, -, -),
+        hi!("AvanteSubtitle", mainbg, teal, -, -, -),
+        hi!("AvanteReversedSubtitle", teal, -, -, -, -),
+        hi!("AvanteThirdTitle", mainfg, weakbg, -, -, -),
+        hi!("AvanteReversedThirdTitle", weakbg, -, -, -, -),
+        hi!("AvantePopupHint", weakfg, -, -, -, -),
+        hi!("AvanteInlineHint", weakfg, -, -, -, -),
     ]
 }

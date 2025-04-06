@@ -96,6 +96,7 @@ From now on, we will gradually support it :dog:
 - [ALE](https://github.com/dense-analysis/ale)
 - [Copilot.vim](https://github.com/github/copilot.vim)
 - [Diffview.nvim](https://github.com/sindrets/diffview.nvim)
+- [avante.nvim](https://github.com/yetone/avante.nvim)
 - [clever-f.vim](https://github.com/rhysd/clever-f.vim)
 - [coc.nvim](https://github.com/neoclide/coc.nvim)
 - [conflict-marker.vim](https://github.com/rhysd/conflict-marker.vim)
