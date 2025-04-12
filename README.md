@@ -94,6 +94,7 @@ From now on, we will gradually support it :dog:
 ### Plugins
 
 - [ALE](https://github.com/dense-analysis/ale)
+- [Blink Completion](https://github.com/Saghen/blink.cmp)
 - [Copilot.vim](https://github.com/github/copilot.vim)
 - [Diffview.nvim](https://github.com/sindrets/diffview.nvim)
 - [avante.nvim](https://github.com/yetone/avante.nvim)

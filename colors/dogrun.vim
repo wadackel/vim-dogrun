@@ -290,6 +290,30 @@ hi CmpItemKindKeyword guifg=#a8a384 ctermfg=144
 hi CmpItemKindProperty guifg=#a8a384 ctermfg=144
 hi CmpItemKindField guifg=#a8a384 ctermfg=144
 hi CmpItemKindUnit guifg=#a8a384 ctermfg=144
+hi BlinkCmpMenu guifg=#9ea3c0 ctermfg=146
+hi BlinkCmpMenuSelection guibg=#363e7f ctermbg=61
+hi BlinkCmpLabelMatch guifg=#929be5 ctermfg=104 gui=bold cterm=bold
+hi BlinkCmpLabelDeprecated guifg=#545c8c ctermfg=60 gui=strikethrough cterm=strikethrough
+hi BlinkCmpKind guifg=#8085a6 ctermfg=103
+hi BlinkCmpKindText guifg=#8085a6 ctermfg=103
+hi BlinkCmpKindVariable guifg=#73c1a9 ctermfg=79
+hi BlinkCmpKindConstant guifg=#73c1a9 ctermfg=79
+hi BlinkCmpKindEnum guifg=#73c1a9 ctermfg=79
+hi BlinkCmpKindInterface guifg=#73c1a9 ctermfg=79
+hi BlinkCmpKindClass guifg=#73c1a9 ctermfg=79
+hi BlinkCmpKindFunction guifg=#ac8b83 ctermfg=138
+hi BlinkCmpKindMethod guifg=#ac8b83 ctermfg=138
+hi BlinkCmpKindModule guifg=#ac8b83 ctermfg=138
+hi BlinkCmpKindConstructor guifg=#ac8b83 ctermfg=138
+hi BlinkCmpKindKeyword guifg=#a8a384 ctermfg=144
+hi BlinkCmpKindProperty guifg=#a8a384 ctermfg=144
+hi BlinkCmpKindField guifg=#a8a384 ctermfg=144
+hi BlinkCmpKindUnit guifg=#a8a384 ctermfg=144
+hi BlinkCmpSource guifg=#545c8c ctermfg=60 gui=italic cterm=italic
+hi BlinkCmpDocSeparator guifg=#545c8c ctermfg=60
+hi BlinkCmpMenuBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi BlinkCmpDocBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi BlinkCmpSignatureHelpBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi FloatTitle guifg=#929be5 ctermfg=104 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi TelescopeNormal guifg=#8085a6 ctermfg=103
 hi TelescopeTitle guifg=#929be5 ctermfg=104
