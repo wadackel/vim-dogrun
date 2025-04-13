@@ -246,9 +246,10 @@ pub fn get_palette() -> Palette {
 
     // pmenu
     def!(pmenubg, extends!(mainbg, 0.0, 0.0, 0.1));
-    def!(pmenufg, extends!(mainfg, 0.0, 0.0, 0.0));
-    def!(pmenuselbg, extends!(pmenubg, 0.0, 0.0, 0.1));
-    def!(pmenuselfg, extends!(mainfg, 0.0, 0.0, 0.0));
+    def!(pmenufg, extends!(mainfg));
+    def!(pmenuselbg, extends!(visualbg));
+    def!(pmenuselfg, extends!(mainfg));
+    def!(pmenumatchfg, extends!(purple));
     def!(pmenubar, extends!(pmenubg, 0.0, 0.0, -0.05));
     def!(pmenuthumb, extends!(pmenubg, 0.0, 0.1, 0.2));
 
@@ -381,7 +382,8 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("Debug", mainfg, -, -, -, -),
         hi!("Todo", yellow, NONE, -, Bold, -),
         hi!("Pmenu", pmenufg, pmenubg, -, -, -),
-        hi!("PmenuSel", pmenuselfg, pmenuselbg, -, -, -),
+        hi!("PmenuSel", pmenuselfg, pmenuselbg, -, None, -),
+        hi!("PmenuMatch", pmenumatchfg, -, -, Bold, -),
         hi!("PmenuSbar", -, pmenubar, -, -, -),
         hi!("PmenuThumb", -, pmenuthumb, -, -, -),
         hi!("Visual", -, visualbg, -, None, -),

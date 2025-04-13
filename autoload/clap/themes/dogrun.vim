@@ -12,7 +12,7 @@ let s:palette.input = { 'ctermfg': '104', 'guifg': '#929be5', 'ctermbg': '236', 
 let s:palette.display = { 'ctermfg': '146', 'guifg': '#9ea3c0', 'ctermbg': '237', 'guibg': '#32364c', 'gui': 'NONE', 'cterm': 'NONE' }
 let s:palette.spinner = { 'ctermfg': '104', 'guifg': '#929be5', 'ctermbg': '236', 'guibg': '#292c3f', 'gui': 'bold', 'cterm': 'bold' }
 let s:palette.search_text = { 'ctermfg': '146', 'guifg': '#9ea3c0', 'ctermbg': '236', 'guibg': '#292c3f', 'gui': 'NONE', 'cterm': 'NONE' }
-let s:palette.preview = { 'ctermfg': '146', 'guifg': '#9ea3c0', 'ctermbg': '60', 'guibg': '#424865', 'gui': 'NONE', 'cterm': 'NONE' }
+let s:palette.preview = { 'ctermfg': '146', 'guifg': '#9ea3c0', 'ctermbg': '61', 'guibg': '#363e7f', 'gui': 'NONE', 'cterm': 'NONE' }
 let s:palette.selected = { 'ctermfg': '73', 'guifg': '#59b6b6', 'gui': 'bold', 'cterm': 'bold' }
 let s:palette.current_selection = { 'ctermfg': '146', 'guifg': '#bdc3e6', 'gui': 'bold', 'cterm': 'bold' }
 hi ClapMatches guifg=#73c1a9 ctermfg=79 guibg=NONE cterm=NONE gui=bold cterm=bold

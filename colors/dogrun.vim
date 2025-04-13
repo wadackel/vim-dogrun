@@ -68,7 +68,8 @@ hi ModeMsg guifg=#73c1a9 ctermfg=79
 hi Debug guifg=#9ea3c0 ctermfg=146
 hi Todo guifg=#a8a384 ctermfg=144 guibg=NONE ctermbg=NONE gui=bold cterm=bold
 hi Pmenu guifg=#9ea3c0 ctermfg=146 guibg=#32364c ctermbg=237
-hi PmenuSel guifg=#9ea3c0 ctermfg=146 guibg=#424865 ctermbg=60
+hi PmenuSel guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
+hi PmenuMatch guifg=#929be5 ctermfg=104 gui=bold cterm=bold
 hi PmenuSbar guibg=#292c3f ctermbg=236
 hi PmenuThumb guibg=#464f7f ctermbg=60
 hi Visual guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
