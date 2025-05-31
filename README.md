@@ -11,7 +11,6 @@
 - Support 256 colors terminal.
 - Supports Neovim's built-in [language server client](https://neovim.io/doc/user/lsp.html).
 - Supports [lightline.vim](https://github.com/itchyny/lightline.vim) theme.
-- Supports [vim-clap](https://github.com/liuchengxu/vim-clap) theme.
 - Supports [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - Supports LSP Semantic highlights.
 - Loading speed is increased by precompiled script. (powered by Rust)
@@ -120,6 +119,7 @@ From now on, we will gradually support it :dog:
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [snacks.nvim](https://github.com/folke/snacks.nvim) (Partial Support)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [vim-clap](https://github.com/liuchengxu/vim-clap)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)

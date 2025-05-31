@@ -324,6 +324,10 @@ hi TelescopePromptPrefix guifg=#73c1a9 ctermfg=79
 hi TelescopePromptCounter guifg=#545c8c ctermfg=60
 hi TelescopeMultiIcon guifg=#a8a384 ctermfg=144
 hi TelescopeMultiSelection guifg=#a8a384 ctermfg=144
+hi SnacksNormal guifg=#8085a6 ctermfg=103
+hi SnacksPickerPrompt guifg=#73c1a9 ctermfg=79
+hi SnacksPickerMatch guifg=#929be5 ctermfg=104
+hi SnacksPickerDir guifg=#545c8c ctermfg=60
 hi CopilotSuggestion guifg=#545c8c ctermfg=60
 hi CleverFChar guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline
 hi MiniJump guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63 gui=underline cterm=underline

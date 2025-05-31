@@ -740,6 +740,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("TelescopePromptCounter", weakfg, -, -, -, -),
         hi!("TelescopeMultiIcon", yellow, -, -, -, -),
         hi!("TelescopeMultiSelection", yellow, -, -, -, -),
+        // snacks.nvim
+        // https://github.com/folke/snacks.nvim
+        hi!("SnacksNormal", lightfg, -, -, -, -),
+        hi!("SnacksPickerPrompt", teal, -, -, -, -),
+        hi!("SnacksPickerMatch", purple, -, -, -, -),
+        hi!("SnacksPickerDir", weakfg, -, -, -, -),
         // Copilot.vim
         // https://github.com/github/copilot.vim
         hi!("CopilotSuggestion", weakfg, -, -, -, -),
