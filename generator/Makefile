@@ -8,4 +8,4 @@ build:
 
 .PHONY: watch
 watch:
-	cargo watch -x 'run -- -d ..'
+	bacon run-long -- -- -d ..
