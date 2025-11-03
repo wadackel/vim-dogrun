@@ -1,0 +1,54 @@
+on: [push]
+name: CI
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Cache cargo dependencies
+        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
+        with:
+          path: |
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            generator/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('generator/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Show Rust version
+        run: rustc --version && cargo --version
+
+      - name: Install clippy
+        run: rustup component add clippy
+
+      - name: Check formatting
+        run: cargo fmt --manifest-path=generator/Cargo.toml --all -- --check
+
+      - name: Run clippy
+        run: cargo clippy --manifest-path=generator/Cargo.toml --all-targets --all-features -- -D warnings
+
+      - name: Build
+        run: cargo build --manifest-path=generator/Cargo.toml --release --all-features --verbose
+
+      - name: Run tests
+        run: cargo test --manifest-path=generator/Cargo.toml --verbose
+
+      - name: Check generator is up-to-date
+        run: |
+          cd generator
+          cargo run -- -d ..
+          if ! git diff --exit-code ../colors ../autoload; then
+            echo "Error: Generated files are not up-to-date"
+            echo "Please run 'cd generator && make build' and commit the changes"
+            git diff
+            exit 1
+          fi
