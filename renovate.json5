@@ -1,0 +1,42 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  // Extend Renovate's recommended configuration and GitHub Actions digest pinning
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests"
+  ],
+
+  // Timezone configuration
+  "timezone": "Asia/Tokyo",
+
+  // Labels to apply to pull requests
+  "labels": ["A-dependencies"],
+
+  // Wait 7 days after a new version is released before creating a PR
+  "minimumReleaseAge": "7 days",
+
+  // No limit on the number of concurrent PRs
+  "prConcurrentLimit": 0,
+
+  // Enable vulnerability alerts (ignores minimumReleaseAge for security updates)
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+
+  // Package-specific rules for grouping updates by dependency type
+  "packageRules": [
+    {
+      // Cargo: group minor/patch updates together (major updates get individual PRs)
+      "matchManagers": ["cargo"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Cargo non-major dependencies"
+    },
+    {
+      // GitHub Actions: group minor/patch updates together (major updates get individual PRs)
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "GitHub Actions non-major updates"
+    }
+  ]
+}
