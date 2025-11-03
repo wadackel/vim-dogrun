@@ -1,3 +1,5 @@
+#![allow(clippy::deprecated_cfg_attr)]
+
 #[macro_use]
 extern crate clap;
 extern crate dogrun;

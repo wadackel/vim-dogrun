@@ -1,3 +1,5 @@
+#![allow(clippy::vec_init_then_push)]
+
 use delta_e::DE2000;
 use lab::Lab;
 use tint::Color;
@@ -268,43 +270,43 @@ lazy_static! {
 pub fn hex2lab(hex: String) -> Lab {
     let color = Color::from(hex);
 
-    return Lab::from_rgb(&[
+    Lab::from_rgb(&[
         (color.red * 255.0) as u8,
         (color.green * 255.0) as u8,
         (color.blue * 255.0) as u8,
-    ]);
+    ])
 }
 
 pub fn hex2hsv(hex: String) -> Lab {
     let color = Color::from(hex);
 
-    return Lab::from_rgb(&[
+    Lab::from_rgb(&[
         (color.red * 255.0) as u8,
         (color.green * 255.0) as u8,
         (color.blue * 255.0) as u8,
-    ]);
+    ])
 }
 
 pub fn hue(hex: String, amount: f64) -> String {
     let (h, s, v) = Color::from(hex).to_hsv();
 
-    return Color::new(h + amount, s, v, 1.0).from_hsv().to_hex();
+    Color::new(h + amount, s, v, 1.0).from_hsv().to_hex()
 }
 
 pub fn saturate(hex: String, factor: f64) -> String {
     let (h, s, v) = Color::from(hex).to_hsv();
 
-    return Color::new(h, s + factor, v, 1.0).from_hsv().to_hex();
+    Color::new(h, s + factor, v, 1.0).from_hsv().to_hex()
 }
 
 pub fn darken(hex: String, amount: f64) -> String {
     let (h, s, v) = Color::from(hex).to_hsv();
 
-    return Color::new(h, s, v - amount, 1.0).from_hsv().to_hex();
+    Color::new(h, s, v - amount, 1.0).from_hsv().to_hex()
 }
 
 pub fn lighten(hex: String, amount: f64) -> String {
-    return darken(hex, -amount);
+    darken(hex, -amount)
 }
 
 pub fn to_cterm(hex: String) -> usize {
@@ -319,9 +321,9 @@ pub fn to_cterm(hex: String) -> usize {
 
     v.sort_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap());
 
-    let (id, _) = v.get(0).unwrap();
+    let (id, _) = v.first().unwrap();
 
-    return **id;
+    **id
 }
 
 #[cfg(test)]
