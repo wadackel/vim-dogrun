@@ -82,13 +82,13 @@ hi SpellBad guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellCap gui=underline cterm=underline
 hi SpellLocal guifg=#ff9494 ctermfg=210 gui=underline cterm=underline
 hi SpellRare guifg=#a8a384 ctermfg=144 gui=underline cterm=underline
-hi Added guifg=#c7cef3 ctermfg=189 guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
-hi Removed guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=NONE cterm=NONE
-hi Changed guifg=#c7cef3 ctermfg=189 guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
-hi DiffAdd guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
-hi DiffChange guibg=#26463b ctermbg=23 gui=NONE cterm=NONE
-hi DiffDelete guifg=#d2d9ff ctermfg=189 guibg=#5e3e5e ctermbg=96 gui=NONE cterm=NONE
-hi DiffText guibg=#28795c ctermbg=29 gui=NONE cterm=NONE
+hi Added guifg=NONE ctermfg=NONE guibg=#1c394b ctermbg=237 gui=NONE cterm=NONE
+hi Removed guifg=#775c77 ctermfg=96 guibg=#513351 ctermbg=53 gui=NONE cterm=NONE
+hi Changed guifg=NONE ctermfg=NONE guibg=#1e3930 ctermbg=236 gui=NONE cterm=NONE
+hi DiffAdd guifg=NONE ctermfg=NONE guibg=#1c394b ctermbg=237
+hi DiffChange guifg=NONE ctermfg=NONE guibg=#1e3930 ctermbg=236
+hi DiffDelete guifg=#775c77 ctermfg=96 guibg=#513351 ctermbg=53
+hi DiffText guifg=NONE ctermfg=NONE guibg=#1f4a3c ctermbg=23
 hi QuickFixLine guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61
 hi StatusLine guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=bold cterm=bold
 hi StatusLineTerm guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=bold cterm=bold
@@ -179,10 +179,10 @@ hi DefxIconsClosedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi Defx_git_Untracked guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi Defx_git_Ignored guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
 hi Defx_git_Unknown guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
-hi Defx_git_Renamed guifg=#26463b ctermfg=23
-hi Defx_git_Modified guifg=#26463b ctermfg=23
+hi Defx_git_Renamed guifg=#1e3930 ctermfg=236
+hi Defx_git_Modified guifg=#1e3930 ctermfg=236
 hi Defx_git_Unmerged guifg=#b871b8 ctermfg=133
-hi Defx_git_Deleted guifg=#5e3e5e ctermfg=96
+hi Defx_git_Deleted guifg=#513351 ctermfg=53
 hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
 hi NvimTreeSymlink guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi NvimTreeSymlinkFolderName guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
@@ -203,7 +203,7 @@ hi NvimTreeGitStagedIcon guifg=#7cbe8c ctermfg=108 gui=NONE cterm=NONE
 hi NvimTreeGitMergeIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
 hi NvimTreeGitRenamedIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
 hi NvimTreeGitNewIcon guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
-hi NvimTreeGitDeletedIcon guifg=#28795c ctermfg=29 gui=NONE cterm=NONE
+hi NvimTreeGitDeletedIcon guifg=#1f4a3c ctermfg=23 gui=NONE cterm=NONE
 hi NvimTreeWindowPicker guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104 gui=bold cterm=bold
 hi NvimTreeNormal guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeLiveFilterPrefix guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
@@ -217,11 +217,11 @@ hi FernMarked guifg=#59b6b6 ctermfg=73 gui=NONE cterm=NONE
 hi GitSignsAdd guifg=#7cbe8c ctermfg=108
 hi GitSignsChange guifg=#a8a384 ctermfg=144
 hi GitSignsDelete guifg=#b871b8 ctermfg=133
-hi GitSignsChangeDelete guifg=#28795c ctermfg=29
+hi GitSignsChangeDelete guifg=#1f4a3c ctermfg=23
 hi GitGutterAdd guifg=#7cbe8c ctermfg=108
 hi GitGutterChange guifg=#a8a384 ctermfg=144
 hi GitGutterDelete guifg=#b871b8 ctermfg=133
-hi GitGutterChangeDelete guifg=#28795c ctermfg=29
+hi GitGutterChangeDelete guifg=#1f4a3c ctermfg=23
 hi fugitiveHeader guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi DiffviewDim1 guifg=#545c8c ctermfg=60
 hi DiffviewPrimary guifg=#929be5 ctermfg=104

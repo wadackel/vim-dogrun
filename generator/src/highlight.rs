@@ -259,13 +259,10 @@ pub fn get_palette() -> Palette {
 
     // diff
     def!(diffaddbg, extends!(darkestblue));
-    def!(diffaddfg, extends!(mainfg, 0.0, 0.0, 0.2));
-    def!(diffchangebg, extends!(darkestteal));
-    def!(diffchangefg, extends!(mainfg, 0.0, 0.0, 0.2));
-    def!(diffdeletebg, extends!(darkpink));
-    def!(diffdeletefg, extends!(mainfg, 0.0, 0.0, 0.25));
-    def!(difftextbg, extends!(diffchangebg, 0.0, 0.2, 0.2));
-    def!(difftextfg, extends!(mainfg, 0.0, 0.0, 0.2));
+    def!(diffchangebg, extends!(darkestteal, 0.0, 0.0, -0.05));
+    def!(diffdeletebg, extends!(darkpink, 0.0, 0.0, -0.05));
+    def!(diffdeletefg, extends!(diffdeletebg, 0.0, -0.15, 0.15));
+    def!(difftextbg, extends!(diffchangebg, 0.0, 0.1, 0.07));
 
     // status & tab line
     def!(statuslinebg, extends!(mainbg, 0.0, 0.0, 0.05));
@@ -396,13 +393,13 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("SpellCap", -, -, -, Underline, -),
         hi!("SpellLocal", errorfg, -, -, Underline, -),
         hi!("SpellRare", yellow, -, -, Underline, -),
-        hi!("Added", diffaddfg, diffaddbg, -, None, -),
+        hi!("Added", NONE, diffaddbg, -, None, -),
         hi!("Removed", diffdeletefg, diffdeletebg, -, None, -),
-        hi!("Changed", diffchangefg, diffchangebg, -, None, -),
-        hi!("DiffAdd", -, diffaddbg, -, None, -),
-        hi!("DiffChange", -, diffchangebg, -, None, -),
-        hi!("DiffDelete", diffdeletefg, diffdeletebg, -, None, -),
-        hi!("DiffText", -, difftextbg, -, None, -),
+        hi!("Changed", NONE, diffchangebg, -, None, -),
+        hi!("DiffAdd", NONE, diffaddbg, -, -, -),
+        hi!("DiffChange", NONE, diffchangebg, -, -, -),
+        hi!("DiffDelete", diffdeletefg, diffdeletebg, -, -, -),
+        hi!("DiffText", NONE, difftextbg, -, -, -),
         hi!("QuickFixLine", mainfg, visualbg, -, -, -),
         hi!("StatusLine", statuslinefg, statuslinebg, -, Bold, -),
         hi!("StatusLineTerm", statuslinefg, statuslinebg, -, Bold, -),
