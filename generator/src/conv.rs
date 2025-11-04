@@ -1,6 +1,6 @@
 #![allow(clippy::vec_init_then_push)]
 
-use delta_e::DE2000;
+use empfindung::cie00::diff;
 use lab::Lab;
 use tint::Color;
 
@@ -315,7 +315,7 @@ pub fn to_cterm(hex: String) -> usize {
 
     for (id, value) in CTERM_COLORS.iter() {
         let target = hex2lab(value.to_string());
-        let diff = DE2000::new(color, target);
+        let diff = diff(color, target);
         v.push((id, diff));
     }
 
