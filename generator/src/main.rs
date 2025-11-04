@@ -1,10 +1,6 @@
 #![allow(clippy::deprecated_cfg_attr)]
 
-#[macro_use]
-extern crate clap;
-extern crate dogrun;
-
-use clap::{App, Arg};
+use clap::{crate_authors, crate_name, crate_version, Arg, Command};
 use dogrun::highlight::*;
 use std::env;
 use std::fs::File;
@@ -452,19 +448,18 @@ fn abs(path: PathBuf) -> io::Result<PathBuf> {
 }
 
 fn main() -> io::Result<()> {
-    let matches = App::new(crate_name!())
+    let matches = Command::new(crate_name!())
         .version(crate_version!())
         .author(crate_authors!())
         .arg(
-            Arg::with_name("dir")
+            Arg::new("dir")
                 .help("Output directory path")
-                .short("d")
-                .long("dir")
-                .takes_value(true),
+                .short('d')
+                .long("dir"),
         )
         .get_matches();
 
-    match matches.value_of("dir") {
+    match matches.get_one::<String>("dir") {
         Some(dir) => {
             let dir = abs(PathBuf::from(dir))?;
             let mut writer = Writer::new(get_palette(), get_highlights());
