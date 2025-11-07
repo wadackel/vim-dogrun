@@ -3,7 +3,7 @@
 use clap::{crate_authors, crate_name, crate_version, Arg, Command};
 use dogrun::highlight::*;
 use std::env;
-use std::fs::File;
+use std::fs::{create_dir_all, File};
 use std::io;
 use std::path::PathBuf;
 
@@ -437,6 +437,61 @@ unlet s:save_cpo
 
         Ok(())
     }
+
+    fn write_wezterm<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+        // [colors] section
+        writeln!(out, "[colors]")?;
+        writeln!(out, "background = \"{}\"", self.palette["mainbg"].gui)?;
+        writeln!(out, "foreground = \"{}\"", self.palette["mainfg"].gui)?;
+        writeln!(out, "cursor_bg = \"{}\"", self.palette["mainfg"].gui)?;
+        writeln!(out, "cursor_fg = \"{}\"", self.palette["mainbg"].gui)?;
+        writeln!(out, "cursor_border = \"{}\"", self.palette["mainfg"].gui)?;
+        writeln!(out, "selection_bg = \"{}\"", self.palette["visualbg"].gui)?;
+
+        // ansi array (0-7)
+        writeln!(out, "ansi = [")?;
+        for name in [
+            "termblack",
+            "termmaroon",
+            "termgreen",
+            "termolive",
+            "termnavy",
+            "termpurple",
+            "termteal",
+            "termsilver",
+        ] {
+            writeln!(out, "  \"{}\",", self.palette[name].gui)?;
+        }
+        writeln!(out, "]")?;
+
+        // brights array (8-15)
+        writeln!(out, "brights = [")?;
+        for name in [
+            "termgray",
+            "termred",
+            "termlime",
+            "termyellow",
+            "termblue",
+            "termfuchsia",
+            "termaqua",
+            "termwhite",
+        ] {
+            writeln!(out, "  \"{}\",", self.palette[name].gui)?;
+        }
+        writeln!(out, "]")?;
+
+        // [metadata] section
+        writeln!(out)?;
+        writeln!(out, "[metadata]")?;
+        writeln!(out, "name = \"dogrun\"")?;
+        writeln!(out, "author = \"wadackel\"")?;
+        writeln!(
+            out,
+            "origin_url = \"https://github.com/wadackel/vim-dogrun\""
+        )?;
+
+        Ok(())
+    }
 }
 
 fn abs(path: PathBuf) -> io::Result<PathBuf> {
@@ -472,6 +527,11 @@ fn main() -> io::Result<()> {
 
             let path = File::create(dir.join("autoload/clap/themes/dogrun.vim"))?;
             writer.write_clap(io::BufWriter::new(path))?;
+
+            let wezterm_dir = dir.join("wezterm");
+            create_dir_all(&wezterm_dir)?;
+            let path = File::create(wezterm_dir.join("dogrun.toml"))?;
+            writer.write_wezterm(io::BufWriter::new(path))?;
         }
         None => {
             let mut writer = Writer::new(get_palette(), get_highlights());
