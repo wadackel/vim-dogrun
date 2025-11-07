@@ -140,9 +140,9 @@ fn test_wezterm_toml_structure() {
     ] {
         let color = colors
             .get(key)
-            .expect(&format!("Missing {}", key))
+            .unwrap_or_else(|| panic!("Missing {}", key))
             .as_str()
-            .expect(&format!("{} is not a string", key));
+            .unwrap_or_else(|| panic!("{} is not a string", key));
         assert!(
             hex_regex.is_match(color),
             "{} has invalid hex format: {}",
@@ -152,7 +152,9 @@ fn test_wezterm_toml_structure() {
     }
 
     for color_val in ansi.iter().chain(brights.iter()) {
-        let color = color_val.as_str().expect("Color is not a string");
+        let color = color_val
+            .as_str()
+            .unwrap_or_else(|| panic!("Color is not a string"));
         assert!(
             hex_regex.is_match(color),
             "Invalid hex format in ansi/brights: {}",
