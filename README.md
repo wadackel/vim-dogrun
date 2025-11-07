@@ -162,9 +162,11 @@ return {
 
 `~/.zshrc` or `~/.bashrc`
 
+<!-- fzf:start -->
 ```bash
-export FZF_DEFAULT_OPTS='--color=fg:#8085a6,bg:#222433,hl:#bdc3e6 --color=fg+:#8085a6,bg+:#363e7f,hl+:#bdc3e6 --color=info:#929be5,prompt:#545c8c,pointer:#ff79c6 --color=marker:#b871b8,spinner:#73c1a9,header:#545c8c,border:#545c8c,gutter:-1'
+export FZF_DEFAULT_OPTS='--color=fg:#8085a6,bg:#222433,hl:#bdc3e6,fg+:#8085a6,bg+:#363e7f,hl+:#bdc3e6,info:#929be5 --color=prompt:#32364c,pointer:#b871b8,marker:#b871b8,spinner:#73c1a9,header:#32364c,border:#32364c,gutter:-1'
 ```
+<!-- fzf:end -->
 
 ## Inspired
 

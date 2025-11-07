@@ -3,9 +3,9 @@
 use clap::{crate_authors, crate_name, crate_version, Arg, Command};
 use dogrun::highlight::*;
 use std::env;
-use std::fs::{create_dir_all, File};
+use std::fs::{self, create_dir_all, File};
 use std::io;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 fn highlight(palette: &Palette, hl: &Highlight) -> String {
     let mut args = vec![hl.name.to_string()];
@@ -47,6 +47,71 @@ fn highlight(palette: &Palette, hl: &Highlight) -> String {
     }
 
     format!("hi {}", args.join(" "))
+}
+
+/// Helper struct for updating sections in README.md marked with HTML comments.
+/// This allows automated regeneration of configuration examples while preserving
+/// the rest of the README content.
+struct ReadmeUpdater {
+    content: String,
+}
+
+impl ReadmeUpdater {
+    fn new(content: String) -> Self {
+        Self { content }
+    }
+
+    /// Replaces content between start_marker and end_marker with new_content.
+    /// Returns an error if markers are not found or in invalid order.
+    fn replace_section(
+        &mut self,
+        start_marker: &str,
+        end_marker: &str,
+        new_content: &str,
+    ) -> io::Result<()> {
+        // Find start marker position
+        let start_idx = self.content.find(start_marker).ok_or_else(|| {
+            io::Error::new(
+                io::ErrorKind::NotFound,
+                format!("Marker '{}' not found in README", start_marker),
+            )
+        })?;
+
+        // Find end marker AFTER the start marker to avoid matching earlier occurrences
+        // (e.g., if end marker appears in documentation or other sections)
+        let search_start = start_idx + start_marker.len();
+        let end_idx_relative = self.content[search_start..]
+            .find(end_marker)
+            .ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    format!("Marker '{}' not found after start marker", end_marker),
+                )
+            })?;
+        let end_idx = search_start + end_idx_relative;
+
+        // Detect line ending style from the original content
+        // to maintain consistency across platforms
+        let line_ending = if self.content.contains("\r\n") {
+            "\r\n"
+        } else {
+            "\n"
+        };
+
+        // Construct replacement (preserving line ending style)
+        let before = &self.content[..start_idx + start_marker.len()];
+        let after = &self.content[end_idx..];
+
+        self.content = format!(
+            "{}{}{}{}{}",
+            before, line_ending, new_content, line_ending, after
+        );
+        Ok(())
+    }
+
+    fn into_string(self) -> String {
+        self.content
+    }
 }
 
 #[derive(Debug)]
@@ -492,6 +557,110 @@ unlet s:save_cpo
 
         Ok(())
     }
+
+    /// Generates fzf color configuration as a shell export statement.
+    /// Returns Result to handle missing palette colors gracefully.
+    fn generate_fzf_export(&self) -> io::Result<String> {
+        // Define fzf color mappings to palette colors
+        // Using .get() with explicit error messages per Codex review
+        let colors = vec![
+            (
+                "fg",
+                self.palette.get("lightfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing weakfg in palette")
+                })?,
+            ),
+            (
+                "bg",
+                self.palette.get("mainbg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing mainbg in palette")
+                })?,
+            ),
+            (
+                "hl",
+                self.palette.get("emphasisfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing emphasisfg in palette")
+                })?,
+            ),
+            (
+                "fg+",
+                self.palette.get("lightfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing weakfg in palette")
+                })?,
+            ),
+            (
+                "bg+",
+                self.palette.get("visualbg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing visualbg in palette")
+                })?,
+            ),
+            (
+                "hl+",
+                self.palette.get("emphasisfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing emphasisfg in palette")
+                })?,
+            ),
+            (
+                "info",
+                self.palette.get("purple").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing purple in palette")
+                })?,
+            ),
+            (
+                "prompt",
+                self.palette.get("linenrfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
+                })?,
+            ),
+            // Using pink from palette for consistency (instead of hardcoded #ff79c6)
+            (
+                "pointer",
+                self.palette.get("pink").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing pink in palette")
+                })?,
+            ),
+            (
+                "marker",
+                self.palette.get("pink").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing pink in palette")
+                })?,
+            ),
+            (
+                "spinner",
+                self.palette.get("teal").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing teal in palette")
+                })?,
+            ),
+            (
+                "header",
+                self.palette.get("linenrfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
+                })?,
+            ),
+            (
+                "border",
+                self.palette.get("linenrfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
+                })?,
+            ),
+        ];
+
+        // Build --color format strings
+        let color_parts: Vec<String> = colors
+            .iter()
+            .map(|(key, color)| format!("{}:{}", key, color.gui))
+            .collect();
+
+        // Split into two --color groups for readability (matching README format)
+        let first_group = &color_parts[0..7]; // fg ~ hl+
+        let second_group = &color_parts[7..]; // info ~ border
+
+        Ok(format!(
+            "export FZF_DEFAULT_OPTS='--color={} --color={},gutter:-1'",
+            first_group.join(","),
+            second_group.join(",")
+        ))
+    }
 }
 
 fn abs(path: PathBuf) -> io::Result<PathBuf> {
@@ -500,6 +669,31 @@ fn abs(path: PathBuf) -> io::Result<PathBuf> {
     } else {
         Ok(env::current_dir()?.join(path))
     }
+}
+
+/// Updates README.md's fzf section with generated color configuration.
+/// Uses HTML comment markers (<!-- fzf:start --> and <!-- fzf:end -->)
+/// to identify the section to replace.
+fn update_readme_fzf(writer: &mut Writer, readme_path: &Path) -> io::Result<()> {
+    // Read README content
+    let content = fs::read_to_string(readme_path)?;
+
+    // Create updater
+    let mut updater = ReadmeUpdater::new(content);
+
+    // Generate fzf export string
+    let fzf_export = writer.generate_fzf_export()?;
+
+    // Wrap in markdown code block
+    let code_block = format!("```bash\n{}\n```", fzf_export);
+
+    // Replace HTML comment section
+    updater.replace_section("<!-- fzf:start -->", "<!-- fzf:end -->", &code_block)?;
+
+    // Write back to file
+    fs::write(readme_path, updater.into_string())?;
+
+    Ok(())
 }
 
 fn main() -> io::Result<()> {
@@ -532,6 +726,12 @@ fn main() -> io::Result<()> {
             create_dir_all(&wezterm_dir)?;
             let path = File::create(wezterm_dir.join("dogrun.toml"))?;
             writer.write_wezterm(io::BufWriter::new(path))?;
+
+            // Update README.md with generated fzf colors (if it exists)
+            let readme_path = dir.join("README.md");
+            if readme_path.exists() {
+                update_readme_fzf(&mut writer, &readme_path)?;
+            }
         }
         None => {
             let mut writer = Writer::new(get_palette(), get_highlights());
