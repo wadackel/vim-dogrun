@@ -12,12 +12,30 @@ fn test_fzf_export_format_expectations() {
     let palette = get_palette();
 
     // Verify required palette colors exist
-    assert!(palette.contains_key("weakfg"), "palette should contain weakfg");
-    assert!(palette.contains_key("mainbg"), "palette should contain mainbg");
-    assert!(palette.contains_key("emphasisfg"), "palette should contain emphasisfg");
-    assert!(palette.contains_key("visualbg"), "palette should contain visualbg");
-    assert!(palette.contains_key("purple"), "palette should contain purple");
-    assert!(palette.contains_key("linenrfg"), "palette should contain linenrfg");
+    assert!(
+        palette.contains_key("weakfg"),
+        "palette should contain weakfg"
+    );
+    assert!(
+        palette.contains_key("mainbg"),
+        "palette should contain mainbg"
+    );
+    assert!(
+        palette.contains_key("emphasisfg"),
+        "palette should contain emphasisfg"
+    );
+    assert!(
+        palette.contains_key("visualbg"),
+        "palette should contain visualbg"
+    );
+    assert!(
+        palette.contains_key("purple"),
+        "palette should contain purple"
+    );
+    assert!(
+        palette.contains_key("linenrfg"),
+        "palette should contain linenrfg"
+    );
     assert!(palette.contains_key("pink"), "palette should contain pink");
     assert!(palette.contains_key("teal"), "palette should contain teal");
 }
@@ -28,12 +46,19 @@ fn test_palette_colors_are_hex_format() {
     let hex_regex = Regex::new(r"^#[0-9a-f]{6}$").unwrap();
 
     let required_colors = vec![
-        "weakfg", "mainbg", "emphasisfg", "visualbg",
-        "purple", "linenrfg", "pink", "teal",
+        "weakfg",
+        "mainbg",
+        "emphasisfg",
+        "visualbg",
+        "purple",
+        "linenrfg",
+        "pink",
+        "teal",
     ];
 
     for color_name in required_colors {
-        let color = palette.get(color_name)
+        let color = palette
+            .get(color_name)
             .unwrap_or_else(|| panic!("missing color: {}", color_name));
         assert!(
             hex_regex.is_match(&color.gui),
@@ -48,9 +73,8 @@ fn test_palette_colors_are_hex_format() {
 fn test_fzf_required_keys() {
     // Document the required fzf color keys
     let expected_keys = vec![
-        "fg", "bg", "hl", "fg+", "bg+", "hl+",
-        "info", "prompt", "pointer", "marker",
-        "spinner", "header", "border", "gutter",
+        "fg", "bg", "hl", "fg+", "bg+", "hl+", "info", "prompt", "pointer", "marker", "spinner",
+        "header", "border", "gutter",
     ];
 
     // This test just documents expectations

@@ -49,8 +49,8 @@ Some other content here.
     );
 
     // Read updated README
-    let updated_readme = fs::read_to_string(temp_path.join("README.md"))
-        .expect("Failed to read updated README");
+    let updated_readme =
+        fs::read_to_string(temp_path.join("README.md")).expect("Failed to read updated README");
 
     // Verify markers still exist
     assert!(
@@ -82,8 +82,7 @@ Some other content here.
 
     // Verify all required fzf keys are present with proper format
     let required_keys = vec![
-        "fg:", "bg:", "hl:", "fg+:", "bg+:", "hl+:",
-        "info:", "prompt:", "pointer:", "marker:",
+        "fg:", "bg:", "hl:", "fg+:", "bg+:", "hl+:", "info:", "prompt:", "pointer:", "marker:",
         "spinner:", "header:", "border:", "gutter:",
     ];
 
