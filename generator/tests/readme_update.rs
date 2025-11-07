@@ -36,7 +36,7 @@ Some other content here.
 
     // Run generator
     let output = Command::new("cargo")
-        .args(&["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
+        .args(["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
         .current_dir(env!("CARGO_MANIFEST_DIR"))
         .output()
         .expect("Failed to execute generator");
@@ -149,7 +149,7 @@ Content after
     fs::write(temp_path.join("README.md"), test_readme).unwrap();
 
     let output = Command::new("cargo")
-        .args(&["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
+        .args(["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
         .current_dir(env!("CARGO_MANIFEST_DIR"))
         .output()
         .expect("Failed to execute generator");
@@ -196,7 +196,7 @@ End of file.
     fs::write(temp_path.join("README.md"), test_readme).unwrap();
 
     let output = Command::new("cargo")
-        .args(&["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
+        .args(["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
         .current_dir(env!("CARGO_MANIFEST_DIR"))
         .output()
         .expect("Failed to execute generator");
