@@ -142,37 +142,17 @@ In the future, there may be a possibility to offer separate themes, but for now,
 
 ![WezTerm](./docs/images/wezterm.png)
 
-`~/.config/wezterm/wezterm.lua`
+Copy `wezterm/dogrun.toml` to WezTerm's colors directory:
+
+```bash
+cp wezterm/dogrun.toml ~/.config/wezterm/colors/dogrun.toml
+```
+
+Then in `~/.config/wezterm/wezterm.lua`:
 
 ```lua
 return {
-  colors = {
-    foreground = "#9ea3c0",
-    background = "#222433",
-    cursor_fg = "#222433",
-    cursor_bg = "#9ea3c0",
-    selection_bg = "#363e7f",
-    ansi = {
-      "#111219",
-      "#e58585",
-      "#7cbe8c",
-      "#8e8a6f",
-      "#4c89ac",
-      "#6c75cb",
-      "#73c1a9",
-      "#9ea3c0",
-    },
-    brights = {
-      "#545c8c",
-      "#b871b8",
-      "#7cbe8c",
-      "#a8a384",
-      "#589ec6",
-      "#929be5",
-      "#59b6b6",
-      "#9ea3c0",
-    },
-  },
+  color_scheme = "dogrun",
 }
 ```
 
