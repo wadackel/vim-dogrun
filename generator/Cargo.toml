@@ -16,3 +16,4 @@ lab = "0.11.0"
 [dev-dependencies]
 toml = "0.9"
 regex = "1.10"
+tempfile = "3.14"
