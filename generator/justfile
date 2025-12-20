@@ -1,0 +1,44 @@
+# vim-dogrun colorscheme generator recipes
+
+# List all available recipes
+default:
+    @just --list
+
+# Run generator without output (for testing)
+debug:
+    cargo run
+
+# Output to stdout (alias for debug)
+alias stdout := debug
+
+# Generate colorscheme files (writes to parent directory)
+build:
+    cargo run -- -d ..
+
+# Watch mode for development (uses bacon)
+watch:
+    bacon run-long -- -- -d ..
+
+# Run tests
+test:
+    cargo test
+
+# Format code
+fmt:
+    cargo fmt
+
+# Run linter (strict mode with format check)
+lint:
+    cargo fmt --check
+    cargo clippy -- -D warnings
+
+# Build release binary
+release:
+    cargo build --release
+
+# Run all checks (lint, test)
+check: lint test
+
+# Clean build artifacts
+clean:
+    cargo clean
