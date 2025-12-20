@@ -209,6 +209,29 @@ hi NvimTreeNormal guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
 hi NvimTreeLiveFilterPrefix guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi NvimTreeLiveFilterValue guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
 hi NvimTreeBookmarkIcon guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi FylerBlue guifg=#589ec6 ctermfg=74 gui=NONE cterm=NONE
+hi FylerGreen guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
+hi FylerGrey guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
+hi FylerRed guifg=#ff9494 ctermfg=210 gui=NONE cterm=NONE
+hi FylerYellow guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi FylerNormal guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi FylerNormalNC guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi FylerBorder guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi FylerFSDirectoryIcon guifg=#6f78be ctermfg=104 gui=bold cterm=bold
+hi FylerFSDirectoryName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
+hi FylerFSFile guifg=#8085a6 ctermfg=103 gui=NONE cterm=NONE
+hi FylerFSLink guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
+hi FylerGitAdded guifg=#9ea3c0 ctermfg=146 gui=NONE cterm=NONE
+hi FylerGitConflict gui=NONE cterm=NONE
+hi FylerGitDeleted guifg=#1f4a3c ctermfg=23 gui=NONE cterm=NONE
+hi FylerGitIgnored gui=NONE cterm=NONE
+hi FylerGitModified gui=NONE cterm=NONE
+hi FylerGitRenamed guifg=#a8a384 ctermfg=144 gui=NONE cterm=NONE
+hi FylerGitStaged guifg=#7cbe8c ctermfg=108 gui=NONE cterm=NONE
+hi FylerGitUnstaged gui=NONE cterm=NONE
+hi FylerGitUntracked gui=NONE cterm=NONE
+hi FylerIndentMarker guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi FylerWinPick gui=NONE cterm=NONE
 hi FernBranchSymbol guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
 hi FernBranchText guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
 hi FernLeafSymbol guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
