@@ -1,0 +1,6 @@
+[tools]
+# Task runner
+just = "1.23"
+
+# Cargo watch tool for live reloading
+"cargo:bacon" = "latest"

@@ -16,26 +16,32 @@ vim-dogrun is a dark Neovim/Vim colorscheme with extensive plugin support (50+ p
 All commands should be run from the `generator/` directory:
 
 ```bash
+# Install development tools (just, bacon)
+cd generator && mise install
+
 # Generate colorscheme files (writes to parent directory)
-cd generator && make build
+cd generator && just build
 
 # Watch mode for development (uses bacon)
-cd generator && make watch
+cd generator && just watch
 
 # Run generator without output (for testing)
-cd generator && make debug
+cd generator && just debug
 
 # Run tests
-cd generator && cargo test
+cd generator && just test
 
-# Check formatting
-cd generator && cargo fmt --check
+# Format code
+cd generator && just fmt
 
-# Run linter (strict mode)
-cd generator && cargo clippy -- -D warnings
+# Run linter (strict mode with format check)
+cd generator && just lint
 
 # Build release binary
-cd generator && cargo build --release
+cd generator && just release
+
+# Run all checks (lint, test)
+cd generator && just check
 ```
 
 ## Code Architecture
@@ -158,7 +164,8 @@ GitHub Actions workflow validates:
 
 **Configuration:**
 - `.github/workflows/ci.yaml` - CI pipeline
-- `generator/Makefile` - Build commands
+- `generator/justfile` - Build commands (task runner)
+- `generator/mise.toml` - Development tool management (just, bacon)
 - `term/dogrun.itermcolors` - iTerm2 theme
 
 ## Dependencies

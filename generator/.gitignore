@@ -1,2 +1,5 @@
 /target/
 **/*.rs.bk
+
+# mise local configuration
+mise.local.toml

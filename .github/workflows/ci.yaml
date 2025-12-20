@@ -48,7 +48,7 @@ jobs:
           cargo run -- -d ..
           if ! git diff --exit-code ../colors ../autoload; then
             echo "Error: Generated files are not up-to-date"
-            echo "Please run 'cd generator && make build' and commit the changes"
+            echo "Please run 'cd generator && just build' and commit the changes"
             git diff
             exit 1
           fi
