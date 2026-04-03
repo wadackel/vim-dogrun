@@ -350,7 +350,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("Folded", foldfg, foldbg, -, None, -),
         hi!("FoldColumn", linenrfg, NONE, -, None, -),
         hi!("MatchParen", -, matchparenbg, -, -, -),
-        hi!("Directory", yellow, -, -, -, -),
+        hi!("Directory", purple, -, -, -, -),
         hi!("Underlined", -, -, -, Underline, -),
         hi!("String", green, -, -, -, -),
         hi!("Statement", purple, -, -, None, -),

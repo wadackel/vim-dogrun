@@ -39,7 +39,7 @@ hi WinSeparator guifg=#363859 ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi MatchParen guibg=#2f3147 ctermbg=236
-hi Directory guifg=#a8a384 ctermfg=144
+hi Directory guifg=#929be5 ctermfg=104
 hi Underlined gui=underline cterm=underline
 hi String guifg=#7cbe8c ctermfg=108
 hi Statement guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
