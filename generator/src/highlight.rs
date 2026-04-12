@@ -189,6 +189,7 @@ pub fn get_palette() -> Palette {
     def!(darkred, extends!(red, 0.0, 0.0, -0.2));
     def!(pink, "#b871b8");
     def!(darkpink, extends!(pink, 0.0, -0.05, -0.35));
+    def!(lightpink, extends!(pink, 0.0, 0.0, 0.03));
     def!(purple, "#929be5");
     def!(darkpurple, extends!(purple, 0.0, 0.05, -0.15));
     def!(darkestpurple, extends!(purple, 0.0, 0.05, -0.42));
@@ -204,8 +205,10 @@ pub fn get_palette() -> Palette {
     def!(darkgreen, extends!(green, 0.0, -0.05, -0.4));
     def!(yellow, "#a8a384");
     def!(darkyellow, extends!(yellow, 0.0, -0.15, -0.1));
+    def!(lightyellow, extends!(yellow, 0.0, 0.0, 0.09));
     def!(orange, "#ac8b83");
     def!(darkorange, extends!(orange, 0.0, -0.05, -0.1));
+    def!(lightorange, extends!(orange, 0.0, 0.0, 0.08));
 
     // neutral
     def!(mainfg, "#9ea3c0");
@@ -650,18 +653,18 @@ pub fn get_highlights() -> Vec<Highlight> {
         // Git status (base + Icon only)
         hi!("EdaGitUntracked", teal, -, -, None, -),
         hi!("EdaGitUntrackedIcon", teal, -, -, None, -),
-        hi!("EdaGitAdded", mainfg, -, -, None, -),
-        hi!("EdaGitAddedIcon", mainfg, -, -, None, -),
-        hi!("EdaGitModified", yellow, -, -, None, -),
-        hi!("EdaGitModifiedIcon", yellow, -, -, None, -),
-        hi!("EdaGitDeleted", difftextbg, -, -, None, -),
-        hi!("EdaGitDeletedIcon", difftextbg, -, -, None, -),
-        hi!("EdaGitRenamed", yellow, -, -, None, -),
-        hi!("EdaGitRenamedIcon", yellow, -, -, None, -),
+        hi!("EdaGitAdded", teal, -, -, None, -),
+        hi!("EdaGitAddedIcon", teal, -, -, None, -),
+        hi!("EdaGitModified", lightyellow, -, -, None, -),
+        hi!("EdaGitModifiedIcon", lightyellow, -, -, None, -),
+        hi!("EdaGitDeleted", lightpink, -, -, None, -),
+        hi!("EdaGitDeletedIcon", lightpink, -, -, None, -),
+        hi!("EdaGitRenamed", lightyellow, -, -, None, -),
+        hi!("EdaGitRenamedIcon", lightyellow, -, -, None, -),
         hi!("EdaGitStaged", green, -, -, None, -),
         hi!("EdaGitStagedIcon", green, -, -, None, -),
-        hi!("EdaGitConflict", orange, -, -, None, -),
-        hi!("EdaGitConflictIcon", orange, -, -, None, -),
+        hi!("EdaGitConflict", lightorange, -, -, None, -),
+        hi!("EdaGitConflictIcon", lightorange, -, -, None, -),
         hi!("EdaGitIgnored", weakfg, -, -, None, -),
         hi!("EdaGitIgnoredIcon", weakfg, -, -, None, -),
         // Operations
