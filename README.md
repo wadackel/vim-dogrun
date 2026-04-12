@@ -104,6 +104,7 @@ let g:clap_theme = 'dogrun'
 - [Blink Completion](https://github.com/Saghen/blink.cmp)
 - [Copilot.vim](https://github.com/github/copilot.vim)
 - [Diffview.nvim](https://github.com/sindrets/diffview.nvim)
+- [eda.nvim](https://github.com/wadackel/eda.nvim)
 - [Fyler.nvim](https://github.com/A7Lavinraj/fyler.nvim)
 - [avante.nvim](https://github.com/yetone/avante.nvim)
 - [clever-f.vim](https://github.com/rhysd/clever-f.vim)
