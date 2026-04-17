@@ -668,7 +668,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("EdaGitIgnored", weakfg, -, -, None, -),
         hi!("EdaGitIgnoredIcon", weakfg, -, -, None, -),
         // Operations
-        hi!("EdaMarkedNode", -, visualbg, -, None, -),
+        hi!("EdaMarkedNode", yellow, -, -, Bold, -),
         hi!("EdaCut", weakfg, -, -, Italic, -),
         hi!("EdaOpDeleteSign", red, -, -, Bold, -),
         hi!("EdaOpDeletePath", red, -, -, None, -),

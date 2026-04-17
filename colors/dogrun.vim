@@ -270,7 +270,7 @@ hi EdaGitConflict guifg=#c09b92 ctermfg=138 gui=NONE cterm=NONE
 hi EdaGitConflictIcon guifg=#c09b92 ctermfg=138 gui=NONE cterm=NONE
 hi EdaGitIgnored guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
 hi EdaGitIgnoredIcon guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
-hi EdaMarkedNode guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
+hi EdaMarkedNode guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
 hi EdaCut guifg=#545c8c ctermfg=60 gui=italic cterm=italic
 hi EdaOpDeleteSign guifg=#ff9494 ctermfg=210 gui=bold cterm=bold
 hi EdaOpDeletePath guifg=#ff9494 ctermfg=210 gui=NONE cterm=NONE
