@@ -272,24 +272,6 @@ pub fn get_palette() -> Palette {
     def!(termaqua, extends!(cyan));
     def!(termwhite, extends!(mainfg));
 
-    // defx-icons
-    def!(defxiconbrown, extends!(red, 0.0, 0.2, -0.2));
-    def!(defxiconaqua, extends!(cyan, 0.0, -0.1, -0.1));
-    def!(defxiconblue, extends!(blue, 0.0, -0.1, -0.1));
-    def!(defxicondarkblue, extends!(blue, 0.0, -0.2, -0.25));
-    def!(defxiconpurple, extends!(darkpurple));
-    def!(defxiconlightpurple, extends!(purple, 0.0, -0.1, -0.1));
-    def!(defxiconred, extends!(red, 0.0, -0.0, -0.1));
-    def!(defxiconbeige, extends!(yellow, 0.0, -0.2, -0.25));
-    def!(defxiconyellow, extends!(yellow, 0.0, 0.0, -0.1));
-    def!(defxiconorange, extends!(orange, 0.0, 0.0, 0.1));
-    def!(defxicondarkorange, extends!(orange, 0.0, 0.1, -0.2));
-    def!(defxiconpink, extends!(pink, 0.0, 0.0, -0.1));
-    def!(defxiconsalmon, extends!(pink, 0.0, 0.1, -0.05));
-    def!(defxicongreen, extends!(green, 0.0, 0.0, -0.15));
-    def!(defxiconlightgreen, extends!(green, 0.0, 0.1, -0.1));
-    def!(defxiconwhite, extends!(mainfg, 0.0, 0.0, -0.1));
-
     // lightline
     def!(xlinebg, extends!(statuslinencbg));
     def!(xlinefg, extends!(statuslinencfg));
@@ -321,6 +303,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("Conceal", orange, mainbg, -, None, -),
         hi!("NormalFloat", lightfg, NONE, -, None, -),
         hi!("FloatBorder", weakfg, NONE, -, None, -),
+        hi!("FloatTitle", purple, mainbg, -, None, -),
         hi!("WinSeparator", darkfg, NONE, -, None, -),
         hi!("Folded", foldfg, foldbg, -, None, -),
         hi!("FoldColumn", linenrfg, NONE, -, None, -),
@@ -514,31 +497,6 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("graphqlDirective", pink, -, -, -, -),
         hi!("graphqlName", purple, -, -, -, -),
         hi!("graphqlTemplateString", mainfg, -, -, -, -),
-        // vimfiler
-        // https://github.com/Shougo/vimfiler.vim
-        hi!("vimfilerOpenedFile", darkpurple, -, -, -, -),
-        hi!("vimfilerClosedFile", darkpurple, -, -, -, -),
-        hi!("vimfilerNonMark", teal, -, -, -, -),
-        hi!("vimfilerLeaf", teal, -, -, -, -),
-        // defx-icons
-        // https://github.com/kristijanhusak/defx-icons
-        hi!("DefxIconsMarkIcon", darkpurple, -, -, None, -),
-        hi!("DefxIconsDirectory", darkpurple, -, -, None, -),
-        hi!("DefxIconsParentDirectory", darkpurple, -, -, None, -),
-        hi!("DefxIconsSymlinkDirectory", teal, -, -, None, -),
-        hi!("DefxIconsOpenedTreeIcon", darkpurple, -, -, None, -),
-        hi!("DefxIconsNestedTreeIcon", darkpurple, -, -, None, -),
-        hi!("DefxIconsClosedTreeIcon", darkpurple, -, -, None, -),
-        // defx-git
-        // https://github.com/kristijanhusak/defx-git
-        hi!("Defx_git_Untracked", purple, -, -, None, -),
-        hi!("Defx_git_Ignored", weakfg, -, -, None, -),
-        hi!("Defx_git_Unknown", weakfg, -, -, None, -),
-        hi!("Defx_git_Renamed", diffchangebg, -, -, -, -),
-        hi!("Defx_git_Modified", diffchangebg, -, -, -, -),
-        hi!("Defx_git_Unmerged", pink, -, -, -, -),
-        hi!("Defx_git_Deleted", diffdeletebg, -, -, -, -),
-        hi!("Defx_git_Staged", teal, -, -, -, -),
         // nvim-tree/nvim-tree.lua
         // https://github.com/nvim-tree/nvim-tree.lua
         hi!("NvimTreeSymlink", darkteal, -, -, None, -),
@@ -698,9 +656,6 @@ pub fn get_highlights() -> Vec<Highlight> {
         // https://github.com/dense-analysis/ale
         hi!("ALEWarningSign", warningfg, -, -, Bold, -),
         hi!("ALEInfoSign", infofg, -, -, None, -),
-        // null-ls.nvim
-        // https://github.com/jose-elias-alvarez/null-ls.nvim
-        hi!("NullLsInfoBorder", weakfg, mainbg, -, None, -),
         // coc.nvim
         // https://github.com/neoclide/coc.nvim
         hi!("CocErrorSign", errorfg, -, -, Bold, -),
@@ -774,9 +729,6 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("BlinkCmpMenuBorder", weakfg, NONE, -, None, -),
         hi!("BlinkCmpDocBorder", weakfg, NONE, -, None, -),
         hi!("BlinkCmpSignatureHelpBorder", weakfg, NONE, -, None, -),
-        // dressing.nvim
-        // https://github.com/stevearc/dressing.nvim
-        hi!("FloatTitle", purple, mainbg, -, None, -),
         // telescope.nvim
         // https://github.com/nvim-telescope/telescope.nvim
         hi!("TelescopeNormal", lightfg, -, -, -, -),

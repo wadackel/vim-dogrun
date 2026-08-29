@@ -207,38 +207,6 @@ let g:colors_name = 'dogrun'
         }
         writeln!(out, "endif")?;
 
-        // defx-icons palette
-        let defxicons = [
-            ("brown", &self.palette["defxiconbrown"]),
-            ("aqua", &self.palette["defxiconaqua"]),
-            ("blue", &self.palette["defxiconblue"]),
-            ("darkBlue", &self.palette["defxicondarkblue"]),
-            ("purple", &self.palette["defxiconpurple"]),
-            ("lightPurple", &self.palette["defxiconlightpurple"]),
-            ("red", &self.palette["defxiconred"]),
-            ("beige", &self.palette["defxiconbeige"]),
-            ("yellow", &self.palette["defxiconyellow"]),
-            ("orange", &self.palette["defxiconorange"]),
-            ("darkOrange", &self.palette["defxicondarkorange"]),
-            ("pink", &self.palette["defxiconpink"]),
-            ("salmon", &self.palette["defxiconsalmon"]),
-            ("green", &self.palette["defxicongreen"]),
-            ("lightGreen", &self.palette["defxiconlightgreen"]),
-            ("white", &self.palette["defxiconwhite"]),
-        ];
-
-        writeln!(out, "let g:defx_icons_gui_colors = {{")?;
-        for (name, color) in defxicons.iter() {
-            writeln!(out, "  \\ '{}': '{}',", name, &color.gui[1..])?;
-        }
-        writeln!(out, "  \\ }}")?;
-
-        writeln!(out, "let g:defx_icons_term_colors = {{")?;
-        for (name, color) in defxicons.iter() {
-            writeln!(out, "  \\ '{}': {},", name, color.cterm)?;
-        }
-        writeln!(out, "  \\ }}")?;
-
         // fzf.vim colors
         writeln!(
             out,
