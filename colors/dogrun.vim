@@ -26,6 +26,7 @@ hi LineNr guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi EndOfBuffer guifg=#363859 ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Comment guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
 hi Cursor guifg=#222433 ctermfg=235 guibg=#9ea3c0 ctermbg=146
+hi TermCursor gui=reverse cterm=reverse
 hi CursorIM guifg=#222433 ctermfg=235 guibg=#9ea3c0 ctermbg=146
 hi SignColumn guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE
 hi ColorColumn guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
@@ -36,6 +37,7 @@ hi Conceal guifg=#ac8b83 ctermfg=138 guibg=#222433 ctermbg=235 gui=NONE cterm=NO
 hi NormalFloat guifg=#8085a6 ctermfg=103 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi FloatBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi FloatTitle guifg=#929be5 ctermfg=104 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
+hi FloatFooter guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi WinSeparator guifg=#363859 ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -73,9 +75,16 @@ hi PmenuSel guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61 gui=NONE cterm=NO
 hi PmenuMatch guifg=#929be5 ctermfg=104 gui=bold cterm=bold
 hi PmenuSbar guibg=#292c3f ctermbg=236
 hi PmenuThumb guibg=#464f7f ctermbg=60
+hi PmenuKind guifg=#8085a6 ctermfg=103 guibg=#32364c ctermbg=237
+hi PmenuKindSel guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
+hi PmenuExtra guifg=#8085a6 ctermfg=103 guibg=#32364c ctermbg=237
+hi PmenuExtraSel guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
+hi PmenuMatchSel guifg=#929be5 ctermfg=104 guibg=#363e7f ctermbg=61 gui=bold cterm=bold
 hi Visual guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
+hi SnippetTabstop guibg=#363e7f ctermbg=61 gui=NONE cterm=NONE
 hi Search guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
 hi CurSearch guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
+hi Substitute guifg=#a6afff ctermfg=147 guibg=#6471e5 ctermbg=63
 hi IncSearch guifg=#a4b2ff ctermfg=147 guibg=#4754cb ctermbg=62 gui=NONE cterm=NONE
 hi Question guifg=#73c1a9 ctermfg=79 gui=bold cterm=bold
 hi WildMenu guifg=#222433 ctermfg=235 guibg=#929be5 ctermbg=104
@@ -94,6 +103,8 @@ hi QuickFixLine guifg=#9ea3c0 ctermfg=146 guibg=#363e7f ctermbg=61
 hi StatusLine guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=bold cterm=bold
 hi StatusLineTerm guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=bold cterm=bold
 hi StatusLineNC guifg=#4b4e6d ctermfg=60 guibg=#282a3a ctermbg=235 gui=NONE cterm=NONE
+hi WinBar guifg=#757aa5 ctermfg=103 guibg=NONE ctermbg=NONE gui=bold cterm=bold
+hi WinBarNC guifg=#4b4e6d ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi StatusLineTermNC guifg=#4b4e6d ctermfg=60 guibg=#282a3a ctermbg=235 gui=NONE cterm=NONE
 hi TabLine guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
 hi TabLineFill guifg=#757aa5 ctermfg=103 guibg=#2a2c3f ctermbg=236 gui=NONE cterm=NONE
@@ -113,10 +124,15 @@ hi DiagnosticHint guifg=#82dabf ctermfg=115
 hi DiagnosticOk guifg=#82dabf ctermfg=115
 hi DiagnosticVirtualTextHint guifg=#545c8c ctermfg=60 gui=bold cterm=bold
 hi DiagnosticUnderlineHint gui=underline cterm=underline
+hi DiagnosticDeprecated gui=strikethrough cterm=strikethrough
+hi DiagnosticUnnecessary guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
 hi LspSignatureActiveParameter gui=italic cterm=italic
 hi LspReferenceText guibg=#2f3147 ctermbg=236
 hi LspReferenceRead guibg=#2f3147 ctermbg=236
 hi LspReferenceWrite guibg=#2f3147 ctermbg=236
+hi LspInlayHint guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi LspCodeLens guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
+hi ComplHint guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
 hi htmlTag guifg=#8085a6 ctermfg=103
 hi htmlEndTag guifg=#8085a6 ctermfg=103
 hi htmlSpecialTagName guifg=#ac8b83 ctermfg=138
