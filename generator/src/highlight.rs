@@ -25,7 +25,6 @@ pub enum HighlightAttr {
 #[derive(Debug, PartialEq)]
 pub enum HighlightScope {
     All,
-    Nvim,
     Nvim080OrLater,
 }
 
@@ -68,9 +67,6 @@ macro_rules! hi {
     ($name: literal, -, -, -, $attr: ident, -) => {
         highlight!($name, None, None, None, $attr, All)
     };
-    ($name: literal, -, -, -, -, $scope: expr) => {
-        highlight!($name, None, None, None, $attr, $scope)
-    };
     ($name: literal, $fg: ident, $bg: ident, -, -, -) => {
         highlight!(
             $name,
@@ -109,26 +105,6 @@ macro_rules! hi {
     ($name: literal, -, $bg: ident, -, $attr: ident, $scope: ident) => {
         highlight!($name, None, Some(stringify!($bg)), None, $attr, $scope)
     };
-    ($name: literal, $fg: ident, $bg: ident, -, -, -) => {
-        highlight!(
-            $name,
-            Some(stringify!($fg)),
-            Some(stringify!($bg)),
-            None,
-            Nothing,
-            -
-        )
-    };
-    ($name: literal, $fg: ident, $bg: ident, -, -, $scope: ident) => {
-        highlight!(
-            $name,
-            Some(stringify!($fg)),
-            Some(stringify!($bg)),
-            None,
-            Nothing,
-            $scope
-        )
-    };
     ($name: literal, $fg: ident, $bg: ident, -, $attr: ident, -) => {
         highlight!(
             $name,
@@ -159,16 +135,9 @@ pub fn get_palette() -> Palette {
 
     macro_rules! def {
         ($name: ident, $hex: expr) => {
-            assert_eq!(
-                p.insert(
-                    stringify!($name),
-                    Color {
-                        gui: String::from($hex),
-                        cterm: conv::to_cterm($hex.to_string()).to_string(),
-                    }
-                ),
-                None
-            );
+            let gui = String::from($hex);
+            let cterm = conv::to_cterm(&gui).to_string();
+            assert_eq!(p.insert(stringify!($name), Color { gui, cterm }), None);
         };
     }
 
@@ -180,7 +149,10 @@ pub fn get_palette() -> Palette {
             }
         };
         ($parent: ident, $h: expr, $s: expr, $v: expr) => {
-            conv::hue(conv::saturate(conv::lighten(extends!($parent), $v), $s), $h)
+            conv::hue(
+                &conv::saturate(&conv::lighten(&extends!($parent), $v), $s),
+                $h,
+            )
         };
     }
 

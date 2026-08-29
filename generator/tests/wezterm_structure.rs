@@ -1,83 +1,10 @@
 use dogrun::highlight::{get_highlights, get_palette};
+use dogrun::writer::Writer;
 use std::io::Cursor;
-
-#[derive(Debug)]
-struct Writer {
-    palette: dogrun::highlight::Palette,
-    #[allow(dead_code)]
-    highlights: Vec<dogrun::highlight::Highlight>,
-}
-
-impl Writer {
-    fn new(
-        palette: dogrun::highlight::Palette,
-        highlights: Vec<dogrun::highlight::Highlight>,
-    ) -> Self {
-        Self {
-            palette,
-            highlights,
-        }
-    }
-
-    fn write_wezterm<W: std::io::Write>(&mut self, mut out: W) -> std::io::Result<()> {
-        // [colors] section
-        writeln!(out, "[colors]")?;
-        writeln!(out, "background = \"{}\"", self.palette["mainbg"].gui)?;
-        writeln!(out, "foreground = \"{}\"", self.palette["mainfg"].gui)?;
-        writeln!(out, "cursor_bg = \"{}\"", self.palette["mainfg"].gui)?;
-        writeln!(out, "cursor_fg = \"{}\"", self.palette["mainbg"].gui)?;
-        writeln!(out, "cursor_border = \"{}\"", self.palette["mainfg"].gui)?;
-        writeln!(out, "selection_bg = \"{}\"", self.palette["visualbg"].gui)?;
-
-        // ansi array (0-7)
-        writeln!(out, "ansi = [")?;
-        for name in [
-            "termblack",
-            "termmaroon",
-            "termgreen",
-            "termolive",
-            "termnavy",
-            "termpurple",
-            "termteal",
-            "termsilver",
-        ] {
-            writeln!(out, "  \"{}\",", self.palette[name].gui)?;
-        }
-        writeln!(out, "]")?;
-
-        // brights array (8-15)
-        writeln!(out, "brights = [")?;
-        for name in [
-            "termgray",
-            "termred",
-            "termlime",
-            "termyellow",
-            "termblue",
-            "termfuchsia",
-            "termaqua",
-            "termwhite",
-        ] {
-            writeln!(out, "  \"{}\",", self.palette[name].gui)?;
-        }
-        writeln!(out, "]")?;
-
-        // [metadata] section
-        writeln!(out)?;
-        writeln!(out, "[metadata]")?;
-        writeln!(out, "name = \"dogrun\"")?;
-        writeln!(out, "author = \"wadackel\"")?;
-        writeln!(
-            out,
-            "origin_url = \"https://github.com/wadackel/vim-dogrun\""
-        )?;
-
-        Ok(())
-    }
-}
 
 #[test]
 fn test_wezterm_toml_structure() {
-    let mut writer = Writer::new(get_palette(), get_highlights());
+    let writer = Writer::new(get_palette(), get_highlights());
     let mut output = Cursor::new(Vec::new());
 
     writer

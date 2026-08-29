@@ -3,4 +3,4 @@
 just = "1.49.0"
 
 # Cargo watch tool for live reloading
-"cargo:bacon" = "latest"
+"cargo:bacon" = "3.25.0"
