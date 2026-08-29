@@ -160,13 +160,6 @@ let g:colors_name = 'dogrun'
 
         writeln!(out, r#"if has("nvim")"#)?;
 
-        // only nvim
-        for hl in self.highlights.iter() {
-            if hl.scope == HighlightScope::Nvim {
-                writeln!(out, "  {}", highlight(&self.palette, hl))?;
-            }
-        }
-
         // term colors
         let termcolors = vec![
             "termblack",

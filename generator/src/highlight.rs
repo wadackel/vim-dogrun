@@ -25,7 +25,6 @@ pub enum HighlightAttr {
 #[derive(Debug, PartialEq)]
 pub enum HighlightScope {
     All,
-    Nvim,
     Nvim080OrLater,
 }
 
