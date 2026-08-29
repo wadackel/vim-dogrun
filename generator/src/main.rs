@@ -1,8 +1,6 @@
-#![allow(clippy::deprecated_cfg_attr)]
-
 use dogrun::highlight::*;
 use std::env;
-use std::fs::{self, create_dir_all, File};
+use std::fs::{self, File, create_dir_all};
 use std::io;
 use std::path::{Path, PathBuf};
 
@@ -326,16 +324,29 @@ let s:p = {{'normal': {{}}, 'inactive': {{}}, 'insert': {{}}, 'replace': {{}}, '
             };
         }
 
-        #[cfg_attr(rustfmt, rustfmt_skip)]
         {
             p!(normal, left, mainbg, purple, purple, xlinegradientbg);
             p!(normal, middle, xlinefg, xlinebg);
             p!(normal, right, mainbg, purple, purple, xlinegradientbg);
             p!(normal, error, errorfg, xlinebg);
             p!(normal, warning, warningfg, xlinebg);
-            p!(inactive, left, statuslinencfg, statuslinencbg, statuslinencfg, statuslinencbg);
+            p!(
+                inactive,
+                left,
+                statuslinencfg,
+                statuslinencbg,
+                statuslinencfg,
+                statuslinencbg
+            );
             p!(inactive, middle, statuslinencfg, statuslinencbg);
-            p!(inactive, right, statuslinencfg, statuslinencbg, statuslinencfg, statuslinencbg);
+            p!(
+                inactive,
+                right,
+                statuslinencfg,
+                statuslinencbg,
+                statuslinencfg,
+                statuslinencbg
+            );
             p!(insert, left, mainbg, teal, teal, xlinegradientbg);
             p!(insert, right, mainbg, teal, teal, xlinegradientbg);
             p!(visual, left, mainbg, pink, pink, xlinegradientbg);
@@ -452,7 +463,6 @@ let s:palette = {{}}
             };
         }
 
-        #[cfg_attr(rustfmt, rustfmt_skip)]
         {
             p!(input, purple, pmenubar, Bold);
             p!(display, pmenufg, pmenubg, None);
@@ -463,7 +473,6 @@ let s:palette = {{}}
             p!(current_selection, emphasisfg, -, Bold);
         }
 
-        #[cfg_attr(rustfmt, rustfmt_skip)]
         {
             h!(ClapMatches, teal, -, Bold);
             h!(ClapMatches1, teal, -, Bold);
