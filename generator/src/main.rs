@@ -429,10 +429,10 @@ let s:palette = {{}}
 
                 if let Some(bg) = palette.get(stringify!($bg)) {
                     args.push(format!("guibg={}", bg.gui));
-                    args.push(format!("ctermfg={}", bg.cterm));
+                    args.push(format!("ctermbg={}", bg.cterm));
                 } else if stringify!($bg) == "None" {
                     args.push("guibg=NONE".to_string());
-                    args.push("cterm=NONE".to_string());
+                    args.push("ctermbg=NONE".to_string());
                 }
 
                 match HighlightAttr::$attr {
@@ -567,7 +567,7 @@ unlet s:save_cpo
             (
                 "fg",
                 self.palette.get("lightfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing weakfg in palette")
+                    io::Error::new(io::ErrorKind::NotFound, "missing lightfg in palette")
                 })?,
             ),
             (
@@ -585,7 +585,7 @@ unlet s:save_cpo
             (
                 "fg+",
                 self.palette.get("lightfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing weakfg in palette")
+                    io::Error::new(io::ErrorKind::NotFound, "missing lightfg in palette")
                 })?,
             ),
             (

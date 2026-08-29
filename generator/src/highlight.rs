@@ -68,9 +68,6 @@ macro_rules! hi {
     ($name: literal, -, -, -, $attr: ident, -) => {
         highlight!($name, None, None, None, $attr, All)
     };
-    ($name: literal, -, -, -, -, $scope: expr) => {
-        highlight!($name, None, None, None, $attr, $scope)
-    };
     ($name: literal, $fg: ident, $bg: ident, -, -, -) => {
         highlight!(
             $name,
@@ -108,26 +105,6 @@ macro_rules! hi {
     };
     ($name: literal, -, $bg: ident, -, $attr: ident, $scope: ident) => {
         highlight!($name, None, Some(stringify!($bg)), None, $attr, $scope)
-    };
-    ($name: literal, $fg: ident, $bg: ident, -, -, -) => {
-        highlight!(
-            $name,
-            Some(stringify!($fg)),
-            Some(stringify!($bg)),
-            None,
-            Nothing,
-            -
-        )
-    };
-    ($name: literal, $fg: ident, $bg: ident, -, -, $scope: ident) => {
-        highlight!(
-            $name,
-            Some(stringify!($fg)),
-            Some(stringify!($bg)),
-            None,
-            Nothing,
-            $scope
-        )
     };
     ($name: literal, $fg: ident, $bg: ident, -, $attr: ident, -) => {
         highlight!(
