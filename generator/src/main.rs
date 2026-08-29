@@ -1,6 +1,5 @@
 #![allow(clippy::deprecated_cfg_attr)]
 
-use clap::{crate_authors, crate_name, crate_version, Arg, Command};
 use dogrun::highlight::*;
 use std::env;
 use std::fs::{self, create_dir_all, File};
@@ -663,11 +662,19 @@ unlet s:save_cpo
     }
 }
 
-fn abs(path: PathBuf) -> io::Result<PathBuf> {
-    if path.is_absolute() {
-        Ok(path.to_path_buf())
-    } else {
-        Ok(env::current_dir()?.join(path))
+// Parses the only supported flag (-d/--dir <path>). Not worth a clap
+// dependency: this binary is an internal build tool that nobody installs,
+// and dropping clap removes ten transitive crates.
+fn parse_dir_arg() -> Result<Option<String>, String> {
+    let mut args = env::args().skip(1);
+
+    match args.next() {
+        None => Ok(None),
+        Some(flag) if flag == "-d" || flag == "--dir" => match args.next() {
+            Some(dir) => Ok(Some(dir)),
+            None => Err(format!("missing value for '{}'", flag)),
+        },
+        Some(flag) => Err(format!("unknown argument '{}'", flag)),
     }
 }
 
@@ -697,20 +704,15 @@ fn update_readme_fzf(writer: &mut Writer, readme_path: &Path) -> io::Result<()> 
 }
 
 fn main() -> io::Result<()> {
-    let matches = Command::new(crate_name!())
-        .version(crate_version!())
-        .author(crate_authors!())
-        .arg(
-            Arg::new("dir")
-                .help("Output directory path")
-                .short('d')
-                .long("dir"),
-        )
-        .get_matches();
+    let dir = parse_dir_arg().unwrap_or_else(|message| {
+        eprintln!("error: {}", message);
+        eprintln!("usage: dogrun [-d|--dir <output directory>]");
+        std::process::exit(2);
+    });
 
-    match matches.get_one::<String>("dir") {
+    match dir {
         Some(dir) => {
-            let dir = abs(PathBuf::from(dir))?;
+            let dir = std::path::absolute(PathBuf::from(dir))?;
             let mut writer = Writer::new(get_palette(), get_highlights());
 
             let path = File::create(dir.join("colors/dogrun.vim"))?;
