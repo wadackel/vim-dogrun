@@ -39,9 +39,9 @@ const CTERM_COLORS: [&str; 256] = [
 ];
 
 static CTERM_LAB: LazyLock<[Lab<D65, f64>; 256]> =
-    LazyLock::new(|| std::array::from_fn(|i| hex2lab(CTERM_COLORS[i].to_string())));
+    LazyLock::new(|| std::array::from_fn(|i| hex2lab(CTERM_COLORS[i])));
 
-pub fn hex2lab(hex: String) -> Lab<D65, f64> {
+pub fn hex2lab(hex: &str) -> Lab<D65, f64> {
     let rgb: Srgb<u8> = hex.parse().expect("invalid hex color");
 
     Lab::from_color(rgb.into_format::<f64>())
@@ -113,42 +113,38 @@ fn hsv2hex(h: f64, s: f64, v: f64) -> String {
     )
 }
 
-pub fn hue(hex: String, amount: f64) -> String {
-    let (h, s, v) = hex2hsv_components(&hex);
+pub fn hue(hex: &str, amount: f64) -> String {
+    let (h, s, v) = hex2hsv_components(hex);
 
     hsv2hex(h + amount, s, v)
 }
 
-pub fn saturate(hex: String, factor: f64) -> String {
-    let (h, s, v) = hex2hsv_components(&hex);
+pub fn saturate(hex: &str, factor: f64) -> String {
+    let (h, s, v) = hex2hsv_components(hex);
 
     hsv2hex(h, s + factor, v)
 }
 
-pub fn darken(hex: String, amount: f64) -> String {
-    let (h, s, v) = hex2hsv_components(&hex);
+pub fn darken(hex: &str, amount: f64) -> String {
+    let (h, s, v) = hex2hsv_components(hex);
 
     hsv2hex(h, s, v - amount)
 }
 
-pub fn lighten(hex: String, amount: f64) -> String {
+pub fn lighten(hex: &str, amount: f64) -> String {
     darken(hex, -amount)
 }
 
-pub fn to_cterm(hex: String) -> usize {
+pub fn to_cterm(hex: &str) -> usize {
     let color = hex2lab(hex);
-    let mut v: Vec<(usize, f64)> = vec![];
 
-    for (id, target) in CTERM_LAB.iter().enumerate() {
-        let diff = color.difference(*target);
-        v.push((id, diff));
-    }
-
-    v.sort_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap());
-
-    let (id, _) = v.first().unwrap();
-
-    *id
+    CTERM_LAB
+        .iter()
+        .map(|target| color.difference(*target))
+        .enumerate()
+        .min_by(|(_, a), (_, b)| a.total_cmp(b))
+        .map(|(id, _)| id)
+        .unwrap()
 }
 
 #[cfg(test)]
@@ -157,42 +153,27 @@ mod tests {
 
     #[test]
     fn test_hue() {
-        assert_eq!(hue(String::from("#ff0000"), 0.0), String::from("#ff0000"));
-        assert_eq!(hue(String::from("#ff0000"), 180.0), String::from("#00ffff"));
+        assert_eq!(hue("#ff0000", 0.0), String::from("#ff0000"));
+        assert_eq!(hue("#ff0000", 180.0), String::from("#00ffff"));
     }
 
     #[test]
     fn test_saturate() {
-        assert_eq!(
-            saturate(String::from("#ff0000"), 0.0),
-            String::from("#ff0000")
-        );
+        assert_eq!(saturate("#ff0000", 0.0), String::from("#ff0000"));
 
-        assert_eq!(
-            saturate(String::from("#ff0000"), -0.1),
-            String::from("#ff1919")
-        );
+        assert_eq!(saturate("#ff0000", -0.1), String::from("#ff1919"));
     }
 
     #[test]
     fn test_shade() {
-        assert_eq!(
-            darken(String::from("#ff0000"), 0.0),
-            String::from("#ff0000")
-        );
+        assert_eq!(darken("#ff0000", 0.0), String::from("#ff0000"));
+
+        assert_eq!(lighten("#ff0000", 0.0), String::from("#ff0000"));
+
+        assert_eq!(darken("#347ba1", 0.2), String::from("#23546d"));
 
         assert_eq!(
-            lighten(String::from("#ff0000"), 0.0),
-            String::from("#ff0000")
-        );
-
-        assert_eq!(
-            darken(String::from("#347ba1"), 0.2),
-            String::from("#23546d")
-        );
-
-        assert_eq!(
-            lighten(String::from("#23546d"), 0.2),
+            lighten("#23546d", 0.2),
             // Not a perfect round-trip of the darken above: the truncating
             // f64→u8 formatting is kept on purpose to preserve the shipped
             // gui colors byte-for-byte.
@@ -202,7 +183,7 @@ mod tests {
 
     #[test]
     fn test_to_cterm() {
-        assert_eq!(to_cterm(String::from("#00c795")), 43);
+        assert_eq!(to_cterm("#00c795"), 43);
     }
 
     // The array is indexed by cterm code, so entries must stay in 0..=255

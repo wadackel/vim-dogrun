@@ -135,16 +135,9 @@ pub fn get_palette() -> Palette {
 
     macro_rules! def {
         ($name: ident, $hex: expr) => {
-            assert_eq!(
-                p.insert(
-                    stringify!($name),
-                    Color {
-                        gui: String::from($hex),
-                        cterm: conv::to_cterm($hex.to_string()).to_string(),
-                    }
-                ),
-                None
-            );
+            let gui = String::from($hex);
+            let cterm = conv::to_cterm(&gui).to_string();
+            assert_eq!(p.insert(stringify!($name), Color { gui, cterm }), None);
         };
     }
 
@@ -156,7 +149,10 @@ pub fn get_palette() -> Palette {
             }
         };
         ($parent: ident, $h: expr, $s: expr, $v: expr) => {
-            conv::hue(conv::saturate(conv::lighten(extends!($parent), $v), $s), $h)
+            conv::hue(
+                &conv::saturate(&conv::lighten(&extends!($parent), $v), $s),
+                $h,
+            )
         };
     }
 

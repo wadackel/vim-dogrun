@@ -4,11 +4,11 @@ use std::io::Cursor;
 
 fn render<F>(write: F) -> String
 where
-    F: FnOnce(&mut Writer, &mut Cursor<Vec<u8>>) -> std::io::Result<()>,
+    F: FnOnce(&Writer, &mut Cursor<Vec<u8>>) -> std::io::Result<()>,
 {
-    let mut writer = Writer::new(get_palette(), get_highlights());
+    let writer = Writer::new(get_palette(), get_highlights());
     let mut output = Cursor::new(Vec::new());
-    write(&mut writer, &mut output).expect("writer failed");
+    write(&writer, &mut output).expect("writer failed");
     String::from_utf8(output.into_inner()).expect("Invalid UTF-8")
 }
 

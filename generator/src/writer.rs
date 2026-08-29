@@ -124,7 +124,7 @@ impl Writer {
         }
     }
 
-    pub fn write_colorscheme<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+    pub fn write_colorscheme<W: io::Write>(&self, mut out: W) -> io::Result<()> {
         // header
         write!(
             out,
@@ -161,7 +161,7 @@ let g:colors_name = 'dogrun'
         writeln!(out, r#"if has("nvim")"#)?;
 
         // term colors
-        let termcolors = vec![
+        let termcolors = [
             "termblack",
             "termmaroon",
             "termgreen",
@@ -208,7 +208,7 @@ let g:colors_name = 'dogrun'
         writeln!(out, "endif")?;
 
         // defx-icons palette
-        let defxicons = vec![
+        let defxicons = [
             ("brown", &self.palette["defxiconbrown"]),
             ("aqua", &self.palette["defxiconaqua"]),
             ("blue", &self.palette["defxiconblue"]),
@@ -229,12 +229,7 @@ let g:colors_name = 'dogrun'
 
         writeln!(out, "let g:defx_icons_gui_colors = {{")?;
         for (name, color) in defxicons.iter() {
-            writeln!(
-                out,
-                "  \\ '{}': '{}',",
-                name,
-                &color.gui[1..color.gui.len()]
-            )?;
+            writeln!(out, "  \\ '{}': '{}',", name, &color.gui[1..])?;
         }
         writeln!(out, "  \\ }}")?;
 
@@ -268,7 +263,7 @@ let g:colors_name = 'dogrun'
         Ok(())
     }
 
-    pub fn write_lightline<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+    pub fn write_lightline<W: io::Write>(&self, mut out: W) -> io::Result<()> {
         // header
         write!(
             out,
@@ -361,7 +356,7 @@ let g:lightline#colorscheme#dogrun#palette = lightline#colorscheme#flatten(s:p)"
         Ok(())
     }
 
-    pub fn write_clap<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+    pub fn write_clap<W: io::Write>(&self, mut out: W) -> io::Result<()> {
         // header
         write!(
             out,
@@ -503,7 +498,7 @@ unlet s:save_cpo
         Ok(())
     }
 
-    pub fn write_wezterm<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+    pub fn write_wezterm<W: io::Write>(&self, mut out: W) -> io::Result<()> {
         // [colors] section
         writeln!(out, "[colors]")?;
         writeln!(out, "background = \"{}\"", self.palette["mainbg"].gui)?;
@@ -561,95 +556,36 @@ unlet s:save_cpo
     /// Generates fzf color configuration as a shell export statement.
     /// Returns Result to handle missing palette colors gracefully.
     pub fn generate_fzf_export(&self) -> io::Result<String> {
-        // Define fzf color mappings to palette colors
-        // Using .get() with explicit error messages per Codex review
-        let colors = vec![
-            (
-                "fg",
-                self.palette.get("lightfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing lightfg in palette")
-                })?,
-            ),
-            (
-                "bg",
-                self.palette.get("mainbg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing mainbg in palette")
-                })?,
-            ),
-            (
-                "hl",
-                self.palette.get("emphasisfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing emphasisfg in palette")
-                })?,
-            ),
-            (
-                "fg+",
-                self.palette.get("lightfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing lightfg in palette")
-                })?,
-            ),
-            (
-                "bg+",
-                self.palette.get("visualbg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing visualbg in palette")
-                })?,
-            ),
-            (
-                "hl+",
-                self.palette.get("emphasisfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing emphasisfg in palette")
-                })?,
-            ),
-            (
-                "info",
-                self.palette.get("purple").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing purple in palette")
-                })?,
-            ),
-            (
-                "prompt",
-                self.palette.get("linenrfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
-                })?,
-            ),
-            // Using pink from palette for consistency (instead of hardcoded #ff79c6)
-            (
-                "pointer",
-                self.palette.get("pink").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing pink in palette")
-                })?,
-            ),
-            (
-                "marker",
-                self.palette.get("pink").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing pink in palette")
-                })?,
-            ),
-            (
-                "spinner",
-                self.palette.get("teal").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing teal in palette")
-                })?,
-            ),
-            (
-                "header",
-                self.palette.get("linenrfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
-                })?,
-            ),
-            (
-                "border",
-                self.palette.get("linenrfg").ok_or_else(|| {
-                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
-                })?,
-            ),
+        // pointer/marker use the palette's pink rather than fzf's default so
+        // the prompt line stays inside the colorscheme.
+        let mappings = [
+            ("fg", "lightfg"),
+            ("bg", "mainbg"),
+            ("hl", "emphasisfg"),
+            ("fg+", "lightfg"),
+            ("bg+", "visualbg"),
+            ("hl+", "emphasisfg"),
+            ("info", "purple"),
+            ("prompt", "linenrfg"),
+            ("pointer", "pink"),
+            ("marker", "pink"),
+            ("spinner", "teal"),
+            ("header", "linenrfg"),
+            ("border", "linenrfg"),
         ];
 
-        // Build --color format strings
-        let color_parts: Vec<String> = colors
+        let color_parts = mappings
             .iter()
-            .map(|(key, color)| format!("{}:{}", key, color.gui))
-            .collect();
+            .map(|(key, name)| {
+                let color = self.palette.get(name).ok_or_else(|| {
+                    io::Error::new(
+                        io::ErrorKind::NotFound,
+                        format!("missing {} in palette", name),
+                    )
+                })?;
+                Ok(format!("{}:{}", key, color.gui))
+            })
+            .collect::<io::Result<Vec<_>>>()?;
 
         // Split into two --color groups for readability (matching README format)
         let first_group = &color_parts[0..7]; // fg ~ hl+
@@ -666,7 +602,7 @@ unlet s:save_cpo
 /// Updates README.md's fzf section with generated color configuration.
 /// Uses HTML comment markers (<!-- fzf:start --> and <!-- fzf:end -->)
 /// to identify the section to replace.
-pub fn update_readme_fzf(writer: &mut Writer, readme_path: &Path) -> io::Result<()> {
+pub fn update_readme_fzf(writer: &Writer, readme_path: &Path) -> io::Result<()> {
     // Read README content
     let content = fs::read_to_string(readme_path)?;
 

@@ -31,7 +31,7 @@ fn main() -> io::Result<()> {
     match dir {
         Some(dir) => {
             let dir = std::path::absolute(PathBuf::from(dir))?;
-            let mut writer = Writer::new(get_palette(), get_highlights());
+            let writer = Writer::new(get_palette(), get_highlights());
 
             let path = File::create(dir.join("colors/dogrun.vim"))?;
             writer.write_colorscheme(io::BufWriter::new(path))?;
@@ -50,11 +50,11 @@ fn main() -> io::Result<()> {
             // Update README.md with generated fzf colors (if it exists)
             let readme_path = dir.join("README.md");
             if readme_path.exists() {
-                update_readme_fzf(&mut writer, &readme_path)?;
+                update_readme_fzf(&writer, &readme_path)?;
             }
         }
         None => {
-            let mut writer = Writer::new(get_palette(), get_highlights());
+            let writer = Writer::new(get_palette(), get_highlights());
             writer.write_colorscheme(io::stdout())?;
             writer.write_lightline(io::stdout())?;
             writer.write_clap(io::stdout())?;

@@ -4,7 +4,7 @@ use std::io::Cursor;
 
 #[test]
 fn test_wezterm_toml_structure() {
-    let mut writer = Writer::new(get_palette(), get_highlights());
+    let writer = Writer::new(get_palette(), get_highlights());
     let mut output = Cursor::new(Vec::new());
 
     writer
