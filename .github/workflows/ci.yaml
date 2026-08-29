@@ -1,5 +1,16 @@
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+
 name: CI
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   CARGO_TERM_COLOR: always
@@ -9,6 +20,10 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: generator
+
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -16,39 +31,39 @@ jobs:
         uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: |
+            ~/.rustup/toolchains/
+            ~/.rustup/update-hashes/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             generator/target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('generator/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('generator/rust-toolchain.toml') }}-${{ hashFiles('generator/Cargo.lock') }}
           restore-keys: |
-            ${{ runner.os }}-cargo-
+            ${{ runner.os }}-cargo-${{ hashFiles('generator/rust-toolchain.toml') }}-
 
       - name: Show Rust version
         run: rustc --version && cargo --version
 
-      - name: Install clippy
-        run: rustup component add clippy
-
       - name: Check formatting
-        run: cargo fmt --manifest-path=generator/Cargo.toml --all -- --check
+        run: cargo fmt --all -- --check
 
       - name: Run clippy
-        run: cargo clippy --manifest-path=generator/Cargo.toml --all-targets --all-features -- -D warnings
-
-      - name: Build
-        run: cargo build --manifest-path=generator/Cargo.toml --release --all-features --verbose
+        run: cargo clippy --locked --all-targets --all-features -- -D warnings
 
       - name: Run tests
-        run: cargo test --manifest-path=generator/Cargo.toml --verbose
+        run: cargo test --locked --verbose
 
       - name: Check generator is up-to-date
         run: |
-          cd generator
-          cargo run -- -d ..
-          if ! git diff --exit-code ../colors ../autoload; then
+          cargo run --locked -- -d ..
+          if ! git diff --exit-code; then
             echo "Error: Generated files are not up-to-date"
             echo "Please run 'cd generator && just build' and commit the changes"
-            git diff
+            exit 1
+          fi
+          untracked=$(git status --porcelain --untracked-files)
+          if [ -n "$untracked" ]; then
+            echo "Error: Generator produced untracked files:"
+            echo "$untracked"
             exit 1
           fi
