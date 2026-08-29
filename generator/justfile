@@ -30,7 +30,13 @@ fmt:
 # Run linter (strict mode with format check)
 lint:
     cargo fmt --check
-    cargo clippy -- -D warnings
+    cargo clippy --all-targets --all-features -- -D warnings
+
+# Regenerate and fail if any committed file changes (mirrors the CI check)
+fresh-check:
+    cargo run --locked -- -d ..
+    git diff --exit-code
+    test -z "$(git status --porcelain --untracked-files)"
 
 # Build release binary
 release:
