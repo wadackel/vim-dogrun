@@ -1,83 +1,47 @@
-use dogrun::highlight::get_palette;
+use dogrun::highlight::{get_highlights, get_palette};
+use dogrun::writer::Writer;
 use regex::Regex;
 
-// Note: Writer struct is private in main.rs, so we test via integration
-// This test file validates the fzf export format expectations
-
 #[test]
-fn test_fzf_export_format_expectations() {
-    // This test documents expected format for fzf export
-    // Actual generation is tested via README update integration test
+fn test_fzf_export_format() {
+    let writer = Writer::new(get_palette(), get_highlights());
+    let export = writer
+        .generate_fzf_export()
+        .expect("generate_fzf_export failed");
 
-    let palette = get_palette();
+    assert!(
+        export.starts_with("export FZF_DEFAULT_OPTS='--color="),
+        "unexpected prefix: {}",
+        export
+    );
+    assert!(
+        export.ends_with(",gutter:-1'"),
+        "should end with gutter:-1 and closing quote: {}",
+        export
+    );
+    assert_eq!(
+        export.matches("--color=").count(),
+        2,
+        "should have exactly two --color groups"
+    );
 
-    // Verify required palette colors exist
-    assert!(
-        palette.contains_key("weakfg"),
-        "palette should contain weakfg"
-    );
-    assert!(
-        palette.contains_key("mainbg"),
-        "palette should contain mainbg"
-    );
-    assert!(
-        palette.contains_key("emphasisfg"),
-        "palette should contain emphasisfg"
-    );
-    assert!(
-        palette.contains_key("visualbg"),
-        "palette should contain visualbg"
-    );
-    assert!(
-        palette.contains_key("purple"),
-        "palette should contain purple"
-    );
-    assert!(
-        palette.contains_key("linenrfg"),
-        "palette should contain linenrfg"
-    );
-    assert!(palette.contains_key("pink"), "palette should contain pink");
-    assert!(palette.contains_key("teal"), "palette should contain teal");
-}
-
-#[test]
-fn test_palette_colors_are_hex_format() {
-    let palette = get_palette();
-    let hex_regex = Regex::new(r"^#[0-9a-f]{6}$").unwrap();
-
-    let required_colors = vec![
-        "weakfg",
-        "mainbg",
-        "emphasisfg",
-        "visualbg",
-        "purple",
-        "linenrfg",
-        "pink",
-        "teal",
-    ];
-
-    for color_name in required_colors {
-        let color = palette
-            .get(color_name)
-            .unwrap_or_else(|| panic!("missing color: {}", color_name));
+    for key in [
+        "fg:", "bg:", "hl:", "fg+:", "bg+:", "hl+:", "info:", "prompt:", "pointer:", "marker:",
+        "spinner:", "header:", "border:", "gutter:",
+    ] {
         assert!(
-            hex_regex.is_match(&color.gui),
-            "{} should be valid hex: {}",
-            color_name,
-            color.gui
+            export.contains(key),
+            "missing fzf key {} in {}",
+            key,
+            export
         );
     }
-}
 
-#[test]
-fn test_fzf_required_keys() {
-    // Document the required fzf color keys
-    let expected_keys = vec![
-        "fg", "bg", "hl", "fg+", "bg+", "hl+", "info", "prompt", "pointer", "marker", "spinner",
-        "header", "border", "gutter",
-    ];
-
-    // This test just documents expectations
-    // Actual validation happens in integration test
-    assert_eq!(expected_keys.len(), 14);
+    let entry_regex = Regex::new(r"[a-z+]+:#[0-9a-f]{6}").unwrap();
+    assert_eq!(
+        entry_regex.find_iter(&export).count(),
+        13,
+        "13 keys should map to hex colors (gutter uses -1): {}",
+        export
+    );
 }
