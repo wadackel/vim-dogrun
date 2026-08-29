@@ -8,9 +8,7 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.0.0", features = ["cargo"] }
-tint = "1.0.0"
-empfindung = "0.2"
-lab = "0.11.0"
+palette = { version = "0.7.7", default-features = false, features = ["std"] }
 
 [dev-dependencies]
 toml = "1.0"
