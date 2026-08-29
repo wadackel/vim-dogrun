@@ -110,9 +110,6 @@ let g:clap_theme = 'dogrun'
 - [clever-f.vim](https://github.com/rhysd/clever-f.vim)
 - [coc.nvim](https://github.com/neoclide/coc.nvim)
 - [conflict-marker.vim](https://github.com/rhysd/conflict-marker.vim)
-- [defx-git](https://github.com/kristijanhusak/defx-git)
-- [defx-icons](https://github.com/kristijanhusak/defx-icons)
-- [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 - [easymotion](https://github.com/easymotion/vim-easymotion)
 - [fern.vim](https://github.com/lambdalisue/fern.vim)
 - [fidget.nvim](https://github.com/j-hui/fidget.nvim)
@@ -123,7 +120,6 @@ let g:clap_theme = 'dogrun'
 - [hop.nvim](https://github.com/smoka7/hop.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [mini.jump](https://github.com/echasnovski/mini.jump)
-- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-hlslens](https://github.com/kevinhwang91/nvim-hlslens)
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
@@ -134,7 +130,6 @@ let g:clap_theme = 'dogrun'
 - [vim-clap](https://github.com/liuchengxu/vim-clap)
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
-- [vimfiler](https://github.com/Shougo/vimfiler.vim)
 
 ## Other Tools
 

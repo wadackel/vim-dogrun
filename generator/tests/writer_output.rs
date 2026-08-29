@@ -23,8 +23,8 @@ fn test_colorscheme_structure() {
     assert!(out.contains("let g:colors_name = 'dogrun'"));
 
     // The nvim-0.8.0 block carries every Nvim080OrLater highlight (the
-    // treesitter/LSP groups); its disappearance would silently drop ~45
-    // groups from the shipped colorscheme.
+    // treesitter/LSP groups, 39 as of this writing); its disappearance would
+    // silently drop them all from the shipped colorscheme.
     let nvim08_block = out
         .split(r#"if has("nvim-0.8.0")"#)
         .nth(1)
@@ -33,7 +33,7 @@ fn test_colorscheme_structure() {
         .next()
         .unwrap();
     assert!(
-        nvim08_block.lines().filter(|l| l.contains("hi ")).count() >= 40,
+        nvim08_block.lines().filter(|l| l.contains("hi ")).count() >= 35,
         "nvim-0.8.0 block lost its highlights"
     );
     assert!(nvim08_block.contains("hi @string"));

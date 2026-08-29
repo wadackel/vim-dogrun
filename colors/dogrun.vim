@@ -35,6 +35,7 @@ hi CursorLineNr guifg=#535f98 ctermfg=61 guibg=NONE ctermbg=NONE gui=NONE cterm=
 hi Conceal guifg=#ac8b83 ctermfg=138 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi NormalFloat guifg=#8085a6 ctermfg=103 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi FloatBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi FloatTitle guifg=#929be5 ctermfg=104 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi WinSeparator guifg=#363859 ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Folded guifg=#666c99 ctermfg=60 guibg=#32364c ctermbg=237 gui=NONE cterm=NONE
 hi FoldColumn guifg=#32364c ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -165,25 +166,6 @@ hi graphqlStructure guifg=#b871b8 ctermfg=133
 hi graphqlDirective guifg=#b871b8 ctermfg=133
 hi graphqlName guifg=#929be5 ctermfg=104
 hi graphqlTemplateString guifg=#9ea3c0 ctermfg=146
-hi vimfilerOpenedFile guifg=#6f78be ctermfg=104
-hi vimfilerClosedFile guifg=#6f78be ctermfg=104
-hi vimfilerNonMark guifg=#73c1a9 ctermfg=79
-hi vimfilerLeaf guifg=#73c1a9 ctermfg=79
-hi DefxIconsMarkIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
-hi DefxIconsDirectory guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
-hi DefxIconsParentDirectory guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
-hi DefxIconsSymlinkDirectory guifg=#73c1a9 ctermfg=79 gui=NONE cterm=NONE
-hi DefxIconsOpenedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
-hi DefxIconsNestedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
-hi DefxIconsClosedTreeIcon guifg=#6f78be ctermfg=104 gui=NONE cterm=NONE
-hi Defx_git_Untracked guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
-hi Defx_git_Ignored guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
-hi Defx_git_Unknown guifg=#545c8c ctermfg=60 gui=NONE cterm=NONE
-hi Defx_git_Renamed guifg=#1e3930 ctermfg=236
-hi Defx_git_Modified guifg=#1e3930 ctermfg=236
-hi Defx_git_Unmerged guifg=#b871b8 ctermfg=133
-hi Defx_git_Deleted guifg=#513351 ctermfg=53
-hi Defx_git_Staged guifg=#73c1a9 ctermfg=79
 hi NvimTreeSymlink guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi NvimTreeSymlinkFolderName guifg=#5b9a87 ctermfg=72 gui=NONE cterm=NONE
 hi NvimTreeFolderName guifg=#929be5 ctermfg=104 gui=NONE cterm=NONE
@@ -321,7 +303,6 @@ hi DiffviewFilePanelConflicts guifg=#ac8b83 ctermfg=138
 hi DiffviewHash guifg=#6f78be ctermfg=104
 hi ALEWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi ALEInfoSign guifg=#82dabf ctermfg=115 gui=NONE cterm=NONE
-hi NullLsInfoBorder guifg=#545c8c ctermfg=60 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi CocErrorSign guifg=#ff9494 ctermfg=210 gui=bold cterm=bold
 hi CocWarningSign guifg=#ac8b83 ctermfg=138 gui=bold cterm=bold
 hi CocInfoSign guifg=#82dabf ctermfg=115 gui=bold cterm=bold
@@ -387,7 +368,6 @@ hi BlinkCmpDocSeparator guifg=#545c8c ctermfg=60
 hi BlinkCmpMenuBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi BlinkCmpDocBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi BlinkCmpSignatureHelpBorder guifg=#545c8c ctermfg=60 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi FloatTitle guifg=#929be5 ctermfg=104 guibg=#222433 ctermbg=235 gui=NONE cterm=NONE
 hi TelescopeNormal guifg=#8085a6 ctermfg=103
 hi TelescopeTitle guifg=#929be5 ctermfg=104
 hi TelescopeMatching guifg=#bdc3e6 ctermfg=146 gui=bold cterm=bold
@@ -475,15 +455,10 @@ if has("nvim")
 endif
 if has("nvim-0.8.0")
   hi @string guifg=#7cbe8c ctermfg=108
-  hi @string.regex guifg=#7cbe8c ctermfg=108
+  hi @string.regexp guifg=#7cbe8c ctermfg=108
   hi @string.escape guifg=#b871b8 ctermfg=133
   hi @string.special.url guifg=#545c8c ctermfg=60
-  hi @text.title guifg=#a8a384 ctermfg=144 gui=bold cterm=bold
-  hi @text.reference guifg=#929be5 ctermfg=104
-  hi @text.uri guifg=#545c8c ctermfg=60
-  hi @text.strong gui=bold cterm=bold
-  hi @text.literal guifg=#73c1a9 ctermfg=79
-  hi @parameter guifg=#929be5 ctermfg=104
+  hi @variable.parameter guifg=#929be5 ctermfg=104
   hi @property guifg=#929be5 ctermfg=104
   hi @keyword guifg=#b871b8 ctermfg=133
   hi @operator guifg=#929be5 ctermfg=104
@@ -492,7 +467,7 @@ if has("nvim-0.8.0")
   hi @type.builtin guifg=#ac8b83 ctermfg=138
   hi @function.tsx guifg=#9ea3c0 ctermfg=146
   hi @punctuation.special.typescript guifg=#8085a6 ctermfg=103
-  hi @include guifg=#929be5 ctermfg=104
+  hi @keyword.import guifg=#929be5 ctermfg=104
   hi @variable guifg=#9ea3c0 ctermfg=146
   hi @variable.builtin guifg=#ac8b83 ctermfg=138
   hi @constant.builtin guifg=#73c1a9 ctermfg=79
@@ -519,42 +494,6 @@ if has("nvim-0.8.0")
   hi @lsp.type.member guifg=#929be5 ctermfg=104
   hi @lsp.type.namespace guifg=#9ea3c0 ctermfg=146
 endif
-let g:defx_icons_gui_colors = {
-  \ 'brown': 'cc4d4d',
-  \ 'aqua': '5b9c9c',
-  \ 'blue': '5d8fac',
-  \ 'darkBlue': '557486',
-  \ 'purple': '6f78be',
-  \ 'lightPurple': '959acb',
-  \ 'red': 'e58585',
-  \ 'beige': '686765',
-  \ 'yellow': '8e8a6f',
-  \ 'orange': 'c59f96',
-  \ 'darkOrange': '79564f',
-  \ 'pink': '9e619e',
-  \ 'salmon': 'ab57ab',
-  \ 'green': '63976f',
-  \ 'lightGreen': '5aa46c',
-  \ 'white': '898da6',
-  \ }
-let g:defx_icons_term_colors = {
-  \ 'brown': 167,
-  \ 'aqua': 73,
-  \ 'blue': 67,
-  \ 'darkBlue': 67,
-  \ 'purple': 104,
-  \ 'lightPurple': 103,
-  \ 'red': 174,
-  \ 'beige': 242,
-  \ 'yellow': 101,
-  \ 'orange': 181,
-  \ 'darkOrange': 95,
-  \ 'pink': 133,
-  \ 'salmon': 133,
-  \ 'green': 65,
-  \ 'lightGreen': 71,
-  \ 'white': 103,
-  \ }
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
