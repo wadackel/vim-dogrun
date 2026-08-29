@@ -1,0 +1,696 @@
+use crate::highlight::*;
+use std::fs;
+use std::io;
+use std::path::Path;
+
+fn highlight(palette: &Palette, hl: &Highlight) -> String {
+    let mut args = vec![hl.name.to_string()];
+    let variants = &[(&hl.fg, "guifg", "ctermfg"), (&hl.bg, "guibg", "ctermbg")];
+
+    // fg, bg
+    for (color_name, gui, cterm) in variants {
+        if let Some(name) = color_name {
+            if name != &"NONE" {
+                let color = &palette[name];
+                args.push(format!("{}={}", gui, color.gui));
+                args.push(format!("{}={}", cterm, color.cterm));
+            } else {
+                args.push(format!("{}=NONE", gui));
+                args.push(format!("{}=NONE", cterm));
+            }
+        }
+    }
+
+    // sp
+    if let Some(name) = hl.sp {
+        let color = &palette[name];
+        args.push(format!("guisp={}", color.gui));
+    }
+
+    // attr
+    let attr = match hl.attr {
+        HighlightAttr::Nothing => "",
+        HighlightAttr::Bold => "gui=bold cterm=bold",
+        HighlightAttr::Italic => "gui=italic cterm=italic",
+        HighlightAttr::Underline => "gui=underline cterm=underline",
+        HighlightAttr::Strikethrough => "gui=strikethrough cterm=strikethrough",
+        HighlightAttr::Reverse => "gui=reverse cterm=reverse",
+        HighlightAttr::None => "gui=NONE cterm=NONE",
+    };
+
+    if !attr.is_empty() {
+        args.push(attr.to_string());
+    }
+
+    format!("hi {}", args.join(" "))
+}
+
+/// Helper struct for updating sections in README.md marked with HTML comments.
+/// This allows automated regeneration of configuration examples while preserving
+/// the rest of the README content.
+struct ReadmeUpdater {
+    content: String,
+}
+
+impl ReadmeUpdater {
+    pub fn new(content: String) -> Self {
+        Self { content }
+    }
+
+    /// Replaces content between start_marker and end_marker with new_content.
+    /// Returns an error if markers are not found or in invalid order.
+    fn replace_section(
+        &mut self,
+        start_marker: &str,
+        end_marker: &str,
+        new_content: &str,
+    ) -> io::Result<()> {
+        // Find start marker position
+        let start_idx = self.content.find(start_marker).ok_or_else(|| {
+            io::Error::new(
+                io::ErrorKind::NotFound,
+                format!("Marker '{}' not found in README", start_marker),
+            )
+        })?;
+
+        // Find end marker AFTER the start marker to avoid matching earlier occurrences
+        // (e.g., if end marker appears in documentation or other sections)
+        let search_start = start_idx + start_marker.len();
+        let end_idx_relative = self.content[search_start..]
+            .find(end_marker)
+            .ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    format!("Marker '{}' not found after start marker", end_marker),
+                )
+            })?;
+        let end_idx = search_start + end_idx_relative;
+
+        // Detect line ending style from the original content
+        // to maintain consistency across platforms
+        let line_ending = if self.content.contains("\r\n") {
+            "\r\n"
+        } else {
+            "\n"
+        };
+
+        // Construct replacement (preserving line ending style)
+        let before = &self.content[..start_idx + start_marker.len()];
+        let after = &self.content[end_idx..];
+
+        self.content = format!(
+            "{}{}{}{}{}",
+            before, line_ending, new_content, line_ending, after
+        );
+        Ok(())
+    }
+
+    fn into_string(self) -> String {
+        self.content
+    }
+}
+
+#[derive(Debug)]
+pub struct Writer {
+    palette: Palette,
+    highlights: Vec<Highlight>,
+}
+
+impl Writer {
+    pub fn new(palette: Palette, highlights: Vec<Highlight>) -> Self {
+        Self {
+            palette,
+            highlights,
+        }
+    }
+
+    pub fn write_colorscheme<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+        // header
+        write!(
+            out,
+            r#"" dogrun: Take a sweet dog with you.
+"
+" Author: wadackel
+" License: MIT
+"   Copyright (c) 2020 wadackel
+
+if &background !=# 'dark'
+  set background=dark
+endif
+
+if exists('g:colors_name')
+  hi clear
+endif
+
+if exists('g:syntax_on')
+  syntax reset
+endif
+
+let g:colors_name = 'dogrun'
+
+"#
+        )?;
+
+        // vim & nvim
+        for hl in self.highlights.iter() {
+            if hl.scope == HighlightScope::All {
+                writeln!(out, "{}", highlight(&self.palette, hl))?;
+            }
+        }
+
+        writeln!(out, r#"if has("nvim")"#)?;
+
+        // only nvim
+        for hl in self.highlights.iter() {
+            if hl.scope == HighlightScope::Nvim {
+                writeln!(out, "  {}", highlight(&self.palette, hl))?;
+            }
+        }
+
+        // term colors
+        let termcolors = vec![
+            "termblack",
+            "termmaroon",
+            "termgreen",
+            "termolive",
+            "termnavy",
+            "termpurple",
+            "termteal",
+            "termsilver",
+            "termgray",
+            "termred",
+            "termlime",
+            "termyellow",
+            "termblue",
+            "termfuchsia",
+            "termaqua",
+            "termwhite",
+        ];
+
+        for (index, name) in termcolors.iter().enumerate() {
+            let color = &self.palette[name].gui;
+            writeln!(out, "  let g:terminal_color_{} = '{}'", index, color)?;
+        }
+
+        writeln!(
+            out,
+            "  let g:terminal_color_background = g:terminal_color_0"
+        )?;
+
+        writeln!(
+            out,
+            "  let g:terminal_color_foreground = g:terminal_color_7"
+        )?;
+
+        // end nvim
+        writeln!(out, "endif")?;
+
+        // only nvim x version >= 800
+        writeln!(out, r#"if has("nvim-0.8.0")"#)?;
+        for hl in self.highlights.iter() {
+            if hl.scope == HighlightScope::Nvim080OrLater {
+                writeln!(out, "  {}", highlight(&self.palette, hl))?;
+            }
+        }
+        writeln!(out, "endif")?;
+
+        // defx-icons palette
+        let defxicons = vec![
+            ("brown", &self.palette["defxiconbrown"]),
+            ("aqua", &self.palette["defxiconaqua"]),
+            ("blue", &self.palette["defxiconblue"]),
+            ("darkBlue", &self.palette["defxicondarkblue"]),
+            ("purple", &self.palette["defxiconpurple"]),
+            ("lightPurple", &self.palette["defxiconlightpurple"]),
+            ("red", &self.palette["defxiconred"]),
+            ("beige", &self.palette["defxiconbeige"]),
+            ("yellow", &self.palette["defxiconyellow"]),
+            ("orange", &self.palette["defxiconorange"]),
+            ("darkOrange", &self.palette["defxicondarkorange"]),
+            ("pink", &self.palette["defxiconpink"]),
+            ("salmon", &self.palette["defxiconsalmon"]),
+            ("green", &self.palette["defxicongreen"]),
+            ("lightGreen", &self.palette["defxiconlightgreen"]),
+            ("white", &self.palette["defxiconwhite"]),
+        ];
+
+        writeln!(out, "let g:defx_icons_gui_colors = {{")?;
+        for (name, color) in defxicons.iter() {
+            writeln!(
+                out,
+                "  \\ '{}': '{}',",
+                name,
+                &color.gui[1..color.gui.len()]
+            )?;
+        }
+        writeln!(out, "  \\ }}")?;
+
+        writeln!(out, "let g:defx_icons_term_colors = {{")?;
+        for (name, color) in defxicons.iter() {
+            writeln!(out, "  \\ '{}': {},", name, color.cterm)?;
+        }
+        writeln!(out, "  \\ }}")?;
+
+        // fzf.vim colors
+        writeln!(
+            out,
+            r#"let g:fzf_colors = {{
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine'],
+  \ 'bg+':     ['bg', 'CursorLine'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'Comment'],
+  \ 'gutter':  ['bg', 'Normal'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Label'],
+  \ 'pointer': ['fg', 'Boolean'],
+  \ 'marker':  ['fg', 'Boolean'],
+  \ 'spinner': ['fg', 'Title'],
+  \ 'header':  ['fg', 'Comment'],
+  \ }}"#
+        )?;
+
+        Ok(())
+    }
+
+    pub fn write_lightline<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+        // header
+        write!(
+            out,
+            r#"" dogrun lightline theme
+"
+" Author: wadackel
+" License: MIT
+"   Copyright (c) 2020 wadackel
+
+let s:p = {{'normal': {{}}, 'inactive': {{}}, 'insert': {{}}, 'replace': {{}}, 'visual': {{}}, 'tabline': {{}}}}
+
+"#
+        )?;
+
+        // body
+        let palette = &self.palette;
+
+        let color = |name: &str| {
+            let highlight = palette.get(name).expect("error");
+            format!("['{}', {}]", highlight.gui, highlight.cterm)
+        };
+
+        macro_rules! p {
+            ($target: ident, $direction: ident, $fg1: ident, $bg1: ident) => {
+                writeln!(
+                    out,
+                    "let s:p.{}.{} = [[{}, {}]]",
+                    stringify!($target),
+                    stringify!($direction),
+                    color(stringify!($fg1)),
+                    color(stringify!($bg1))
+                )?;
+            };
+            ($target: ident, $direction: ident, $fg1: ident, $bg1: ident, $fg2: ident, $bg2: ident) => {
+                writeln!(
+                    out,
+                    "let s:p.{}.{} = [[{}, {}], [{}, {}]]",
+                    stringify!($target),
+                    stringify!($direction),
+                    color(stringify!($fg1)),
+                    color(stringify!($bg1)),
+                    color(stringify!($fg2)),
+                    color(stringify!($bg2))
+                )?;
+            };
+        }
+
+        {
+            p!(normal, left, mainbg, purple, purple, xlinegradientbg);
+            p!(normal, middle, xlinefg, xlinebg);
+            p!(normal, right, mainbg, purple, purple, xlinegradientbg);
+            p!(normal, error, errorfg, xlinebg);
+            p!(normal, warning, warningfg, xlinebg);
+            p!(
+                inactive,
+                left,
+                statuslinencfg,
+                statuslinencbg,
+                statuslinencfg,
+                statuslinencbg
+            );
+            p!(inactive, middle, statuslinencfg, statuslinencbg);
+            p!(
+                inactive,
+                right,
+                statuslinencfg,
+                statuslinencbg,
+                statuslinencfg,
+                statuslinencbg
+            );
+            p!(insert, left, mainbg, teal, teal, xlinegradientbg);
+            p!(insert, right, mainbg, teal, teal, xlinegradientbg);
+            p!(visual, left, mainbg, pink, pink, xlinegradientbg);
+            p!(visual, right, mainbg, pink, pink, xlinegradientbg);
+            p!(replace, left, mainbg, red, red, xlinegradientbg);
+            p!(replace, right, mainbg, red, red, xlinegradientbg);
+            p!(tabline, left, xlinefg, xlinebg);
+            p!(tabline, tabsel, mainbg, purple);
+            p!(tabline, middle, xlinefg, xlinebg);
+            p!(tabline, right, xlinefg, xlinebg);
+        }
+
+        // footer
+        writeln!(
+            out,
+            r#"
+let g:lightline#colorscheme#dogrun#palette = lightline#colorscheme#flatten(s:p)"#
+        )?;
+
+        Ok(())
+    }
+
+    pub fn write_clap<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+        // header
+        write!(
+            out,
+            r#"" dogrun vim-clap theme
+"
+" Author: wadackel
+" License: MIT
+"   Copyright (c) 2020 wadackel
+
+let s:save_cpo = &cpoptions
+set cpoptions&vim
+
+let s:palette = {{}}
+"#
+        )?;
+
+        // body
+        let palette = &self.palette;
+
+        macro_rules! p {
+            ($target: ident, $fg: ident, $bg: ident, $attr: ident) => {
+                let mut args: Vec<String> = vec![];
+
+                if let Some(hi) = palette.get(stringify!($fg)) {
+                    args.push(format!("'ctermfg': '{}', 'guifg': '{}'", hi.cterm, hi.gui,));
+                }
+
+                if let Some(hi) = palette.get(stringify!($bg)) {
+                    args.push(format!("'ctermbg': '{}', 'guibg': '{}'", hi.cterm, hi.gui,));
+                }
+
+                match HighlightAttr::$attr {
+                    HighlightAttr::None => args.push("'gui': 'NONE', 'cterm': 'NONE'".to_string()),
+                    HighlightAttr::Bold => args.push("'gui': 'bold', 'cterm': 'bold'".to_string()),
+                    HighlightAttr::Italic => {
+                        args.push("'gui': 'italic', 'cterm': 'italic'".to_string())
+                    }
+                    HighlightAttr::Underline => {
+                        args.push("'gui': 'underline', 'cterm': 'underline'".to_string())
+                    }
+                    HighlightAttr::Reverse => {
+                        args.push("'gui': 'reverse', 'cterm': 'reverse'".to_string())
+                    }
+                    _ => {}
+                }
+
+                writeln!(
+                    out,
+                    "let s:palette.{} = {{ {} }}",
+                    stringify!($target),
+                    args.join(", "),
+                )?;
+            };
+            ($target: ident, $fg: ident, -, $attr: ident) => {
+                p!($target, $fg, None, $attr);
+            };
+        }
+
+        macro_rules! h {
+            ($name: ident, $fg: ident, $bg: ident, $attr: ident) => {
+                let mut args: Vec<String> = vec![];
+
+                if let Some(fg) = palette.get(stringify!($fg)) {
+                    args.push(format!("guifg={}", fg.gui));
+                    args.push(format!("ctermfg={}", fg.cterm));
+                }
+
+                if let Some(bg) = palette.get(stringify!($bg)) {
+                    args.push(format!("guibg={}", bg.gui));
+                    args.push(format!("ctermbg={}", bg.cterm));
+                } else if stringify!($bg) == "None" {
+                    args.push("guibg=NONE".to_string());
+                    args.push("ctermbg=NONE".to_string());
+                }
+
+                match HighlightAttr::$attr {
+                    HighlightAttr::None => args.push("gui=NONE cterm=NONE".to_string()),
+                    HighlightAttr::Bold => args.push("gui=bold cterm=bold".to_string()),
+                    HighlightAttr::Italic => args.push("gui=italic cterm=italic".to_string()),
+                    HighlightAttr::Underline => {
+                        args.push("gui=underline cterm=underline".to_string())
+                    }
+                    HighlightAttr::Reverse => args.push("gui=reverse cterm=reverse".to_string()),
+                    _ => {}
+                }
+
+                writeln!(out, "hi {} {}", stringify!($name), args.join(" "),)?;
+            };
+            ($target: ident, $fg: ident, -, $attr: ident) => {
+                h!($target, $fg, None, $attr);
+            };
+        }
+
+        {
+            p!(input, purple, pmenubar, Bold);
+            p!(display, pmenufg, pmenubg, None);
+            p!(spinner, purple, pmenubar, Bold);
+            p!(search_text, mainfg, pmenubar, None);
+            p!(preview, pmenuselfg, pmenuselbg, None);
+            p!(selected, cyan, -, Bold);
+            p!(current_selection, emphasisfg, -, Bold);
+        }
+
+        {
+            h!(ClapMatches, teal, -, Bold);
+            h!(ClapMatches1, teal, -, Bold);
+            h!(ClapMatches2, teal, -, Bold);
+            h!(ClapMatches3, teal, -, Bold);
+            h!(ClapMatches4, teal, -, Bold);
+            h!(ClapMatches5, teal, -, Bold);
+            h!(ClapMatches6, teal, -, Bold);
+            h!(ClapMatches7, teal, -, Bold);
+            h!(ClapMatches8, teal, -, Bold);
+            h!(ClapFuzzyMatches1, teal, -, Bold);
+            h!(ClapFuzzyMatches2, teal, -, Bold);
+            h!(ClapFuzzyMatches3, teal, -, Bold);
+            h!(ClapFuzzyMatches4, teal, -, Bold);
+            h!(ClapFuzzyMatches5, teal, -, Bold);
+            h!(ClapFuzzyMatches6, teal, -, Bold);
+            h!(ClapFuzzyMatches7, teal, -, Bold);
+            h!(ClapFuzzyMatches8, teal, -, Bold);
+            h!(ClapFuzzyMatches9, teal, -, Bold);
+            h!(ClapFuzzyMatches10, teal, -, Bold);
+            h!(ClapFuzzyMatches11, teal, -, Bold);
+            h!(ClapFuzzyMatches12, teal, -, Bold);
+            h!(ClapNoMatchesFound, warningfg, -, Bold);
+        }
+
+        // footer
+        writeln!(
+            out,
+            r#"let g:clap#themes#dogrun#palette = s:palette
+
+let &cpoptions = s:save_cpo
+unlet s:save_cpo
+"#
+        )?;
+
+        Ok(())
+    }
+
+    pub fn write_wezterm<W: io::Write>(&mut self, mut out: W) -> io::Result<()> {
+        // [colors] section
+        writeln!(out, "[colors]")?;
+        writeln!(out, "background = \"{}\"", self.palette["mainbg"].gui)?;
+        writeln!(out, "foreground = \"{}\"", self.palette["mainfg"].gui)?;
+        writeln!(out, "cursor_bg = \"{}\"", self.palette["mainfg"].gui)?;
+        writeln!(out, "cursor_fg = \"{}\"", self.palette["mainbg"].gui)?;
+        writeln!(out, "cursor_border = \"{}\"", self.palette["mainfg"].gui)?;
+        writeln!(out, "selection_bg = \"{}\"", self.palette["visualbg"].gui)?;
+
+        // ansi array (0-7)
+        writeln!(out, "ansi = [")?;
+        for name in [
+            "termblack",
+            "termmaroon",
+            "termgreen",
+            "termolive",
+            "termnavy",
+            "termpurple",
+            "termteal",
+            "termsilver",
+        ] {
+            writeln!(out, "  \"{}\",", self.palette[name].gui)?;
+        }
+        writeln!(out, "]")?;
+
+        // brights array (8-15)
+        writeln!(out, "brights = [")?;
+        for name in [
+            "termgray",
+            "termred",
+            "termlime",
+            "termyellow",
+            "termblue",
+            "termfuchsia",
+            "termaqua",
+            "termwhite",
+        ] {
+            writeln!(out, "  \"{}\",", self.palette[name].gui)?;
+        }
+        writeln!(out, "]")?;
+
+        // [metadata] section
+        writeln!(out)?;
+        writeln!(out, "[metadata]")?;
+        writeln!(out, "name = \"dogrun\"")?;
+        writeln!(out, "author = \"wadackel\"")?;
+        writeln!(
+            out,
+            "origin_url = \"https://github.com/wadackel/vim-dogrun\""
+        )?;
+
+        Ok(())
+    }
+
+    /// Generates fzf color configuration as a shell export statement.
+    /// Returns Result to handle missing palette colors gracefully.
+    pub fn generate_fzf_export(&self) -> io::Result<String> {
+        // Define fzf color mappings to palette colors
+        // Using .get() with explicit error messages per Codex review
+        let colors = vec![
+            (
+                "fg",
+                self.palette.get("lightfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing lightfg in palette")
+                })?,
+            ),
+            (
+                "bg",
+                self.palette.get("mainbg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing mainbg in palette")
+                })?,
+            ),
+            (
+                "hl",
+                self.palette.get("emphasisfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing emphasisfg in palette")
+                })?,
+            ),
+            (
+                "fg+",
+                self.palette.get("lightfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing lightfg in palette")
+                })?,
+            ),
+            (
+                "bg+",
+                self.palette.get("visualbg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing visualbg in palette")
+                })?,
+            ),
+            (
+                "hl+",
+                self.palette.get("emphasisfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing emphasisfg in palette")
+                })?,
+            ),
+            (
+                "info",
+                self.palette.get("purple").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing purple in palette")
+                })?,
+            ),
+            (
+                "prompt",
+                self.palette.get("linenrfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
+                })?,
+            ),
+            // Using pink from palette for consistency (instead of hardcoded #ff79c6)
+            (
+                "pointer",
+                self.palette.get("pink").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing pink in palette")
+                })?,
+            ),
+            (
+                "marker",
+                self.palette.get("pink").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing pink in palette")
+                })?,
+            ),
+            (
+                "spinner",
+                self.palette.get("teal").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing teal in palette")
+                })?,
+            ),
+            (
+                "header",
+                self.palette.get("linenrfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
+                })?,
+            ),
+            (
+                "border",
+                self.palette.get("linenrfg").ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::NotFound, "missing linenrfg in palette")
+                })?,
+            ),
+        ];
+
+        // Build --color format strings
+        let color_parts: Vec<String> = colors
+            .iter()
+            .map(|(key, color)| format!("{}:{}", key, color.gui))
+            .collect();
+
+        // Split into two --color groups for readability (matching README format)
+        let first_group = &color_parts[0..7]; // fg ~ hl+
+        let second_group = &color_parts[7..]; // info ~ border
+
+        Ok(format!(
+            "export FZF_DEFAULT_OPTS='--color={} --color={},gutter:-1'",
+            first_group.join(","),
+            second_group.join(",")
+        ))
+    }
+}
+
+/// Updates README.md's fzf section with generated color configuration.
+/// Uses HTML comment markers (<!-- fzf:start --> and <!-- fzf:end -->)
+/// to identify the section to replace.
+pub fn update_readme_fzf(writer: &mut Writer, readme_path: &Path) -> io::Result<()> {
+    // Read README content
+    let content = fs::read_to_string(readme_path)?;
+
+    // Create updater
+    let mut updater = ReadmeUpdater::new(content);
+
+    // Generate fzf export string
+    let fzf_export = writer.generate_fzf_export()?;
+
+    // Wrap in markdown code block
+    let code_block = format!("```bash\n{}\n```", fzf_export);
+
+    // Replace HTML comment section
+    updater.replace_section("<!-- fzf:start -->", "<!-- fzf:end -->", &code_block)?;
+
+    // Write back to file
+    fs::write(readme_path, updater.into_string())?;
+
+    Ok(())
+}
