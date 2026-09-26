@@ -94,6 +94,8 @@ hi!("Normal", mainfg, mainbg, -, -, -);
 hi!("Comment", commentfg, -, -, None, -);
 ```
 
+A `-` in the fg/bg/sp/attr slots is written out as `NONE`, not omitted: `:hi` merges into existing attributes, so an omitted key would inherit the editor's default.
+
 **Categories:**
 - Basic Vim highlights (Normal, Comment, etc.)
 - Treesitter semantic tokens
