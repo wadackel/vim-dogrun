@@ -4,32 +4,37 @@ use std::io;
 use std::path::Path;
 
 fn highlight(palette: &Palette, hl: &Highlight) -> String {
+    let lookup = |name: &str| {
+        palette
+            .get(name)
+            .unwrap_or_else(|| panic!("unknown color '{}' in highlight {}", name, hl.name))
+    };
     let mut args = vec![hl.name.to_string()];
     let variants = &[(&hl.fg, "guifg", "ctermfg"), (&hl.bg, "guibg", "ctermbg")];
 
-    // fg, bg
+    // `:hi` merges into the group's existing attributes, so a key left out would
+    // keep the editor's default (Vim's SpellBad ctermbg=12, Neovim's Pmenu
+    // cterm=reverse, ...) instead of meaning "unset". Every key is written.
     for (color_name, gui, cterm) in variants {
-        if let Some(name) = color_name {
-            if name != &"NONE" {
-                let color = &palette[name];
+        match color_name {
+            Some(name) if name != &"NONE" => {
+                let color = lookup(name);
                 args.push(format!("{}={}", gui, color.gui));
                 args.push(format!("{}={}", cterm, color.cterm));
-            } else {
+            }
+            _ => {
                 args.push(format!("{}=NONE", gui));
                 args.push(format!("{}=NONE", cterm));
             }
         }
     }
 
-    // sp
-    if let Some(name) = hl.sp {
-        let color = &palette[name];
-        args.push(format!("guisp={}", color.gui));
+    match hl.sp {
+        Some(name) => args.push(format!("guisp={}", lookup(name).gui)),
+        None => args.push("guisp=NONE".to_string()),
     }
 
-    // attr
     let attr = match hl.attr {
-        HighlightAttr::Nothing => "",
         HighlightAttr::Bold => "gui=bold cterm=bold",
         HighlightAttr::Italic => "gui=italic cterm=italic",
         HighlightAttr::Underline => "gui=underline cterm=underline",
@@ -37,10 +42,7 @@ fn highlight(palette: &Palette, hl: &Highlight) -> String {
         HighlightAttr::Reverse => "gui=reverse cterm=reverse",
         HighlightAttr::None => "gui=NONE cterm=NONE",
     };
-
-    if !attr.is_empty() {
-        args.push(attr.to_string());
-    }
+    args.push(attr.to_string());
 
     format!("hi {}", args.join(" "))
 }
@@ -195,7 +197,16 @@ let g:colors_name = 'dogrun'
             "  let g:terminal_color_foreground = g:terminal_color_7"
         )?;
 
-        // end nvim
+        // vim
+        writeln!(out, "else")?;
+        let ansi = termcolors
+            .iter()
+            .map(|name| format!("'{}'", self.palette[name].gui))
+            .collect::<Vec<_>>()
+            .join(", ");
+        writeln!(out, "  let g:terminal_ansi_colors = [{}]", ansi)?;
+
+        // end nvim / vim
         writeln!(out, "endif")?;
 
         // only nvim x version >= 800
@@ -250,7 +261,9 @@ let s:p = {{'normal': {{}}, 'inactive': {{}}, 'insert': {{}}, 'replace': {{}}, '
         let palette = &self.palette;
 
         let color = |name: &str| {
-            let highlight = palette.get(name).expect("error");
+            let highlight = palette
+                .get(name)
+                .unwrap_or_else(|| panic!("unknown color '{}' in lightline theme", name));
             format!("['{}', {}]", highlight.gui, highlight.cterm)
         };
 

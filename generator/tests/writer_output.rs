@@ -49,6 +49,19 @@ fn test_colorscheme_structure() {
     assert!(out.contains("let g:terminal_color_background = g:terminal_color_0"));
     assert!(out.contains("let g:terminal_color_foreground = g:terminal_color_7"));
 
+    // Vim reads g:terminal_ansi_colors instead; it goes in the non-nvim branch.
+    let ansi = out
+        .split("else\n")
+        .nth(1)
+        .and_then(|rest| rest.lines().next())
+        .expect("missing else branch for Vim terminal colors");
+    let ansi = ansi
+        .trim()
+        .strip_prefix("let g:terminal_ansi_colors = [")
+        .and_then(|rest| rest.strip_suffix(']'))
+        .unwrap_or_else(|| panic!("unexpected Vim terminal colors line: {}", ansi));
+    assert_eq!(ansi.split(", ").count(), 16, "expected 16 ansi colors");
+
     assert!(out.contains("let g:fzf_colors"), "missing fzf block");
 }
 
@@ -98,4 +111,32 @@ fn test_clap_theme_structure() {
             line
         );
     }
+}
+
+// An omitted key inherits the editor's default (see `highlight()` in writer.rs),
+// so every definition line must spell out all keys. `hi clear` has no trailing
+// space and is not matched.
+#[test]
+fn test_colorscheme_highlights_set_every_key() {
+    let out = render(|w, o| w.write_colorscheme(o));
+    let definition = regex::Regex::new(r"^\s*hi \S+ ").unwrap();
+    let keys = [
+        "guifg", "ctermfg", "guibg", "ctermbg", "guisp", "gui", "cterm",
+    ];
+
+    let mut checked = 0;
+    for line in out.lines() {
+        if !definition.is_match(line) {
+            continue;
+        }
+        for key in keys {
+            let count = line
+                .split_whitespace()
+                .filter(|token| token.split_once('=').is_some_and(|(k, _)| k == key))
+                .count();
+            assert_eq!(count, 1, "{} must appear exactly once: {}", key, line);
+        }
+        checked += 1;
+    }
+    assert!(checked > 400, "only {} highlight lines checked", checked);
 }

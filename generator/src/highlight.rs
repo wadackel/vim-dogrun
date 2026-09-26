@@ -13,7 +13,6 @@ pub type Palette = HashMap<&'static str, Color>;
 
 #[derive(Debug)]
 pub enum HighlightAttr {
-    Nothing,
     None,
     Bold,
     Italic,
@@ -53,16 +52,19 @@ macro_rules! highlight {
 
 macro_rules! hi {
     ($name: literal, -, -, -, -, -) => {
-        highlight!($name, None, None, None, Nothing, All)
+        highlight!($name, None, None, None, None, All)
     };
     ($name: literal, $fg: ident, -, -, -, -) => {
-        highlight!($name, Some(stringify!($fg)), None, None, Nothing, All)
+        highlight!($name, Some(stringify!($fg)), None, None, None, All)
     };
     ($name: literal, -, $bg: ident, -, -, -) => {
-        highlight!($name, None, Some(stringify!($bg)), None, Nothing, All)
+        highlight!($name, None, Some(stringify!($bg)), None, None, All)
     };
     ($name: literal, -, -, $sp: ident, -, -) => {
-        highlight!($name, None, None, Some(stringify!($sp)), Nothing, All)
+        highlight!($name, None, None, Some(stringify!($sp)), None, All)
+    };
+    ($name: literal, -, -, $sp: ident, $attr: ident, -) => {
+        highlight!($name, None, None, Some(stringify!($sp)), $attr, All)
     };
     ($name: literal, -, -, -, $attr: ident, -) => {
         highlight!($name, None, None, None, $attr, All)
@@ -73,7 +75,7 @@ macro_rules! hi {
             Some(stringify!($fg)),
             Some(stringify!($bg)),
             None,
-            Nothing,
+            None,
             All
         )
     };
@@ -83,12 +85,12 @@ macro_rules! hi {
             Some(stringify!($fg)),
             Some(stringify!($bg)),
             None,
-            Nothing,
+            None,
             $scope
         )
     };
     ($name: literal, $fg: ident, -, -, -, $scope: ident) => {
-        highlight!($name, Some(stringify!($fg)), None, None, Nothing, $scope)
+        highlight!($name, Some(stringify!($fg)), None, None, None, $scope)
     };
     ($name: literal, $fg: ident, -, -, $attr: ident, -) => {
         highlight!($name, Some(stringify!($fg)), None, None, $attr, All)
@@ -100,7 +102,7 @@ macro_rules! hi {
         highlight!($name, None, Some(stringify!($bg)), None, $attr, All)
     };
     ($name: literal, -, $bg: ident, -, -, $scope: ident) => {
-        highlight!($name, None, Some(stringify!($bg)), None, Nothing, $scope)
+        highlight!($name, None, Some(stringify!($bg)), None, None, $scope)
     };
     ($name: literal, -, $bg: ident, -, $attr: ident, $scope: ident) => {
         highlight!($name, None, Some(stringify!($bg)), None, $attr, $scope)
@@ -158,7 +160,6 @@ pub fn get_palette() -> Palette {
 
     // palettes
     def!(red, "#ff9494");
-    def!(darkred, extends!(red, 0.0, 0.0, -0.2));
     def!(pink, "#b871b8");
     def!(darkpink, extends!(pink, 0.0, -0.05, -0.35));
     def!(lightpink, extends!(pink, 0.0, 0.0, 0.03));
@@ -169,17 +170,13 @@ pub fn get_palette() -> Palette {
     def!(darkblue, extends!(blue, 0.0, 0.0, -0.2));
     def!(darkestblue, extends!(blue, 0.0, 0.05, -0.48));
     def!(cyan, "#59b6b6");
-    def!(darkcyan, extends!(cyan, 0.0, 0.0, -0.2));
     def!(teal, "#73c1a9");
     def!(darkteal, extends!(teal, 0.0, 0.0, -0.15));
     def!(darkestteal, extends!(teal, 0.0, 0.05, -0.48));
     def!(green, "#7cbe8c");
-    def!(darkgreen, extends!(green, 0.0, -0.05, -0.4));
     def!(yellow, "#a8a384");
-    def!(darkyellow, extends!(yellow, 0.0, -0.15, -0.1));
     def!(lightyellow, extends!(yellow, 0.0, 0.0, 0.09));
     def!(orange, "#ac8b83");
-    def!(darkorange, extends!(orange, 0.0, -0.05, -0.1));
     def!(lightorange, extends!(orange, 0.0, 0.0, 0.08));
 
     // neutral
@@ -188,26 +185,18 @@ pub fn get_palette() -> Palette {
     def!(weakfg, extends!(mainbg, 0.0, 0.05, 0.35));
     def!(weakbg, extends!(mainbg, 0.0, 0.0, 0.1));
     def!(emphasisfg, extends!(mainfg, 0.0, 0.0, 0.15));
-    def!(emphasisbg, extends!(mainbg, 0.0, 0.0, 0.05));
     def!(darkfg, extends!(mainbg, 0.0, 0.05, 0.15));
-    def!(darkbg, extends!(mainbg, 0.0, 0.0, 0.05));
     def!(lightfg, extends!(mainfg, 0.0, 0.05, -0.1));
-    def!(lightbg, extends!(mainbg, 0.0, 0.0, 0.2));
-    def!(white, "#ffffff");
-    def!(black, "#000000");
 
     // messages
     def!(morefg, extends!(teal));
     def!(errorbg, extends!(mainbg));
     def!(errorfg, extends!(red, 0.0, 0.0, 0.0));
     def!(errorborder, extends!(errorfg, 0.0, -0.1, -0.2));
-    def!(warningbg, extends!(mainbg));
     def!(warningfg, extends!(orange, 0.0, 0.0, 0.0));
     def!(warningborder, extends!(orange, 0.0, -0.1, -0.2));
-    def!(infobg, extends!(mainbg));
     def!(infofg, extends!(teal, 0.0, 0.0, 0.1));
     def!(infoborder, extends!(teal, 0.0, -0.1, -0.2));
-    def!(debugbg, extends!(mainbg));
     def!(debugfg, extends!(mainfg));
     def!(debugborder, extends!(debugfg, 0.0, -0.1, -0.2));
 
@@ -275,10 +264,7 @@ pub fn get_palette() -> Palette {
     // lightline
     def!(xlinebg, extends!(statuslinencbg));
     def!(xlinefg, extends!(statuslinencfg));
-    def!(xlineedgebg, extends!(statuslinebg));
-    def!(xlineedgefg, extends!(statuslinefg));
     def!(xlinegradientbg, extends!(statuslinencbg));
-    def!(xlinegradientfg, extends!(statuslinencfg));
 
     p
 }
@@ -314,6 +300,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("Underlined", -, -, -, Underline, -),
         hi!("String", green, -, -, -, -),
         hi!("Statement", purple, -, -, None, -),
+        hi!("Operator", purple, -, -, -, -),
         hi!("Label", purple, -, -, None, -),
         hi!("Function", purple, -, -, None, -),
         hi!("Constant", teal, -, -, -, -),
@@ -357,7 +344,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("Question", teal, -, -, Bold, -),
         hi!("WildMenu", mainbg, purple, -, -, -),
         hi!("SpellBad", errorfg, -, -, Underline, -),
-        hi!("SpellCap", -, -, -, Underline, -),
+        hi!("SpellCap", -, -, yellow, Underline, -),
         hi!("SpellLocal", errorfg, -, -, Underline, -),
         hi!("SpellRare", yellow, -, -, Underline, -),
         hi!("Added", NONE, diffaddbg, -, None, -),
@@ -430,11 +417,12 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("DiagnosticUnderlineWarn", warningfg, -, -, Underline, -),
         hi!("DiagnosticInfo", infofg, -, -, -, -),
         hi!("DiagnosticVirtualTextInfo", weakfg, -, -, Bold, -),
-        hi!("DiagnosticUnderlineInfo", -, -, -, Underline, -),
+        hi!("DiagnosticUnderlineInfo", -, -, infofg, Underline, -),
         hi!("DiagnosticHint", infofg, -, -, -, -),
         hi!("DiagnosticOk", infofg, -, -, -, -),
         hi!("DiagnosticVirtualTextHint", weakfg, -, -, Bold, -),
-        hi!("DiagnosticUnderlineHint", -, -, -, Underline, -),
+        hi!("DiagnosticUnderlineHint", -, -, infofg, Underline, -),
+        hi!("DiagnosticUnderlineOk", -, -, infofg, Underline, -),
         hi!("DiagnosticDeprecated", -, -, -, Strikethrough, -),
         hi!("DiagnosticUnnecessary", weakfg, -, -, None, -),
         hi!("LspSignatureActiveParameter", -, -, -, Italic, -),
@@ -534,7 +522,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("NvimTreeGitMergeIcon", yellow, -, -, None, -),
         hi!("NvimTreeGitRenamedIcon", yellow, -, -, None, -),
         hi!("NvimTreeGitNewIcon", teal, -, -, None, -),
-        hi!("NvimTreeGitDeletedIcon", difftextbg, -, -, None, -),
+        hi!("NvimTreeGitDeletedIcon", pink, -, -, None, -),
         hi!("NvimTreeWindowPicker", tablineselfg, tablineselbg, -, Bold, -),
         hi!("NvimTreeNormal", lightfg, -, -, None, -),
         hi!("NvimTreeLiveFilterPrefix", darkteal, -, -, None, -),
@@ -556,7 +544,7 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("FylerFSLink", darkteal, -, -, None, -),
         hi!("FylerGitAdded", mainfg, -, -, None, -),
         hi!("FylerGitConflict", -, -, -, None, -),
-        hi!("FylerGitDeleted", difftextbg, -, -, None, -),
+        hi!("FylerGitDeleted", pink, -, -, None, -),
         hi!("FylerGitIgnored", -, -, -, None, -),
         hi!("FylerGitModified", -, -, -, None, -),
         hi!("FylerGitRenamed", yellow, -, -, None, -),
@@ -632,13 +620,13 @@ pub fn get_highlights() -> Vec<Highlight> {
         hi!("GitSignsAdd", green, -, -, -, -),
         hi!("GitSignsChange", yellow, -, -, -, -),
         hi!("GitSignsDelete", pink, -, -, -, -),
-        hi!("GitSignsChangeDelete", difftextbg, -, -, -, -),
+        hi!("GitSignsChangeDelete", yellow, -, -, -, -),
         // vim-gitgutter
         // https://github.com/airblade/vim-gitgutter
         hi!("GitGutterAdd", green, -, -, -, -),
         hi!("GitGutterChange", yellow, -, -, -, -),
         hi!("GitGutterDelete", pink, -, -, -, -),
-        hi!("GitGutterChangeDelete", difftextbg, -, -, -, -),
+        hi!("GitGutterChangeDelete", yellow, -, -, -, -),
         // fugitive.vim
         // https://github.com/tpope/vim-fugitive
         hi!("fugitiveHeader", teal, -, -, Bold, -),

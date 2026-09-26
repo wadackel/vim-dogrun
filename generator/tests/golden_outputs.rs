@@ -24,9 +24,8 @@ fn test_generated_outputs_match_committed_files() {
     // README edits outside the generated fzf block: both sides share them.
     fs::copy(repo_root.join("README.md"), temp_path.join("README.md")).unwrap();
 
-    let output = Command::new("cargo")
-        .args(["run", "--quiet", "--", "--dir", temp_path.to_str().unwrap()])
-        .current_dir(env!("CARGO_MANIFEST_DIR"))
+    let output = Command::new(env!("CARGO_BIN_EXE_dogrun"))
+        .args(["--dir", temp_path.to_str().unwrap()])
         .output()
         .expect("Failed to execute generator");
 
