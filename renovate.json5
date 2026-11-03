@@ -1,10 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
-  // Extend Renovate's recommended configuration and GitHub Actions digest pinning
+  // Extend Renovate's recommended configuration
   "extends": [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests"
+    "config:recommended"
   ],
 
   // Timezone configuration
